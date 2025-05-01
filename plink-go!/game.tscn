@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddyy5w7ux36uw"]
+
+[ext_resource type="PackedScene" uid="uid://ki6r087tju3x" path="res://pin.tscn" id="1_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://cpkx3tyqn2kuw" path="res://player.tscn" id="2_feb5d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
+size = Vector2(1000, 1000)
+
+[node name="Game" type="Node2D"]
+
+[node name="Pin" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(476, 343)
+
+[node name="Player" parent="." instance=ExtResource("2_feb5d")]
+position = Vector2(490, 99)
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(564, 264)
+shape = SubResource("RectangleShape2D_e2o6t")
+action = "ui_touch"
