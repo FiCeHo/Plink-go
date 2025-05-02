@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bvfr0wduvi16p" path="res://player.gd" id="1_onrkg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_onrkg"]
-bounce = 1.0
+bounce = 0.9
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 33.0

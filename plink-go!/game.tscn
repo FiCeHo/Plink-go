@@ -9,12 +9,24 @@ size = Vector2(1000, 1000)
 [node name="Game" type="Node2D"]
 
 [node name="Pin" parent="." instance=ExtResource("1_e2o6t")]
-position = Vector2(476, 343)
+position = Vector2(576, 160)
 
 [node name="Player" parent="." instance=ExtResource("2_feb5d")]
-position = Vector2(490, 99)
+position = Vector2(576, 46)
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 position = Vector2(564, 264)
 shape = SubResource("RectangleShape2D_e2o6t")
 action = "ui_touch"
+
+[node name="Pin2" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(704, 160)
+
+[node name="Pin3" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(448, 160)
+
+[node name="Pin4" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(512, 256)
+
+[node name="Pin5" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(640, 256)
