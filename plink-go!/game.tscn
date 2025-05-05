@@ -4,29 +4,68 @@
 [ext_resource type="PackedScene" uid="uid://cpkx3tyqn2kuw" path="res://player.tscn" id="2_feb5d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
-size = Vector2(1000, 1000)
+size = Vector2(1150, 1000)
 
 [node name="Game" type="Node2D"]
 
-[node name="Pin" parent="." instance=ExtResource("1_e2o6t")]
-position = Vector2(576, 160)
-
-[node name="Player" parent="." instance=ExtResource("2_feb5d")]
-position = Vector2(576, 46)
-
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(564, 264)
+position = Vector2(577, 264)
 shape = SubResource("RectangleShape2D_e2o6t")
 action = "ui_touch"
 
+[node name="Pin" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(577, 234)
+
+[node name="Player" parent="." instance=ExtResource("2_feb5d")]
+position = Vector2(577, 122)
+
 [node name="Pin2" parent="." instance=ExtResource("1_e2o6t")]
-position = Vector2(704, 160)
+position = Vector2(727, 234)
 
 [node name="Pin3" parent="." instance=ExtResource("1_e2o6t")]
-position = Vector2(448, 160)
+position = Vector2(427, 234)
 
 [node name="Pin4" parent="." instance=ExtResource("1_e2o6t")]
-position = Vector2(512, 256)
+position = Vector2(502, 334)
 
 [node name="Pin5" parent="." instance=ExtResource("1_e2o6t")]
-position = Vector2(640, 256)
+position = Vector2(652, 334)
+
+[node name="Pin6" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(802, 334)
+
+[node name="Pin7" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(352, 334)
+
+[node name="Pin8" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(577, 434)
+
+[node name="Pin9" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(727, 434)
+
+[node name="Pin10" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(427, 434)
+
+[node name="Pin11" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(277, 434)
+
+[node name="Pin12" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(877, 434)
+
+[node name="Pin13" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(652, 534)
+
+[node name="Pin14" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(802, 534)
+
+[node name="Pin15" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(502, 534)
+
+[node name="Pin16" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(352, 534)
+
+[node name="Pin17" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(952, 534)
+
+[node name="Pin18" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(202, 534)
