@@ -25,4 +25,5 @@ func respawn():
 	gravity_scale = 0.0
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0
+	rotation = 0
 	isSetup = true
