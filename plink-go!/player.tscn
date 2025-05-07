@@ -10,11 +10,12 @@ bounce = 0.9
 radius = 33.0
 
 [node name="Player" type="Node2D"]
+script = ExtResource("1_onrkg")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_onrkg")
 gravity_scale = 0.0
-script = ExtResource("1_onrkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 texture = ExtResource("1_4flbx")
