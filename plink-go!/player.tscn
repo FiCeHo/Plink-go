@@ -13,9 +13,11 @@ radius = 33.0
 script = ExtResource("1_onrkg")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-collision_layer = 2
+collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_onrkg")
 gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 texture = ExtResource("1_4flbx")
@@ -23,3 +25,5 @@ texture = ExtResource("1_4flbx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_onrkg")
 one_way_collision_margin = 0.0
+
+[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]

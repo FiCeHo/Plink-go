@@ -1,8 +1,10 @@
 extends Node2D
 
+@export var hud : CanvasLayer
+
 var isSetup = true
 var initial_position: Vector2
-var fallThreshold = 700
+var fallThreshold = 900
 var limit = 4
 
 func _ready():
@@ -36,3 +38,7 @@ func respawn():
 	#isSetup = true
 
 	isSetup = true
+
+
+func _on_rigid_body_2d_body_entered(body: Node) -> void:
+	hud.call("score_up")
