@@ -1,6 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxgq4u6g37r8l"]
+[gd_scene load_steps=5 format=3 uid="uid://dxgq4u6g37r8l"]
+
+[ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://bckgr.png" id="1_06t4h"]
+[ext_resource type="AudioStream" uid="uid://ixsyfp8cp5or" path="res://Plink-go! Main Theme.mp3" id="2_7vrkn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rhts7"]
+texture = ExtResource("1_06t4h")
+modulate_color = Color(0.60933, 0.60933, 0.60933, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
 bg_color = Color(0.890196, 0.188235, 0.227451, 1)
@@ -66,3 +71,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
 text = "Exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_7vrkn")
+volume_db = 23.423
+autoplay = true
