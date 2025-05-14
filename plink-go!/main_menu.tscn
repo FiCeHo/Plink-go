@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dxgq4u6g37r8l"]
+[gd_scene load_steps=15 format=3 uid="uid://dxgq4u6g37r8l"]
 
 [ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://bckgr.png" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://j3xufmlkj4a0" path="res://main_menu.gd" id="1_jix8l"]
@@ -38,6 +38,9 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_size = 5
 shadow_offset = Vector2(0, 2.46)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glbon"]
+bg_color = Color(0.1386, 0.15723, 0.18, 1)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_jix8l"]
 color = Color(1, 1, 1, 1)
@@ -167,6 +170,7 @@ offset_right = 444.5
 offset_bottom = 287.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_glbon")
 
 [node name="Label" type="Label" parent="Options"]
 layout_mode = 1
