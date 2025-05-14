@@ -24,12 +24,6 @@ action = "ui_touch"
 [node name="Pin" parent="." instance=ExtResource("1_e2o6t")]
 position = Vector2(577, 234)
 
-[node name="Player" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("2_feb5d")]
-z_index = 7
-position = Vector2(577, 122)
-scale = Vector2(0.4, 0.4)
-hud = NodePath("../HUD")
-
 [node name="Pin2" parent="." instance=ExtResource("1_e2o6t")]
 position = Vector2(727, 234)
 
@@ -90,4 +84,5 @@ action = "ui_copy"
 
 [node name="HUD" parent="." instance=ExtResource("5_7jktm")]
 
-[connection signal="pressed" from="TouchScreenButton2" to="." method="_on_touch_screen_button_2_pressed"]
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_2_pressed"]
