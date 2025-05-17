@@ -1,14 +1,17 @@
-[gd_scene load_steps=19 format=3 uid="uid://dxgq4u6g37r8l"]
+[gd_scene load_steps=22 format=3 uid="uid://csy071n5ov8lc"]
 
 [ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://bckgr.png" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://j3xufmlkj4a0" path="res://main_menu.gd" id="1_jix8l"]
 [ext_resource type="AudioStream" uid="uid://ixsyfp8cp5or" path="res://Plink-go! Main Theme.mp3" id="2_7vrkn"]
 [ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://PearSoda.ttf" id="3_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://5j4rgoh4f7jr" path="res://grabber.png" id="5_8qtwp"]
-[ext_resource type="Script" uid="uid://bb2k50hg1abbf" path="res://audio_control.gd" id="5_glbon"]
+[ext_resource type="Script" path="res://audio_control.gd" id="5_glbon"]
 [ext_resource type="Texture2D" uid="uid://evhfa0dg14i8" path="res://checkBoxCheckd.png" id="6_qe12f"]
 [ext_resource type="Texture2D" uid="uid://c7mwkvxw1t5mm" path="res://checkBox.png" id="7_8qtwp"]
-[ext_resource type="Script" uid="uid://dr4vs1swqs4tc" path="res://audio_control_master.gd" id="7_dy7ct"]
+[ext_resource type="Script" path="res://audio_control_master.gd" id="7_dy7ct"]
+[ext_resource type="Script" uid="uid://csv6651agw4rx" path="res://mute_music.gd" id="10_0o4t1"]
+[ext_resource type="Script" uid="uid://beqw5pdhtr47b" path="res://check_box_SFX.gd" id="11_0k4wn"]
+[ext_resource type="Script" uid="uid://xcu5pblaqe68" path="res://check_box_Master.gd" id="12_j5v2v"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rhts7"]
 texture = ExtResource("1_06t4h")
@@ -143,7 +146,6 @@ text = "Exit"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_7vrkn")
 autoplay = true
-bus = &"Music"
 parameters/looping = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
@@ -368,6 +370,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
 theme_override_icons/checked = ExtResource("6_qe12f")
 theme_override_icons/unchecked = ExtResource("7_8qtwp")
 text = " Mute"
+script = ExtResource("10_0o4t1")
 
 [node name="CheckBox2" type="CheckBox" parent="Options"]
 layout_mode = 1
@@ -388,6 +391,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
 theme_override_icons/checked = ExtResource("6_qe12f")
 theme_override_icons/unchecked = ExtResource("7_8qtwp")
 text = " Mute"
+script = ExtResource("11_0k4wn")
 
 [node name="CheckBox3" type="CheckBox" parent="Options"]
 layout_mode = 1
@@ -408,6 +412,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
 theme_override_icons/checked = ExtResource("6_qe12f")
 theme_override_icons/unchecked = ExtResource("7_8qtwp")
 text = " Mute"
+script = ExtResource("12_j5v2v")
 
 [connection signal="pressed" from="MainButtons/Button" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MainButtons/Button2" to="." method="_on_options_pressed"]
@@ -416,3 +421,6 @@ text = " Mute"
 [connection signal="value_changed" from="Options/AudioControl" to="Options/AudioControl" method="_on_value_changed"]
 [connection signal="value_changed" from="Options/AudioControl2" to="Options/AudioControl2" method="_on_value_changed"]
 [connection signal="value_changed" from="Options/AudioControl3" to="Options/AudioControl3" method="_on_value_changed"]
+[connection signal="toggled" from="Options/CheckBox" to="Options/CheckBox" method="_on_toggled"]
+[connection signal="toggled" from="Options/CheckBox2" to="Options/CheckBox2" method="_on_toggled"]
+[connection signal="toggled" from="Options/CheckBox3" to="Options/CheckBox3" method="_on_toggled"]
