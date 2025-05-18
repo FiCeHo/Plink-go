@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://csy071n5ov8lc"]
+[gd_scene load_steps=19 format=3 uid="uid://csy071n5ov8lc"]
 
 [ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://bckgr.png" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://j3xufmlkj4a0" path="res://main_menu.gd" id="1_jix8l"]
@@ -8,9 +8,7 @@
 [ext_resource type="Script" uid="uid://bb2k50hg1abbf" path="res://audio_control.gd" id="5_glbon"]
 [ext_resource type="Texture2D" uid="uid://evhfa0dg14i8" path="res://checkBoxCheckd.png" id="6_qe12f"]
 [ext_resource type="Texture2D" uid="uid://c7mwkvxw1t5mm" path="res://checkBox.png" id="7_8qtwp"]
-[ext_resource type="Script" uid="uid://csv6651agw4rx" path="res://mute_music.gd" id="10_0o4t1"]
-[ext_resource type="Script" uid="uid://beqw5pdhtr47b" path="res://check_box_SFX.gd" id="11_0k4wn"]
-[ext_resource type="Script" uid="uid://xcu5pblaqe68" path="res://check_box_Master.gd" id="12_j5v2v"]
+[ext_resource type="Script" uid="uid://d2qimi1tdg3fj" path="res://check_box_mute.gd" id="9_dy7ct"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rhts7"]
 texture = ExtResource("1_06t4h")
@@ -371,7 +369,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
 theme_override_icons/checked = ExtResource("6_qe12f")
 theme_override_icons/unchecked = ExtResource("7_8qtwp")
 text = " Mute"
-script = ExtResource("10_0o4t1")
+script = ExtResource("9_dy7ct")
+audio_bus_name = "Music"
 
 [node name="CheckBox2" type="CheckBox" parent="Options"]
 layout_mode = 1
@@ -392,7 +391,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
 theme_override_icons/checked = ExtResource("6_qe12f")
 theme_override_icons/unchecked = ExtResource("7_8qtwp")
 text = " Mute"
-script = ExtResource("11_0k4wn")
+script = ExtResource("9_dy7ct")
+audio_bus_name = "SFX"
 
 [node name="CheckBox3" type="CheckBox" parent="Options"]
 layout_mode = 1
@@ -413,7 +413,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
 theme_override_icons/checked = ExtResource("6_qe12f")
 theme_override_icons/unchecked = ExtResource("7_8qtwp")
 text = " Mute"
-script = ExtResource("12_j5v2v")
+script = ExtResource("9_dy7ct")
+audio_bus_name = "Master"
 
 [connection signal="pressed" from="MainButtons/Button" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MainButtons/Button2" to="." method="_on_options_pressed"]
