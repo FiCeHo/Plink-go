@@ -1,14 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://csy071n5ov8lc"]
+[gd_scene load_steps=21 format=3 uid="uid://csy071n5ov8lc"]
 
 [ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://bckgr.png" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://j3xufmlkj4a0" path="res://main_menu.gd" id="1_jix8l"]
 [ext_resource type="AudioStream" uid="uid://ixsyfp8cp5or" path="res://Plink-go! Main Theme.mp3" id="2_7vrkn"]
 [ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://PearSoda.ttf" id="3_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://5j4rgoh4f7jr" path="res://grabber.png" id="5_8qtwp"]
-[ext_resource type="Script" path="res://audio_control.gd" id="5_glbon"]
+[ext_resource type="Script" uid="uid://bb2k50hg1abbf" path="res://audio_control.gd" id="5_glbon"]
 [ext_resource type="Texture2D" uid="uid://evhfa0dg14i8" path="res://checkBoxCheckd.png" id="6_qe12f"]
 [ext_resource type="Texture2D" uid="uid://c7mwkvxw1t5mm" path="res://checkBox.png" id="7_8qtwp"]
-[ext_resource type="Script" path="res://audio_control_master.gd" id="7_dy7ct"]
 [ext_resource type="Script" uid="uid://csv6651agw4rx" path="res://mute_music.gd" id="10_0o4t1"]
 [ext_resource type="Script" uid="uid://beqw5pdhtr47b" path="res://check_box_SFX.gd" id="11_0k4wn"]
 [ext_resource type="Script" uid="uid://xcu5pblaqe68" path="res://check_box_Master.gd" id="12_j5v2v"]
@@ -146,6 +145,7 @@ text = "Exit"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_7vrkn")
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
@@ -334,9 +334,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -215.0
-offset_top = -175.0
+offset_top = -178.0
 offset_right = 214.0
-offset_bottom = -109.0
+offset_bottom = -112.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_icons/grabber = ExtResource("5_8qtwp")
@@ -349,7 +349,8 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_glbon")
 max_value = 1.0
 step = 0.05
 value = 0.5
-script = ExtResource("7_dy7ct")
+script = ExtResource("5_glbon")
+audio_bus_name = "Master"
 
 [node name="CheckBox" type="CheckBox" parent="Options"]
 layout_mode = 1
