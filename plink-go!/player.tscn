@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://bvfr0wduvi16p" path="res://player.gd" id="1_onrkg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_onrkg"]
-bounce = 0.9
+bounce = 0.64
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
-radius = 33.0
+radius = 16.0312
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_onrkg")
@@ -20,10 +20,13 @@ contact_monitor = true
 max_contacts_reported = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(-4.76837e-07, 0)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_4flbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_onrkg")
 one_way_collision_margin = 0.0
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]

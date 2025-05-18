@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8ub6d2h0c25i"]
+
+[ext_resource type="PackedScene" uid="uid://cpkx3tyqn2kuw" path="res://player.tscn" id="1_nfpec"]
+[ext_resource type="Script" uid="uid://dameiaggkrb88" path="res://niggaplayer.gd" id="2_ojrqv"]
+[ext_resource type="Texture2D" uid="uid://c5uwgaf0wthvy" path="res://pixil-frame-0.png" id="3_iyv0j"]
+
+[node name="NiggaPlayer" instance=ExtResource("1_nfpec")]
+script = ExtResource("2_ojrqv")
+
+[node name="RigidBody2D" parent="." index="0"]
+physics_material_override = null
+
+[node name="Sprite2D" parent="RigidBody2D" index="0"]
+texture = ExtResource("3_iyv0j")

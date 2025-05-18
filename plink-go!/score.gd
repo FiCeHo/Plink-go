@@ -2,6 +2,6 @@ extends Label
 
 var score = 0
 
-func score_up():
-	score += 1
+func score_up(value):
+	score += value
 	text = str(score)
