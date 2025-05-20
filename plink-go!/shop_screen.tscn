@@ -51,6 +51,11 @@ offset_bottom = 23.0
 [node name="PerkShop" type="HBoxContainer" parent="ShopPanel/PerkPanel/MarginContainer"]
 layout_mode = 2
 
+[node name="PerkDetail" type="Panel" parent="ShopPanel/PerkPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="BallPanel" type="Panel" parent="ShopPanel"]
 layout_mode = 1
 anchors_preset = 3
@@ -107,6 +112,7 @@ offset_right = 160.0
 offset_bottom = 100.0
 
 [node name="Button2" type="Button" parent="ShopPanel"]
+layout_mode = 0
 offset_left = 40.0
 offset_top = 120.0
 offset_right = 160.0

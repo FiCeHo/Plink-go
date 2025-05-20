@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb6osd8rkjb4x"]
+
+[ext_resource type="Script" uid="uid://cru5k6t16b2oq" path="res://perks/perk_card.gd" id="1_wkbht"]
+
+[node name="PerkCard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1248.0
+offset_bottom = -688.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wkbht")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
