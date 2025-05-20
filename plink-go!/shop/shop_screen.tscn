@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://d06fc5g3nxiq7"]
+[gd_scene load_steps=3 format=3 uid="uid://d06fc5g3nxiq7"]
+
+[ext_resource type="Script" uid="uid://bdjk52saa7fox" path="res://shop/shop_screen.gd" id="1_6fma4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ji30"]
 content_margin_left = 40.0
@@ -13,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6fma4")
 
 [node name="ShopPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -50,11 +53,6 @@ offset_bottom = 23.0
 
 [node name="PerkShop" type="HBoxContainer" parent="ShopPanel/PerkPanel/MarginContainer"]
 layout_mode = 2
-
-[node name="PerkDetail" type="Panel" parent="ShopPanel/PerkPanel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="BallPanel" type="Panel" parent="ShopPanel"]
 layout_mode = 1

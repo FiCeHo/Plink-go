@@ -1,5 +1,5 @@
 extends Control
-signal selected(perk_data: PerkData)
+signal selected(perk_data: PerkData, sender_node: Control)
 
 @export var perk_data: PerkData
 
@@ -13,4 +13,4 @@ func update_display():
 
 func _on_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
-		emit_signal("selected", perk_data)
+		emit_signal("selected", perk_data, self)

@@ -6,4 +6,4 @@ class_name PerkData
 @export var description: String
 @export var icon: Texture
 @export var price: int = 0
-@export var rarity: String = "common"
+@export_enum("common", "uncommon", "rare", "epic", "legendary") var rarity: String = "common"
