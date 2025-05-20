@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dch2epmlvus3h"]
+[gd_scene load_steps=3 format=3 uid="uid://dch2epmlvus3h"]
 
 [ext_resource type="Script" uid="uid://b5kgq2tie3fca" path="res://multiplier.gd" id="1_w3efu"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_agnkb"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3efu"]
-size = Vector2(88, 12)
+size = Vector2(100, 20)
 
 [node name="Multiplier" type="Node2D"]
 script = ExtResource("1_w3efu")
@@ -15,13 +13,7 @@ modulate = Color(0, 1, 1, 1)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-modulate = Color(1, 0, 1, 1)
-material = SubResource("CanvasItemMaterial_agnkb")
 shape = SubResource("RectangleShape2D_w3efu")
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
-offset_left = -44.0
-offset_top = -6.0
-offset_right = 44.0
-offset_bottom = 6.0
-color = Color(0, 1, 1, 1)
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(0.5, 0.25)
