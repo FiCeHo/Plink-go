@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PerkData" load_steps=3 format=3 uid="uid://ddu7vi2xve8pw"]
+
+[ext_resource type="Texture2D" uid="uid://bvsoyrn3cgubw" path="res://assets/icons/LifeBuoyPerk.png" id="1_ainq1"]
+[ext_resource type="Script" uid="uid://7uoio7x1ilb0" path="res://perks/perk_data.gd" id="2_1h1k3"]
+
+[resource]
+script = ExtResource("2_1h1k3")
+id = "life_buoy"
+name = "Life Buoy"
+description = "It should do something"
+icon = ExtResource("1_ainq1")
+price = 5
+rarity = "common"

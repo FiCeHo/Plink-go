@@ -30,15 +30,15 @@ static func load_items_from_folder(folder_path: String) -> Array:
 
 # 🟠 Load all perks
 static func get_all_perks() -> Array:
-	return load_items_from_folder("res://perks")
+	return load_items_from_folder("res://perks/items")
 
 # 🔵 Load all balls
 static func get_all_balls() -> Array:
-	return load_items_from_folder("res://balls")
+	return load_items_from_folder("res://balls/items")
 
 # 🟡 Load all modifiers
 static func get_all_modifiers() -> Array:
-	return load_items_from_folder("res://modifiers")
+	return load_items_from_folder("res://modifiers/items")
 
 
 ## 🎲 Pick N weighted items from a pool based on rarity

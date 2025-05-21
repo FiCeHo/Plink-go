@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d06fc5g3nxiq7"]
+[gd_scene load_steps=3 format=3 uid="uid://n6g0wutn7lld"]
 
 [ext_resource type="Script" uid="uid://bdjk52saa7fox" path="res://shop/shop_screen.gd" id="1_6fma4"]
 
@@ -18,6 +18,7 @@ grow_vertical = 2
 script = ExtResource("1_6fma4")
 
 [node name="ShopPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(720, 405)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -44,15 +45,34 @@ offset_bottom = 180.0
 grow_horizontal = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="ShopPanel/PerkPanel"]
-visible = false
-layout_mode = 2
-offset_left = -176.0
-offset_top = -17.0
-offset_right = -136.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PerkShop" type="HBoxContainer" parent="ShopPanel/PerkPanel/MarginContainer"]
+z_index = 1
+custom_minimum_size = Vector2(480, 140)
 layout_mode = 2
+alignment = 1
+
+[node name="PerkDetail" type="Panel" parent="ShopPanel/PerkPanel"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NameLabel" type="Label" parent="ShopPanel/PerkPanel/PerkDetail"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="ShopPanel/PerkPanel/PerkDetail"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="BallPanel" type="Panel" parent="ShopPanel"]
 layout_mode = 1
@@ -69,7 +89,6 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="ShopPanel/BallPanel"]
-visible = false
 layout_mode = 2
 offset_left = -176.0
 offset_top = -17.0
@@ -91,7 +110,6 @@ offset_bottom = -40.0
 grow_vertical = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="ShopPanel/ModifierPanel"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
