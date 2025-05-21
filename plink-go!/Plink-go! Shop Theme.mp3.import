@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b4vudmibdh8a2"
+path="res://.godot/imported/Plink-go! Shop Theme.mp3-b122039771d6bc28c4c6b515f5b79ec3.mp3str"
+
+[deps]
+
+source_file="res://Plink-go! Shop Theme.mp3"
+dest_files=["res://.godot/imported/Plink-go! Shop Theme.mp3-b122039771d6bc28c4c6b515f5b79ec3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
