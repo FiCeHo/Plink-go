@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddyy5w7ux36uw"]
+[gd_scene load_steps=9 format=3 uid="uid://ddyy5w7ux36uw"]
 
 [ext_resource type="PackedScene" uid="uid://ki6r087tju3x" path="res://pin.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://cmlphfg306x4b" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://cpkx3tyqn2kuw" path="res://player.tscn" id="2_feb5d"]
-[ext_resource type="PackedScene" uid="uid://cbf1bg60e4jj2" path="res://ui.tscn" id="3_7jktm"]
 [ext_resource type="PackedScene" uid="uid://b8ub6d2h0c25i" path="res://nigga_player.tscn" id="3_ryrav"]
-[ext_resource type="PackedScene" uid="uid://dch2epmlvus3h" path="res://multiplier.tscn" id="5_ryrav"]
+[ext_resource type="PackedScene" path="res://multiplier.tscn" id="5_ryrav"]
 [ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://bckgr.png" id="7_eow3j"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j5wjh"]
@@ -38,7 +37,17 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_j5wjh")
 position = Vector2(640, 360)
 shape = SubResource("RectangleShape2D_e2o6t")
 
-[node name="UI" parent="." instance=ExtResource("3_7jktm")]
+[node name="UI" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+script = null
 
 [node name="Game" type="CanvasLayer" parent="."]
 
@@ -172,7 +181,6 @@ multiplier = 0.8
 
 [node name="Multiplier4" parent="Game/Container" instance=ExtResource("5_ryrav")]
 position = Vector2(510, 559)
-multiplier = 0.0
 
 [node name="Multiplier5" parent="Game/Container" instance=ExtResource("5_ryrav")]
 position = Vector2(633, 561)
