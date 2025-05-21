@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dch2epmlvus3h"]
+
+[ext_resource type="Script" uid="uid://b5kgq2tie3fca" path="res://multiplier.gd" id="1_w3efu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3efu"]
+size = Vector2(100, 20)
+
+[node name="Multiplier" type="Node2D"]
+script = ExtResource("1_w3efu")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+modulate = Color(0, 1, 1, 1)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_w3efu")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(0.5, 0.25)

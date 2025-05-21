@@ -13,7 +13,12 @@ config_version=5
 config/name="Plink-go!"
 run/main_scene="uid://n6g0wutn7lld"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://g1ini1tp645l"
+
+[autoload]
+
+Global="*res://global.gd"
+PlayerVariables="*res://player_variables.gd"
 
 [display]
 
