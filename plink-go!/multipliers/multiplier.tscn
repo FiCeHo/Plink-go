@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dch2epmlvus3h"]
 
-[ext_resource type="Script" uid="uid://b5kgq2tie3fca" path="res://multiplier.gd" id="1_w3efu"]
+[ext_resource type="Script" uid="uid://b5kgq2tie3fca" path="res://multipliers/multiplier.gd" id="1_w3efu"]
 [ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://assets/game/PearSoda.ttf" id="2_x42gh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3efu"]

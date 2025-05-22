@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cueqy8h8k7hne"]
+
+[ext_resource type="PackedScene" uid="uid://dch2epmlvus3h" path="res://multipliers/multiplier.tscn" id="1_cwga7"]
+[ext_resource type="Script" uid="uid://c827edyrcdpl1" path="res://multipliers/multiplier_0_8x.gd" id="2_0ow2b"]
+[ext_resource type="Texture2D" uid="uid://bd2r88cbwgomb" path="res://assets/multipliers/x0.8.png" id="3_0ow2b"]
+
+[node name="Multiplier 0_8x" instance=ExtResource("1_cwga7")]
+script = ExtResource("2_0ow2b")
+
+[node name="Sprite2D" parent="StaticBody2D" index="1"]
+texture = ExtResource("3_0ow2b")
+
+[node name="Label" parent="." index="1"]
+text = "x0.8"

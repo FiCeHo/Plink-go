@@ -8,7 +8,6 @@ var ball_index = 1
 var previous_player
 
 func _on_touch_screen_button_2_pressed():
-	print("nig")
 	if previous_player != null:
 		previous_player.get_node("RigidBody2D").gravity_scale = previous_player.gravity
 		while previous_player.get_node("RigidBody2D").angular_velocity == 0:
@@ -31,7 +30,7 @@ func _process(_delta):
 	if PlayerVariables.current_score >= Global.goals[PlayerVariables.current_round - 1]:
 		PlayerVariables.current_score = 0
 		PlayerVariables.current_round += 1
-		get_tree().change_scene_to_file("res://main_menu.tscn")
+		get_tree().change_scene_to_file("res://shop/shop_screen.tscn")
 
 func load_perks():
 	if perk_array.has("2xPoints"):
