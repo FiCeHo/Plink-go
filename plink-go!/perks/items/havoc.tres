@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PerkData" load_steps=3 format=3 uid="uid://cr8vci2htctp4"]
+
+[ext_resource type="Texture2D" uid="uid://q36wg3n7hfhe" path="res://assets/perks/HavocPerk.png" id="1_vh7ha"]
+[ext_resource type="Script" uid="uid://7uoio7x1ilb0" path="res://perks/perk_data.gd" id="2_ooyjr"]
+
+[resource]
+script = ExtResource("2_ooyjr")
+id = "havoc"
+type = "perk"
+name = "Havoc"
+description = "Allows perks to appear multiple times in the shop"
+icon = ExtResource("1_vh7ha")
+price = 11
+rarity = "epic"

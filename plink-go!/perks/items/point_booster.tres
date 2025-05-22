@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PerkData" load_steps=3 format=3 uid="uid://dd3fhcdduww3d"]
+
+[ext_resource type="Texture2D" uid="uid://b64psbu5fm4v5" path="res://assets/perks/PointBoosterPerk.png" id="1_xxopb"]
+[ext_resource type="Script" uid="uid://7uoio7x1ilb0" path="res://perks/perk_data.gd" id="2_m1owv"]
+
+[resource]
+script = ExtResource("2_m1owv")
+id = "point_booster"
+type = "perk"
+name = "Point Booster"
+description = "Boosts the points"
+icon = ExtResource("1_xxopb")
+price = 9
+rarity = "rare"

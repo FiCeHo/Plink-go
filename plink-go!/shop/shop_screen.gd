@@ -9,24 +9,35 @@ var PlayerData = preload("res://player_variables.gd")
 @onready var name_label = get_node("ShopPanel/ItemDetail/NameLabel")
 @onready var desc_label = get_node("ShopPanel/ItemDetail/DescriptionLabel")
 @onready var buy_button = get_node("ShopPanel/BuyButton")
+@onready var reroll_button = get_node("ShopPanel/RerollButton")
+@onready var money_label = get_node("MoneyLabel")
 
 @onready var perk_list = get_node("PlayerPerks")
 @onready var sell_button = get_node("SellButton")
 
+var reroll_cost = 5
+var perk_amount = 4
 var current_selected_item: Control = null
 var current_selected_type: String = ""
 var current_selected_data: Resource = null
 var selected_from_shop := false
 
 func _ready():
-	load_player_perks()
+	_load_player_perks()
 	var all_perks = ItemUtils.get_all_perks()
-	var perk_data_list = ItemUtils.pick_weighted_items(
-		all_perks,
-		2,
-		func(perk): return perk.rarity
-	)
-
+	var perk_data_list
+	if PlayerVariables.has_perk("havoc"):
+		perk_data_list = ItemUtils.pick_weighted_items_havoc(
+			all_perks,
+			perk_amount,
+			func(perk): return perk.rarity
+		)
+	else:
+		perk_data_list = ItemUtils.pick_weighted_items(
+			all_perks,
+			perk_amount,
+			func(perk): return perk.rarity
+		)
 	for perk_data in perk_data_list:
 		var item = ShowItem.spawn(perk_data, "perk")
 		item.set_meta("source", "shop")
@@ -36,6 +47,9 @@ func _ready():
 		
 	buy_button.pressed.connect(_on_buy_button_pressed)
 	sell_button.pressed.connect(_on_sell_button_pressed)
+	reroll_button.text = "Reroll (%d $)" % reroll_cost
+	reroll_button.pressed.connect(_on_reroll_button_pressed)
+	_update_money_display()
 	buy_button.hide()  # Hide by default
 	details_panel.hide()
 	sell_button.hide()
@@ -86,7 +100,8 @@ func _on_item_selected(item_data: Resource, item_node: Control):
 		buy_button.global_position = item_pos + Vector2(x_center_offset, 68)
 		buy_button.show()
 	else:
-		sell_button.text = "Sell (%d $)" % int(item_data.price * 0.5)
+		var sell_value = _get_sell_value(item_data)
+		sell_button.text = "Sell (%d $)" % sell_value
 		sell_button.size = sell_button.get_minimum_size()
 
 		var button_size = sell_button.size
@@ -101,26 +116,31 @@ func _on_buy_button_pressed():
 	if not current_selected_item:
 		return
 		
-	if current_selected_type == "perk":
+	if current_selected_type == "perk" && PlayerVariables.money >= current_selected_data.price:
 		print("Bought perk:", current_selected_data.name)
+		PlayerVariables.money -= current_selected_data.price
+		_update_money_display()
 		PlayerVariables.perk_array.append(current_selected_data)
-	
-	# Disable card
-	current_selected_item.get_node("TextureRect").visible = false
-	current_selected_item.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			# Disable card
+		current_selected_item.get_node("TextureRect").visible = false
+		current_selected_item.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
-	details_panel.hide()
-	buy_button.hide()
-	current_selected_item = null
-	current_selected_type = ""
-	current_selected_data = null
+		details_panel.hide()
+		buy_button.hide()
+		current_selected_item = null
+		current_selected_type = ""
+		current_selected_data = null
+		
+		_load_player_perks()
 	
-	load_player_perks()
 	
 func _on_sell_button_pressed():
 	if current_selected_type == "perk" and current_selected_data:
 		if PlayerVariables.perk_array.has(current_selected_data):
+			var sell_value = _get_sell_value(current_selected_data)
 			PlayerVariables.perk_array.erase(current_selected_data)
+			PlayerVariables.money += sell_value
+			_update_money_display()
 			print("Sold:", current_selected_data.name)
 
 	# Clean up
@@ -133,9 +153,46 @@ func _on_sell_button_pressed():
 	details_panel.hide()
 	sell_button.hide()
 
-	load_player_perks()
+	_load_player_perks()
 	
-func load_player_perks():
+func _on_reroll_button_pressed():
+	if PlayerVariables.money >= reroll_cost:
+		PlayerVariables.money -= reroll_cost
+		_update_money_display()
+		reroll_cost += 2
+		reroll_button.text = "Reroll (%d $)" % reroll_cost
+		_do_reroll()
+	else:
+		print("Not enough money to reroll!")
+	
+func _do_reroll():
+	for child in perk_list_display.get_children():
+		child.queue_free()
+
+	var all_perks = ItemUtils.get_all_perks()
+	var perk_data_list
+	if PlayerVariables.has_perk("havoc"):
+		perk_data_list = ItemUtils.pick_weighted_items_havoc(
+			all_perks,
+			perk_amount,
+			func(perk): return perk.rarity
+		)
+	else:
+		perk_data_list = ItemUtils.pick_weighted_items(
+			all_perks,
+			perk_amount,
+			func(perk): return perk.rarity
+		)
+
+	for perk_data in perk_data_list:
+		var item = ShowItem.spawn(perk_data, "perk")
+		item.set_meta("source", "shop")
+		item.selected.connect(_on_item_selected)
+		perk_list_display.add_child(item)
+
+	print("Shop rerolled!")
+	
+func _load_player_perks():
 	for child in perk_list.get_children():
 		child.queue_free()
 		
@@ -145,3 +202,12 @@ func load_player_perks():
 		item.selected.connect(_on_item_selected)
 		perk_list.add_child(item)
 		print("Spawned item is a:", item.get_class())
+
+func _update_money_display():
+	money_label.text = "Money: %d $" % PlayerVariables.money
+
+func _get_sell_value(item_data: Resource):
+	var value = int(item_data.price * 0.5)
+	if PlayerVariables.has_perk("haggler"):
+		value = value * 2
+	return value

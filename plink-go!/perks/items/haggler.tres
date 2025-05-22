@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PerkData" load_steps=3 format=3 uid="uid://4llxpitktpjl"]
+
+[ext_resource type="Texture2D" uid="uid://bjeis7hrnddmk" path="res://assets/perks/HagglerPerk.png" id="1_74y23"]
+[ext_resource type="Script" uid="uid://7uoio7x1ilb0" path="res://perks/perk_data.gd" id="2_alpjf"]
+
+[resource]
+script = ExtResource("2_alpjf")
+id = "haggler"
+type = "perk"
+name = "Haggler"
+description = "Doubles the sell value of perks. Does not stack."
+icon = ExtResource("1_74y23")
+price = 7
+rarity = "uncommon"

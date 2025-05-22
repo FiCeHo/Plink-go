@@ -41,7 +41,7 @@ static func get_all_modifiers() -> Array:
 	return load_items_from_folder("res://modifiers/items")
 
 
-## 🎲 Pick N weighted items from a pool based on rarity
+## 🎲 Pick N weighted items from a pool based on rarity (excluding owned)
 static func pick_weighted_items(
 	pool: Array,
 	count: int,
@@ -52,8 +52,20 @@ static func pick_weighted_items(
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 
-	while selected.size() < count and pool.size() > 0:
-		var remaining_pool = pool.filter(func(item): return not selected.has(item))
+	var owned_ids := PlayerVariables.perk_array.map(func(perk): return perk.id)
+
+	# Use a working pool of items the player doesn't own
+	var available_pool := pool.filter(func(item): return not owned_ids.has(item.id))
+
+	# Keep track of picked IDs to avoid repeats
+	var picked_ids := []
+
+	while selected.size() < count and available_pool.size() > 0:
+		# Only include items we haven't picked yet
+		var remaining_pool = available_pool.filter(func(item): return not picked_ids.has(item.id))
+		if remaining_pool.is_empty():
+			break
+
 		var weighted_pool: Array[Dictionary] = []
 
 		for item in remaining_pool:
@@ -64,16 +76,20 @@ static func pick_weighted_items(
 		var total_weight = 0
 		for entry in weighted_pool:
 			total_weight += entry.weight
+
 		var choice = rng.randi_range(1, total_weight)
 		var running_total = 0
 
 		for entry in weighted_pool:
 			running_total += entry.weight
 			if choice <= running_total:
-				selected.append(entry.item)
+				var picked = entry.item
+				selected.append(picked)
+				picked_ids.append(picked.id)  # ✅ Track ID, not object
 				break
 
 	return selected
+
 
 # Group items by rarity
 static func group_by_rarity(pool: Array, get_rarity_func: Callable) -> Dictionary:
@@ -91,3 +107,35 @@ static func pick_unweighted_items(pool: Array, count: int) -> Array:
 	shuffled.shuffle()
 	return shuffled.slice(0, count)
 	
+static func pick_weighted_items_havoc(
+	pool: Array,
+	count: int,
+	get_rarity_func: Callable,
+	rarity_weights := default_rarity_weights
+) -> Array:
+	var selected: Array = []
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+
+	while selected.size() < count and pool.size() > 0:
+		var weighted_pool: Array[Dictionary] = []
+
+		for item in pool:
+			var rarity = get_rarity_func.call(item)
+			var weight = rarity_weights.get(rarity, 1)
+			weighted_pool.append({ "item": item, "weight": weight })
+
+		var total_weight = 0
+		for entry in weighted_pool:
+			total_weight += entry.weight
+
+		var choice = rng.randi_range(1, total_weight)
+		var running_total = 0
+
+		for entry in weighted_pool:
+			running_total += entry.weight
+			if choice <= running_total:
+				selected.append(entry.item)
+				break
+
+	return selected
