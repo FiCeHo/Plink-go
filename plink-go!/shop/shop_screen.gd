@@ -3,10 +3,16 @@ extends Control
 const ItemUtils = preload("res://utils/item_utils.gd")
 const ShowItem = preload("res://utils/show_item.gd")
 
+var PlayerData = preload("res://player_variables.gd")
+
 @onready var perk_list_display = get_node("ShopPanel/PerkPanel/MarginContainer/PerkShop")
-@onready var details_panel = get_node("ShopPanel/PerkPanel/PerkDetail")
-@onready var name_label = get_node("ShopPanel/PerkPanel/PerkDetail/NameLabel")
-@onready var desc_label = get_node("ShopPanel/PerkPanel/PerkDetail/DescriptionLabel")
+@onready var details_panel = get_node("ShopPanel/ItemDetail")
+@onready var name_label = get_node("ShopPanel/ItemDetail/NameLabel")
+@onready var desc_label = get_node("ShopPanel/ItemDetail/DescriptionLabel")
+@onready var buy_button = get_node("ShopPanel/BuyButton")
+var current_selected_item: Control = null
+var current_selected_type: String = ""
+var current_selected_data: Resource = null
 
 func _ready():
 	details_panel.hide()
@@ -18,34 +24,49 @@ func _ready():
 	)
 
 	for perk_data in perk_data_list:
-		print(perk_data.icon)
 		var item = ShowItem.spawn(perk_data, "perk")
-		item.selected.connect(_on_perk_selected)
+		item.selected.connect(_on_item_selected)
 		perk_list_display.add_child(item)
-		print("Spawned card is a:", item.get_class())
+		print("Spawned item is a:", item.get_class())
+		
+	buy_button.pressed.connect(_on_buy_button_pressed)
+	buy_button.hide()  # Hide by default
 	print_tree_pretty()
 		
-func _on_perk_selected(perk: PerkData, card_node: Control):
-	print("Perk selected:", perk.name)
-	# Update the text
-	name_label.text = perk.name
-	desc_label.text = perk.description
+func _on_item_selected(item_data: Resource, item_node: Control):
+	# If the same item is clicked again, toggle it off
+	if current_selected_item == item_node and details_panel.visible:
+		details_panel.hide()
+		buy_button.hide()
+		current_selected_item = null
+		current_selected_type = ""
+		current_selected_data = null
+		return
 
-	# Position the details panel next to the selected card
-	var card_pos = card_node.get_global_position()
-	var card_size = card_node.size
-	var offset = Vector2(16, 0)  # Pixels to the right
+	# Otherwise, update and show details
+	current_selected_item = item_node
+	current_selected_type = item_data.type
+	current_selected_data = item_data
 
-	details_panel.global_position = card_pos + Vector2(card_size.x, 0) + offset
+	name_label.text = item_data.name
+	desc_label.text = "[font_size=12]%s[/font_size]" % item_data.description
+
+	var item_pos = item_node.get_global_position()
+	var item_size = item_node.size
+	var offset = Vector2(16, 0)
+	
+	var panel_size = details_panel.size
+	var y_offset = (item_size.y - panel_size.y) / 2.0
+	
+	details_panel.global_position = item_pos + Vector2(item_size.x + offset.x, y_offset)
+	buy_button.global_position = item_pos + Vector2(-5,  68)
+	buy_button.text = "Buy (%d $)" % item_data.price
+
 	details_panel.show()
+	buy_button.show()
 
-func _unhandled_input(event):
-	if event is InputEventMouseButton and event.pressed:
-		# Check what was under the mouse
-		var mouse_pos = get_viewport().get_mouse_position()
-		var clicked = get_viewport().gui_pick(mouse_pos)
+func _on_buy_button_pressed():
 
-		# If we didn't click a PerkCard or the DetailsPanel itself
-		if !clicked or not clicked.is_in_group("perk_card") and clicked != details_panel:
-			print("Clicked outside — hiding detail panel.")
-			details_panel.hide()
+	details_panel.hide()
+	buy_button.hide()
+	current_selected_item = null

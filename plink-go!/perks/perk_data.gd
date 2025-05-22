@@ -2,6 +2,7 @@ extends Resource
 class_name PerkData
 
 @export var id: String
+@export var type := "perk"
 @export var name: String
 @export var description: String
 @export var icon: Texture

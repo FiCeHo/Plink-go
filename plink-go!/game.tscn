@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cmlphfg306x4b" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://cpkx3tyqn2kuw" path="res://player.tscn" id="2_feb5d"]
 [ext_resource type="PackedScene" uid="uid://b8ub6d2h0c25i" path="res://nigga_player.tscn" id="3_ryrav"]
-[ext_resource type="PackedScene" path="res://multiplier.tscn" id="5_ryrav"]
+[ext_resource type="PackedScene" uid="uid://dch2epmlvus3h" path="res://multiplier.tscn" id="5_ryrav"]
 [ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://bckgr.png" id="7_eow3j"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j5wjh"]
