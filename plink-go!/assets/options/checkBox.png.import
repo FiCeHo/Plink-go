@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b64tvi1aubrjm"
-path="res://.godot/imported/x2.png-5991dc1749c16be074d1bd7c2104bea2.ctex"
+uid="uid://c7mwkvxw1t5mm"
+path="res://.godot/imported/checkBox.png-aee6e63aafc416a1328239641b4dc4f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://x2.png"
-dest_files=["res://.godot/imported/x2.png-5991dc1749c16be074d1bd7c2104bea2.ctex"]
+source_file="res://assets/options/checkBox.png"
+dest_files=["res://.godot/imported/checkBox.png-aee6e63aafc416a1328239641b4dc4f4.ctex"]
 
 [params]
 

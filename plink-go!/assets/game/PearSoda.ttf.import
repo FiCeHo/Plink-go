@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://ci4buvranebo7"
-path="res://.godot/imported/PearSoda.ttf-a2bd3e3fcc859b2552d003e2cd6408cb.fontdata"
+path="res://.godot/imported/PearSoda.ttf-7f4d703a42b5d17d2a41ad93894f69c7.fontdata"
 
 [deps]
 
-source_file="res://PearSoda.ttf"
-dest_files=["res://.godot/imported/PearSoda.ttf-a2bd3e3fcc859b2552d003e2cd6408cb.fontdata"]
+source_file="res://assets/game/PearSoda.ttf"
+dest_files=["res://.godot/imported/PearSoda.ttf-7f4d703a42b5d17d2a41ad93894f69c7.fontdata"]
 
 [params]
 

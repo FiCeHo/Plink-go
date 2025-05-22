@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d373wed3wawcd"
-path="res://.godot/imported/ScoreHolder.png-9114aed67843bf80fb49e8546f4f175f.ctex"
+uid="uid://cnxxih6ya545r"
+path="res://.godot/imported/ballHolder.png-1f458c5db6815b61de45babd8a288cbc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ScoreHolder.png"
-dest_files=["res://.godot/imported/ScoreHolder.png-9114aed67843bf80fb49e8546f4f175f.ctex"]
+source_file="res://assets/holders/ballHolder.png"
+dest_files=["res://.godot/imported/ballHolder.png-1f458c5db6815b61de45babd8a288cbc.ctex"]
 
 [params]
 

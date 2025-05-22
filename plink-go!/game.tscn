@@ -1,12 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddyy5w7ux36uw"]
+[gd_scene load_steps=13 format=3 uid="uid://ddyy5w7ux36uw"]
 
 [ext_resource type="PackedScene" uid="uid://ki6r087tju3x" path="res://pin.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://cmlphfg306x4b" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://cpkx3tyqn2kuw" path="res://player.tscn" id="2_feb5d"]
 [ext_resource type="PackedScene" uid="uid://cbf1bg60e4jj2" path="res://ui.tscn" id="3_7jktm"]
 [ext_resource type="PackedScene" uid="uid://b8ub6d2h0c25i" path="res://nigga_player.tscn" id="3_ryrav"]
-[ext_resource type="PackedScene" uid="uid://dch2epmlvus3h" path="res://multiplier.tscn" id="5_ryrav"]
-[ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://bckgr.png" id="7_eow3j"]
+[ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://assets/game/bckgr.png" id="7_eow3j"]
+[ext_resource type="PackedScene" uid="uid://du38yl3g4ve6m" path="res://multiplier_0x.tscn" id="7_j5wjh"]
+[ext_resource type="PackedScene" uid="uid://cueqy8h8k7hne" path="res://multiplier_0_8x.tscn" id="8_hve3p"]
+[ext_resource type="PackedScene" uid="uid://dmu33vhlv3hj" path="res://multiplier_2x.tscn" id="9_mfdv2"]
+[ext_resource type="PackedScene" uid="uid://buenj8vlktd6y" path="res://multiplier_5x.tscn" id="10_iotsf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j5wjh"]
 texture = ExtResource("7_eow3j")
@@ -158,33 +161,26 @@ position = Vector2(920.5, 523.61)
 [node name="Marker2D" type="Marker2D" parent="Game/Container"]
 position = Vector2(511, -48)
 
-[node name="Multiplier" parent="Game/Container" instance=ExtResource("5_ryrav")]
-position = Vector2(157, 559)
-multiplier = 5.0
+[node name="Multiplier 0x" parent="Game/Container" instance=ExtResource("7_j5wjh")]
+position = Vector2(511, 563)
 
-[node name="Multiplier2" parent="Game/Container" instance=ExtResource("5_ryrav")]
-position = Vector2(278, 560)
-multiplier = 2.0
+[node name="Multiplier 0_8x" parent="Game/Container" instance=ExtResource("8_hve3p")]
+position = Vector2(628, 563)
 
-[node name="Multiplier3" parent="Game/Container" instance=ExtResource("5_ryrav")]
-position = Vector2(393, 559)
-multiplier = 0.8
+[node name="Multiplier 0_8x2" parent="Game/Container" instance=ExtResource("8_hve3p")]
+position = Vector2(394, 563)
 
-[node name="Multiplier4" parent="Game/Container" instance=ExtResource("5_ryrav")]
-position = Vector2(510, 559)
-multiplier = 0.0
+[node name="Multiplier 2x" parent="Game/Container" instance=ExtResource("9_mfdv2")]
+position = Vector2(277, 563)
 
-[node name="Multiplier5" parent="Game/Container" instance=ExtResource("5_ryrav")]
-position = Vector2(633, 561)
-multiplier = 0.8
+[node name="Multiplier 2x2" parent="Game/Container" instance=ExtResource("9_mfdv2")]
+position = Vector2(745, 563)
 
-[node name="Multiplier6" parent="Game/Container" instance=ExtResource("5_ryrav")]
-position = Vector2(749, 557)
-multiplier = 2.0
+[node name="Multiplier 5x" parent="Game/Container" instance=ExtResource("10_iotsf")]
+position = Vector2(160, 563)
 
-[node name="Multiplier7" parent="Game/Container" instance=ExtResource("5_ryrav")]
-position = Vector2(860, 555)
-multiplier = 5.0
+[node name="Multiplier 5x2" parent="Game/Container" instance=ExtResource("10_iotsf")]
+position = Vector2(862, 563)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_2_pressed"]

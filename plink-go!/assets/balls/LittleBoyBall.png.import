@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvsoyrn3cgubw"
-path="res://.godot/imported/LifeBuoyPerk.png-30d70b1b42b0f784c77cd9748694da34.ctex"
+uid="uid://co1igblp5lw7v"
+path="res://.godot/imported/LittleBoyBall.png-096b5cd2d292bca38894e843898339f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/LifeBuoyPerk.png"
-dest_files=["res://.godot/imported/LifeBuoyPerk.png-30d70b1b42b0f784c77cd9748694da34.ctex"]
+source_file="res://assets/balls/LittleBoyBall.png"
+dest_files=["res://.godot/imported/LittleBoyBall.png-096b5cd2d292bca38894e843898339f3.ctex"]
 
 [params]
 

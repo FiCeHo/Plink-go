@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://evhfa0dg14i8"
-path="res://.godot/imported/checkBoxCheckd.png-87cb3a1882c12d4102a6f155fef62fec.ctex"
+uid="uid://d373wed3wawcd"
+path="res://.godot/imported/ScoreHolder.png-d432456a3368bcb58b2adc64e287628e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://checkBoxCheckd.png"
-dest_files=["res://.godot/imported/checkBoxCheckd.png-87cb3a1882c12d4102a6f155fef62fec.ctex"]
+source_file="res://assets/holders/ScoreHolder.png"
+dest_files=["res://.godot/imported/ScoreHolder.png-d432456a3368bcb58b2adc64e287628e.ctex"]
 
 [params]
 

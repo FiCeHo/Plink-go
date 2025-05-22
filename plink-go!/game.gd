@@ -1,7 +1,7 @@
 extends Node
 
 @export var ball_array : Array[PackedScene]
-var perk_array = ["2xPoints", "1Up", "+1Mult"]
+var perk_array = []
 
 var player_scene
 var ball_index = 1
@@ -34,7 +34,7 @@ func load_perks():
 	if perk_array.has("+1Mult"):
 		Global.mult_sum += 1
 
-func _on_ready():
+func _ready():
 	Global.initial_position = $Game/Container/Marker2D.global_position
 	load_perks()
 	player_scene = ball_array[0]
