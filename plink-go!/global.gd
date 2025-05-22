@@ -6,6 +6,8 @@ var mult_sum = 0
 var limit_sum = 0
 var value_mult = 1
 
-var initial_ball_array = [load("res://player.gd"), load("res://player.gd"), load("res://player.gd"),
-load("res://player.gd"), load("res://player.gd")]
+var initial_ball_array = [load("res://player.tscn"), load("res://player.tscn"), load("res://player.tscn"),
+load("res://player.tscn"), load("res://player.tscn")]
 var initial_perk_array = []
+
+var goals = [100, 500, 1000]

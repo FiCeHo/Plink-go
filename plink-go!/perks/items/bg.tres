@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PerkData" load_steps=2 format=3 uid="uid://1564a8606bpe"]
+
+[ext_resource type="Script" uid="uid://7uoio7x1ilb0" path="res://perks/perk_data.gd" id="1_h2wtb"]
+
+[resource]
+script = ExtResource("1_h2wtb")
+id = ""
+name = ""
+description = ""
+price = 0
+rarity = "common"

@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddyy5w7ux36uw"]
+[gd_scene load_steps=14 format=3 uid="uid://ddyy5w7ux36uw"]
 
 [ext_resource type="PackedScene" uid="uid://ki6r087tju3x" path="res://pin.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://cmlphfg306x4b" path="res://game.gd" id="1_feb5d"]
-[ext_resource type="PackedScene" uid="uid://cpkx3tyqn2kuw" path="res://player.tscn" id="2_feb5d"]
-[ext_resource type="PackedScene" uid="uid://b8ub6d2h0c25i" path="res://nigga_player.tscn" id="3_ryrav"]
+[ext_resource type="PackedScene" uid="uid://cbf1bg60e4jj2" path="res://ui.tscn" id="3_7jktm"]
 [ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://assets/game/bckgr.png" id="7_eow3j"]
 [ext_resource type="PackedScene" uid="uid://du38yl3g4ve6m" path="res://multiplier_0x.tscn" id="7_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://cueqy8h8k7hne" path="res://multiplier_0_8x.tscn" id="8_hve3p"]
@@ -16,6 +15,33 @@ texture = ExtResource("7_eow3j")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
 size = Vector2(1280, 720)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5wjh"]
+bg_color = Color(0.953209, 0.263424, 0.282441, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 2.46)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vef74"]
+bg_color = Color(0.65098, 0.105882, 0.145098, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 2.46)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hve3p"]
+bg_color = Color(0.890196, 0.188235, 0.227451, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 2.46)
+
 [node name="Game" type="Control"]
 layout_direction = 2
 layout_mode = 3
@@ -25,7 +51,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_feb5d")
-ball_array = Array[PackedScene]([ExtResource("2_feb5d"), ExtResource("2_feb5d"), ExtResource("3_ryrav"), ExtResource("2_feb5d"), ExtResource("3_ryrav")])
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -36,7 +61,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_j5wjh")
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Control"]
 position = Vector2(640, 360)
 shape = SubResource("RectangleShape2D_e2o6t")
 
@@ -179,5 +212,15 @@ position = Vector2(160, 563)
 [node name="Multiplier 5x2" parent="Game/Container" instance=ExtResource("10_iotsf")]
 position = Vector2(862, 563)
 
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1173.0
+offset_top = 29.0
+offset_right = 1249.0
+offset_bottom = 103.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_j5wjh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vef74")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hve3p")
+
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_2_pressed"]
+[connection signal="released" from="Control/TouchScreenButton" to="." method="_on_touch_screen_button_2_pressed"]
