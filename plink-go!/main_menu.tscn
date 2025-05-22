@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://bb2k50hg1abbf" path="res://audio_control.gd" id="5_glbon"]
 [ext_resource type="Texture2D" uid="uid://evhfa0dg14i8" path="res://assets/options/checkBoxCheckd.png" id="6_qe12f"]
 [ext_resource type="Texture2D" uid="uid://c7mwkvxw1t5mm" path="res://assets/options/checkBox.png" id="7_8qtwp"]
-[ext_resource type="Script" path="res://check_box_mute.gd" id="9_dy7ct"]
+[ext_resource type="Script" uid="uid://d2qimi1tdg3fj" path="res://check_box_mute.gd" id="9_dy7ct"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rhts7"]
 texture = ExtResource("1_06t4h")
