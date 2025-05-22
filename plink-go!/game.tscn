@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cpkx3tyqn2kuw" path="res://player.tscn" id="2_feb5d"]
 [ext_resource type="PackedScene" uid="uid://b8ub6d2h0c25i" path="res://nigga_player.tscn" id="3_ryrav"]
 [ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://assets/game/bckgr.png" id="7_eow3j"]
-[ext_resource type="PackedScene" uid="uid://du38yl3g4ve6m" path="res://multiplier_0x.tscn" id="7_j5wjh"]
-[ext_resource type="PackedScene" uid="uid://cueqy8h8k7hne" path="res://multiplier_0_8x.tscn" id="8_hve3p"]
-[ext_resource type="PackedScene" uid="uid://dmu33vhlv3hj" path="res://multiplier_2x.tscn" id="9_mfdv2"]
-[ext_resource type="PackedScene" uid="uid://buenj8vlktd6y" path="res://multiplier_5x.tscn" id="10_iotsf"]
+[ext_resource type="PackedScene" path="res://multiplier_0x.tscn" id="7_j5wjh"]
+[ext_resource type="PackedScene" path="res://multiplier_0_8x.tscn" id="8_hve3p"]
+[ext_resource type="PackedScene" path="res://multiplier_2x.tscn" id="9_mfdv2"]
+[ext_resource type="PackedScene" path="res://multiplier_5x.tscn" id="10_iotsf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j5wjh"]
 texture = ExtResource("7_eow3j")

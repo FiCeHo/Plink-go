@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cb6osd8rkjb4x"]
 
-[ext_resource type="Script" uid="uid://cru5k6t16b2oq" path="res://perks/perk_card.gd" id="1_5j4uk"]
+[ext_resource type="Script" uid="uid://cru5k6t16b2oq" path="res://perks/perk.gd" id="1_aqonv"]
 
 [node name="PerkCard" type="Control"]
 z_index = 10
@@ -19,7 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
-script = ExtResource("1_5j4uk")
+script = ExtResource("1_aqonv")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(64, 64)

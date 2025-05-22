@@ -15,7 +15,7 @@ static func spawn(item_data: Resource, item_type: String) -> Node:
 			push_error("Unknown item type: %s" % item_type)
 			return null
 	
-	var scene_path = base_path + item_type + "_card.tscn"
+	var scene_path = base_path + item_type + "_scene.tscn"
 
 	if ResourceLoader.exists(scene_path):
 		var scene = load(scene_path)
