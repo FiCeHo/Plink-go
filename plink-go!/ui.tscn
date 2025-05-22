@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbf1bg60e4jj2"]
 
 [ext_resource type="Script" uid="uid://bg1c6ff0b4v22" path="res://ui.gd" id="1_37p78"]
-[ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://PearSoda.ttf" id="2_27fn8"]
-[ext_resource type="Texture2D" uid="uid://d373wed3wawcd" path="res://ScoreHolder.png" id="2_nltto"]
+[ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://assets/game/PearSoda.ttf" id="2_27fn8"]
+[ext_resource type="Texture2D" uid="uid://d373wed3wawcd" path="res://assets/holders/ScoreHolder.png" id="2_nltto"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_37p78")
@@ -61,7 +61,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Score to beat" type="Label" parent="."]
 offset_left = 40.0
-offset_top = 87.0
+offset_top = 83.0
+offset_right = 153.0
+offset_bottom = 136.0
 theme_override_fonts/font = ExtResource("2_27fn8")
 theme_override_font_sizes/font_size = 55
 text = "Goal: "

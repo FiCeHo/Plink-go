@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b530di1sp684b"
-path="res://.godot/imported/ball.png-9a4ca347acb7532f6ae347744a6b04f7.ctex"
+uid="uid://bmi23ewpynatq"
+path="res://.godot/imported/BounceEmPerk.png-36d17005d7d1e77a245b4c91aef5847c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ball.png"
-dest_files=["res://.godot/imported/ball.png-9a4ca347acb7532f6ae347744a6b04f7.ctex"]
+source_file="res://assets/perks/BounceEmPerk.png"
+dest_files=["res://.godot/imported/BounceEmPerk.png-36d17005d7d1e77a245b4c91aef5847c.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnxxih6ya545r"
-path="res://.godot/imported/ballHolder.png-ec7fe67db34d7015e4b40018dcc6319e.ctex"
+uid="uid://c2ep4ulm4ss2v"
+path="res://.godot/imported/bckgr.png-49b7ae12a11cd52f0d315c8325023bf1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ballHolder.png"
-dest_files=["res://.godot/imported/ballHolder.png-ec7fe67db34d7015e4b40018dcc6319e.ctex"]
+source_file="res://assets/game/bckgr.png"
+dest_files=["res://.godot/imported/bckgr.png-49b7ae12a11cd52f0d315c8325023bf1.ctex"]
 
 [params]
 

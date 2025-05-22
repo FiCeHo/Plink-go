@@ -41,8 +41,8 @@ func respawn():
 	rotation = 0
 
 func _on_rigid_body_2d_body_entered(body: Node) -> void:
-	if body.get_parent().name.begins_with("Pin"):
-		var a = 0
+	#if body.get_parent().name.begins_with("Pin"):
+		#var a = 0
 	if body.get_parent().name.contains("Multiplier"):
 		score = value * body.get_parent().multiplier
 		hud.call("score_up", score)

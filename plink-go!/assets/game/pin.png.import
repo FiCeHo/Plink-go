@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd2r88cbwgomb"
-path="res://.godot/imported/x0.8.png-270e152563c7a929beccbabf10ec2f95.ctex"
+uid="uid://dfokb25mgn8b"
+path="res://.godot/imported/pin.png-4bfe46e20ed2a4c38dd7e05610a61b28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://x0.8.png"
-dest_files=["res://.godot/imported/x0.8.png-270e152563c7a929beccbabf10ec2f95.ctex"]
+source_file="res://assets/game/pin.png"
+dest_files=["res://.godot/imported/pin.png-4bfe46e20ed2a4c38dd7e05610a61b28.ctex"]
 
 [params]
 

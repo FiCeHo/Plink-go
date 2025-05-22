@@ -1,14 +1,14 @@
 [gd_scene load_steps=22 format=3 uid="uid://dxgq4u6g37r8l"]
 
-[ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://bckgr.png" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://assets/game/bckgr.png" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://j3xufmlkj4a0" path="res://main_menu.gd" id="1_jix8l"]
-[ext_resource type="AudioStream" uid="uid://ixsyfp8cp5or" path="res://Plink-go! Main Theme.mp3" id="2_7vrkn"]
-[ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://PearSoda.ttf" id="3_fu7sn"]
-[ext_resource type="Texture2D" uid="uid://5j4rgoh4f7jr" path="res://grabber.png" id="5_8qtwp"]
+[ext_resource type="AudioStream" uid="uid://ixsyfp8cp5or" path="res://assets/audio/Plink-go! Main Theme.mp3" id="2_7vrkn"]
+[ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://assets/game/PearSoda.ttf" id="3_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://5j4rgoh4f7jr" path="res://assets/options/grabber.png" id="5_8qtwp"]
 [ext_resource type="Script" uid="uid://bb2k50hg1abbf" path="res://audio_control.gd" id="5_glbon"]
-[ext_resource type="Texture2D" uid="uid://evhfa0dg14i8" path="res://checkBoxCheckd.png" id="6_qe12f"]
-[ext_resource type="Texture2D" uid="uid://c7mwkvxw1t5mm" path="res://checkBox.png" id="7_8qtwp"]
-[ext_resource type="Script" uid="uid://d2qimi1tdg3fj" path="res://check_box_mute.gd" id="9_dy7ct"]
+[ext_resource type="Texture2D" uid="uid://evhfa0dg14i8" path="res://assets/options/checkBoxCheckd.png" id="6_qe12f"]
+[ext_resource type="Texture2D" uid="uid://c7mwkvxw1t5mm" path="res://assets/options/checkBox.png" id="7_8qtwp"]
+[ext_resource type="Script" path="res://check_box_mute.gd" id="9_dy7ct"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rhts7"]
 texture = ExtResource("1_06t4h")
@@ -48,14 +48,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0698132]
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_dy7ct"]
@@ -66,13 +66,25 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.25, 2.5, 3.75, 5),
+"times": PackedFloat32Array(1.25, 3.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0698132, -0.0698132]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.433333, 0.633333, 0.833333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.0698132, 0.0, -0.0698132, 0.0]
+"values": [Vector2(1, 1), Vector2(20, 20), Vector2(1, 1), Vector2(30, 30), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0k4wn"]
@@ -197,7 +209,6 @@ offset_right = 397.0
 offset_bottom = -54.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 0.0698132
 pivot_offset = Vector2(397, 142.5)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 20
