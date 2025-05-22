@@ -9,6 +9,7 @@ const ShowItem = preload("res://utils/show_item.gd")
 @onready var desc_label = get_node("ShopPanel/PerkPanel/PerkDetail/DescriptionLabel")
 
 func _ready():
+	details_panel.hide()
 	var all_perks = ItemUtils.get_all_perks()
 	var perk_data_list = ItemUtils.pick_weighted_items(
 		all_perks,
@@ -21,20 +22,30 @@ func _ready():
 		var item = ShowItem.spawn(perk_data, "perk")
 		item.selected.connect(_on_perk_selected)
 		perk_list_display.add_child(item)
+		print("Spawned card is a:", item.get_class())
 	print_tree_pretty()
 		
 func _on_perk_selected(perk: PerkData, card_node: Control):
-	# Update the details content
+	print("Perk selected:", perk.name)
+	# Update the text
 	name_label.text = perk.name
 	desc_label.text = perk.description
 
-	# Position the popup near the card
-	var card_global_pos = card_node.get_global_position()
-	var panel_size = details_panel.size
-	var offset = Vector2(10, 0)  # 10 pixels to the right
+	# Position the details panel next to the selected card
+	var card_pos = card_node.get_global_position()
+	var card_size = card_node.size
+	var offset = Vector2(16, 0)  # Pixels to the right
 
-	details_panel.global_position = card_global_pos + Vector2(card_node.size.x, 0) + offset
+	details_panel.global_position = card_pos + Vector2(card_size.x, 0) + offset
 	details_panel.show()
-	
 
-	
+func _unhandled_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		# Check what was under the mouse
+		var mouse_pos = get_viewport().get_mouse_position()
+		var clicked = get_viewport().gui_pick(mouse_pos)
+
+		# If we didn't click a PerkCard or the DetailsPanel itself
+		if !clicked or not clicked.is_in_group("perk_card") and clicked != details_panel:
+			print("Clicked outside — hiding detail panel.")
+			details_panel.hide()

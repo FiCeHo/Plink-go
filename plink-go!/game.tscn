@@ -37,18 +37,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_j5wjh")
 position = Vector2(640, 360)
 shape = SubResource("RectangleShape2D_e2o6t")
 
-[node name="UI" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = null
-
 [node name="Game" type="CanvasLayer" parent="."]
 
 [node name="Container" type="AspectRatioContainer" parent="Game"]
