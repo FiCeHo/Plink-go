@@ -66,7 +66,15 @@ func _on_item_selected(item_data: Resource, item_node: Control):
 	buy_button.show()
 
 func _on_buy_button_pressed():
+	if not current_selected_item:
+		return
+
+	# Disable card
+	current_selected_item.get_node("TextureRect").visible = false
+	current_selected_item.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	details_panel.hide()
 	buy_button.hide()
 	current_selected_item = null
+	current_selected_type = ""
+	current_selected_data = null
