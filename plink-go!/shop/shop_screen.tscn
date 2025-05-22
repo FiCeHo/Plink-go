@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://n6g0wutn7lld"]
+[gd_scene load_steps=4 format=3 uid="uid://n6g0wutn7lld"]
 
 [ext_resource type="Script" uid="uid://bdjk52saa7fox" path="res://shop/shop_screen.gd" id="1_6fma4"]
+[ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://assets/game/PearSoda.ttf" id="2_td7g5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ji30"]
 content_margin_left = 40.0
@@ -110,6 +111,9 @@ offset_left = 40.0
 offset_top = 40.0
 offset_right = 160.0
 offset_bottom = 100.0
+theme_override_fonts/font = ExtResource("2_td7g5")
+theme_override_font_sizes/font_size = 24
+text = "Continue"
 
 [node name="RerollButton" type="Button" parent="ShopPanel"]
 layout_mode = 0
@@ -117,6 +121,9 @@ offset_left = 40.0
 offset_top = 120.0
 offset_right = 160.0
 offset_bottom = 180.0
+theme_override_fonts/font = ExtResource("2_td7g5")
+theme_override_font_sizes/font_size = 24
+text = "Reroll"
 
 [node name="ItemDetail" type="Panel" parent="ShopPanel"]
 layout_mode = 0
@@ -155,3 +162,21 @@ vertical_alignment = 1
 layout_mode = 0
 offset_right = 50.0
 offset_bottom = 22.0
+theme_override_fonts/font = ExtResource("2_td7g5")
+theme_override_font_sizes/font_size = 20
+
+[node name="PlayerPerks" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 160.0
+offset_right = 241.0
+offset_bottom = 566.0
+
+[node name="SellButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -1.0
+offset_right = 12.0
+offset_bottom = 7.0
+theme_override_fonts/font = ExtResource("2_td7g5")
+theme_override_font_sizes/font_size = 20

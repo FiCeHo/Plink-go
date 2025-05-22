@@ -1,6 +1,6 @@
 extends Node
 
-var ball_array : Array[PackedScene]
+var ball_array = []
 var perk_array = []
 
 func _init():
