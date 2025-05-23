@@ -51,13 +51,13 @@ region_enabled = true
 region_rect = Rect2(176, 0, 24, 100)
 
 [node name="Score" type="Label" parent="."]
+anchors_preset = -1
 offset_left = 40.0
 offset_top = 30.0
 theme_override_fonts/font = ExtResource("2_27fn8")
 theme_override_font_sizes/font_size = 60
 text = "Score: 0"
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Goal" type="Label" parent="."]
 offset_left = 40.0

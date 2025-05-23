@@ -10,19 +10,21 @@ var PlayerData = preload("res://player_variables.gd")
 @onready var desc_label = get_node("ShopPanel/ItemDetail/DescriptionLabel")
 @onready var buy_button = get_node("ShopPanel/BuyButton")
 @onready var reroll_button = get_node("ShopPanel/RerollButton")
+@onready var continue_button = get_node("ShopPanel/ContinueButton")
 @onready var money_label = get_node("MoneyLabel")
 
 @onready var perk_list = get_node("PlayerPerks")
 @onready var sell_button = get_node("SellButton")
 
 var reroll_cost = 5
-var perk_amount = 4
+var perk_amount = 3
 var current_selected_item: Control = null
 var current_selected_type: String = ""
 var current_selected_data: Resource = null
 var selected_from_shop := false
 
 func _ready():
+	PlayerVariables.current_score = 0
 	_load_player_perks()
 	var all_perks = ItemUtils.get_all_perks()
 	var perk_data_list
@@ -49,10 +51,12 @@ func _ready():
 	sell_button.pressed.connect(_on_sell_button_pressed)
 	reroll_button.text = "Reroll (%d $)" % reroll_cost
 	reroll_button.pressed.connect(_on_reroll_button_pressed)
+	continue_button.pressed.connect(_on_continue_button_pressed)
 	_update_money_display()
 	buy_button.hide()  # Hide by default
 	details_panel.hide()
 	sell_button.hide()
+	$Panel2/AnimationPlayer.play("new_animation")
 	
 	print_tree_pretty()
 		
@@ -164,6 +168,9 @@ func _on_reroll_button_pressed():
 		_do_reroll()
 	else:
 		print("Not enough money to reroll!")
+
+func _on_continue_button_pressed():
+	get_tree().change_scene_to_file("res://game/game.tscn")
 	
 func _do_reroll():
 	for child in perk_list_display.get_children():
