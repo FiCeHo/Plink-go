@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BallData" load_steps=2 format=3 uid="uid://dlfvia7iq52nn"]
+
+[ext_resource type="Script" uid="uid://cxiw4djmlvklg" path="res://balls/ball_data.gd" id="1_8ns2a"]
+
+[resource]
+script = ExtResource("1_8ns2a")
+limit = 0
+value = 100
+bounce = 0.64
+gravity = 10

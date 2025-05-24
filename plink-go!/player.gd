@@ -7,7 +7,7 @@ var initial_position : Vector2
 var physics_material : PhysicsMaterial
 var fallThreshold = 900
 var limit = 0
-var value = 10
+var value = 10000000
 var bounce = 0.64
 var gravity = 5
 var score
@@ -44,6 +44,7 @@ func _on_rigid_body_2d_body_entered(body: Node) -> void:
 	#if body.get_parent().name.begins_with("Pin"):
 		#var a = 0
 	if body.get_parent().name.contains("Multiplier"):
+		body.get_parent().collision()
 		score = value * body.get_parent().multiplier
 		hud.call("score_up", score)
 		kill()

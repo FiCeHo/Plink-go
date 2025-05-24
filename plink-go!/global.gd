@@ -14,3 +14,5 @@ const initial_ball_array := [
 	preload("res://balls/items/ball.tres"),
 ]
 var initial_perk_array = []
+
+var goals = [100, 500, 1000]

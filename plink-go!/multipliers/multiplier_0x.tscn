@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://du38yl3g4ve6m"]
 
-[ext_resource type="PackedScene" uid="uid://dch2epmlvus3h" path="res://multiplier.tscn" id="1_1jyn6"]
-[ext_resource type="Script" uid="uid://cx3vncapmp1aa" path="res://multiplier_0x.gd" id="2_l675v"]
-[ext_resource type="Texture2D" uid="uid://niq0yyx0yke0" path="res://x0.png" id="3_4pgex"]
+[ext_resource type="PackedScene" uid="uid://dch2epmlvus3h" path="res://multipliers/multiplier.tscn" id="1_1jyn6"]
+[ext_resource type="Script" uid="uid://cx3vncapmp1aa" path="res://multipliers/multiplier_0x.gd" id="2_l675v"]
+[ext_resource type="Texture2D" uid="uid://niq0yyx0yke0" path="res://assets/multipliers/x0.png" id="3_4pgex"]
 
 [node name="Multiplier 0x" instance=ExtResource("1_1jyn6")]
 script = ExtResource("2_l675v")
@@ -14,4 +14,6 @@ debug_color = Color(1, 1, 1, 1)
 texture = ExtResource("3_4pgex")
 
 [node name="Label" parent="." index="1"]
+offset_left = -38.0
+offset_right = 38.0
 text = "x0"

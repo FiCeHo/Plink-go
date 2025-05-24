@@ -1,7 +1,53 @@
-[gd_scene load_steps=4 format=3 uid="uid://n6g0wutn7lld"]
+[gd_scene load_steps=12 format=3 uid="uid://n6g0wutn7lld"]
 
 [ext_resource type="Script" uid="uid://bdjk52saa7fox" path="res://shop/shop_screen.gd" id="1_6fma4"]
 [ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://assets/game/PearSoda.ttf" id="2_td7g5"]
+[ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://assets/game/bckgr.png" id="3_sko7u"]
+[ext_resource type="Texture2D" uid="uid://re856boqbox1" path="res://assets/game/coinTransition.png" id="4_drlw6"]
+[ext_resource type="AudioStream" uid="uid://b4vudmibdh8a2" path="res://assets/audio/Plink-go! Shop Theme.mp3" id="5_drlw6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xwshg"]
+texture = ExtResource("3_sko7u")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pbi7f"]
+texture = ExtResource("4_drlw6")
+
+[sub_resource type="Animation" id="Animation_m3mef"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qe1ud"]
+resource_name = "new_animation"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 900)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kceon"]
+_data = {
+&"RESET": SubResource("Animation_m3mef"),
+&"new_animation": SubResource("Animation_qe1ud")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ji30"]
 content_margin_left = 40.0
@@ -17,6 +63,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6fma4")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -15
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xwshg")
+
+[node name="Panel2" type="Panel" parent="."]
+z_index = 4096
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(640, 360)
+theme_override_styles/panel = SubResource("StyleBoxTexture_pbi7f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel2"]
+libraries = {
+&"": SubResource("AnimationLibrary_kceon")
+}
 
 [node name="ShopPanel" type="Panel" parent="."]
 custom_minimum_size = Vector2(720, 405)
@@ -34,7 +107,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ji30")
 
-[node name="PerkPanel" type="Panel" parent="ShopPanel"]
+[node name="BallPanel" type="Panel" parent="ShopPanel"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -45,7 +118,7 @@ offset_right = -40.0
 offset_bottom = 180.0
 grow_horizontal = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="ShopPanel/PerkPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="ShopPanel/BallPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,13 +126,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PerkShop" type="HBoxContainer" parent="ShopPanel/PerkPanel/MarginContainer"]
+[node name="BallShop" type="HBoxContainer" parent="ShopPanel/BallPanel/MarginContainer"]
 z_index = 1
 custom_minimum_size = Vector2(480, 140)
 layout_mode = 2
 alignment = 1
 
-[node name="BallPanel" type="Panel" parent="ShopPanel"]
+[node name="PerkPanel" type="Panel" parent="ShopPanel"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -73,14 +146,15 @@ offset_bottom = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="ShopPanel/BallPanel"]
-layout_mode = 2
-offset_left = -176.0
-offset_top = -17.0
-offset_right = -136.0
-offset_bottom = 23.0
+[node name="MarginContainer" type="MarginContainer" parent="ShopPanel/PerkPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="BallShop" type="HBoxContainer" parent="ShopPanel/BallPanel/MarginContainer"]
+[node name="PerkShop" type="HBoxContainer" parent="ShopPanel/PerkPanel/MarginContainer"]
 layout_mode = 2
 
 [node name="ModifierPanel" type="Panel" parent="ShopPanel"]
@@ -188,3 +262,7 @@ offset_left = 81.0
 offset_top = 60.0
 offset_right = 121.0
 offset_bottom = 83.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_drlw6")
+autoplay = true
