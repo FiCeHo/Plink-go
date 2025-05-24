@@ -1,9 +1,10 @@
 extends Node
 
-var ball_array = PlayerVariables.ball_array
+var ball_data_array = PlayerVariables.ball_array
 var perk_array = PlayerVariables.perk_array
+var ball_holders
 
-var player_scene
+var player_data
 var ball_index = 1
 var previous_player
 var won = false
@@ -18,8 +19,10 @@ func _unhandled_input(event: InputEvent):
 				while previous_player.get_node("RigidBody2D").angular_velocity == 0:
 					previous_player.get_node("RigidBody2D").angular_velocity = randf_range(-5, 5)
 			
-			if ball_index < ball_array.size():
-				var player = player_scene.instantiate()
+			ball_holders[ball_index - 1].get_node("Sprite2D").modulate = Color8(255, 255, 255, 127)
+			
+			if ball_index < ball_data_array.size():
+				var player = ShowItem.spawn(player_data, "ball")
 
 				player.global_position = $Game/Container/Marker2D.global_position
 				player.initial_position = $Game/Container/Marker2D.global_position
@@ -27,8 +30,8 @@ func _unhandled_input(event: InputEvent):
 
 				add_child(player)
 				ball_index += 1
-				if ball_index < ball_array.size():
-					player_scene = ball_array[ball_index]
+				if ball_index < ball_data_array.size():
+					player_data = ball_data_array[ball_index]
 				else:
 					player.tree_exited.connect(_end_round)
 				previous_player = player
@@ -46,21 +49,37 @@ func _ready():
 	Global.initial_position = $Game/Container/Marker2D.global_position
 	load_perks()
 	if PlayerVariables.current_round >= 3:
-		var next_goal = (Global.goals[PlayerVariables.current_round - 2] * 2) + (Global.goals[PlayerVariables.current_round - 3] * 2)
+		var next_goal = (Global.goals[PlayerVariables.current_round - 1] * 2) + (Global.goals[PlayerVariables.current_round - 2] * 2)
 		Global.goals.append(next_goal)
 	$UI.load_goal(Global.goals[PlayerVariables.current_round - 1])
-	player_scene = ball_array[0]
-	previous_player = player_scene.instantiate()
+	player_data = ball_data_array[0]
+	previous_player = ShowItem.spawn(player_data, "ball")
 	previous_player.global_position = Global.initial_position
 	previous_player.initial_position = Global.initial_position
 	previous_player.hud = get_node("UI")
 	add_child(previous_player)
+	update_display()
 
 func _end_round():
 	if PlayerVariables.current_score >= Global.goals[PlayerVariables.current_round - 1]:
+		var more_money = 3 + (5 - (ball_index - 1))
 		PlayerVariables.current_round += 1
+		$WinScreen/Win/Points.text += str(PlayerVariables.current_score) + " / " + str(Global.goals[PlayerVariables.current_round - 2])
+		$WinScreen/Win/NextGoal.text += str(Global.goals[PlayerVariables.current_round - 1])
+		$WinScreen/Win/Money.text += str(PlayerVariables.money) + " + " + str(more_money)
+		PlayerVariables.money += more_money
 		$Animation.visible = true
 		$Animation/Panel2/AnimationPlayerWin.play("new_animation")
+
+func update_display():
+	ball_holders = $UI.get_children().filter(is_ball_holder)
+	var i = 0
+	for ball_holder in ball_holders:
+		ball_holder.get_node("Sprite2D").texture = ball_data_array[i].texture
+		i += 1
+	
+func is_ball_holder(node):
+	return node.name.contains("Ball_cont")
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	$WinScreen.layer = 50

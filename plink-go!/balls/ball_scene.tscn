@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d58bp0d3kmyf"]
+[gd_scene load_steps=4 format=3 uid="uid://d58bp0d3kmyf"]
 
 [ext_resource type="Script" uid="uid://ddf8h8ih8cb3r" path="res://balls/ball.gd" id="1_ubh4p"]
-[ext_resource type="Texture2D" uid="uid://b530di1sp684b" path="res://assets/balls/ball.png" id="2_0orh3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e7yvt"]
 bounce = 0.64
@@ -22,8 +21,9 @@ max_contacts_reported = 1
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 position = Vector2(-4.76837e-07, 0)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_0orh3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_jwbot")
 one_way_collision_margin = 0.0
+
+[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]

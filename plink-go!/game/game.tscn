@@ -26,7 +26,6 @@ texture = ExtResource("3_3vho3")
 
 [sub_resource type="Animation" id="Animation_vsp63"]
 resource_name = "new_animation"
-length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -34,7 +33,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 900), Vector2(0, 0)]
@@ -88,7 +87,7 @@ resource_name = "new_animation"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Options:self_modulate")
+tracks/0/path = NodePath("Win:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -186,8 +185,7 @@ libraries = {
 [node name="WinScreen" type="CanvasLayer" parent="."]
 layer = -4
 
-[node name="Options" type="Panel" parent="WinScreen"]
-self_modulate = Color(1, 1, 1, 0)
+[node name="Win" type="Panel" parent="WinScreen"]
 z_index = 36
 anchors_preset = 8
 anchor_left = 0.5
@@ -195,14 +193,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -444.5
-offset_top = -287.5
+offset_top = -225.0
 offset_right = 444.5
-offset_bottom = 287.5
+offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5e03w")
 
-[node name="Label" type="Label" parent="WinScreen/Options"]
+[node name="Label" type="Label" parent="WinScreen/Win"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -218,15 +216,18 @@ text = "Round Results"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Continue" type="Button" parent="WinScreen/Options"]
+[node name="Continue" type="Button" parent="WinScreen/Win"]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 70.0
-offset_top = -140.0
-offset_right = 343.0
-offset_bottom = -39.0
+offset_left = -136.5
+offset_top = -121.0
+offset_right = 136.5
+offset_bottom = -20.0
+grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -241,31 +242,56 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_q52ks")
 theme_override_styles/normal = SubResource("StyleBoxFlat_jucfl")
 text = "Continue"
 
-[node name="MainMenu" type="Button" parent="WinScreen/Options"]
+[node name="Points" type="Label" parent="WinScreen/Win"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -525.0
-offset_top = -140.0
-offset_right = -70.0
-offset_bottom = -39.0
-grow_horizontal = 0
-grow_vertical = 0
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.5
+offset_top = -80.0
+offset_right = 136.5
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("12_4cobl")
-theme_override_font_sizes/font_size = 74
-theme_override_styles/focus = SubResource("StyleBoxEmpty_leid8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_8bboj")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_q52ks")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jucfl")
-text = "Return to menu"
+theme_override_font_sizes/font_size = 50
+text = "Points earned: "
+
+[node name="NextGoal" type="Label" parent="WinScreen/Win"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -30.0
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_4cobl")
+theme_override_font_sizes/font_size = 50
+text = "Next goal: "
+
+[node name="Money" type="Label" parent="WinScreen/Win"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = 100.0
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_4cobl")
+theme_override_font_sizes/font_size = 50
+text = "Money: "
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="WinScreen"]
 libraries = {
@@ -548,14 +574,6 @@ text = " Mute"
 script = ExtResource("17_mhvfb")
 audio_bus_name = "Master"
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="UI" parent="." instance=ExtResource("3_j5wjh")]
 layer = -1
 
@@ -724,8 +742,7 @@ bus = &"Music"
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="animation_finished" from="Animation/Panel2/AnimationPlayerWin" to="." method="_on_animation_player_animation_finished"]
-[connection signal="pressed" from="WinScreen/Options/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="WinScreen/Options/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="WinScreen/Win/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Options/Options/Resume" to="." method="_on_back_opts_pressed"]
 [connection signal="pressed" from="Options/Options/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="value_changed" from="Options/Options/AudioControl" to="Options/Options/AudioControl" method="_on_value_changed"]

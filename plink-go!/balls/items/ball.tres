@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="BallData" load_steps=2 format=3 uid="uid://cn6nmb4aya5rq"]
+[gd_resource type="Resource" script_class="BallData" load_steps=3 format=3 uid="uid://cn6nmb4aya5rq"]
 
 [ext_resource type="Script" uid="uid://cxiw4djmlvklg" path="res://balls/ball_data.gd" id="1_46umi"]
+[ext_resource type="Texture2D" uid="uid://b530di1sp684b" path="res://assets/balls/ball.png" id="2_liw2d"]
 
 [resource]
 script = ExtResource("1_46umi")
 limit = 0
-value = 10
+value = 1000000
 bounce = 0.64
 gravity = 5
+texture = ExtResource("2_liw2d")
+price = 0
+rarity = "common"

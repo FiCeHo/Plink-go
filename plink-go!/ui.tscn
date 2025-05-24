@@ -1,34 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbf1bg60e4jj2"]
+[gd_scene load_steps=5 format=3 uid="uid://cbf1bg60e4jj2"]
 
 [ext_resource type="Script" uid="uid://bg1c6ff0b4v22" path="res://ui.gd" id="1_37p78"]
 [ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://assets/game/PearSoda.ttf" id="2_27fn8"]
 [ext_resource type="Texture2D" uid="uid://d373wed3wawcd" path="res://assets/holders/ScoreHolder.png" id="2_nltto"]
+[ext_resource type="Texture2D" uid="uid://cnxxih6ya545r" path="res://assets/holders/ballHolder.png" id="4_nltto"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_37p78")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Score_cont" type="Sprite2D" parent="."]
 position = Vector2(35, 58.5)
 scale = Vector2(0.583333, 0.57)
 texture = ExtResource("2_nltto")
 region_enabled = true
 region_rect = Rect2(0, 0, 24, 100)
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Score_cont2" type="Sprite2D" parent="."]
 position = Vector2(203.482, 58.5)
 scale = Vector2(2.1393, 0.57)
 texture = ExtResource("2_nltto")
 region_enabled = true
 region_rect = Rect2(24, 0, 151, 100)
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
+[node name="Score_cont3" type="Sprite2D" parent="."]
 position = Vector2(371.5, 58.5)
 scale = Vector2(0.541666, 0.57)
 texture = ExtResource("2_nltto")
 region_enabled = true
 region_rect = Rect2(176, 0, 24, 100)
 
-[node name="Sprite2D4" type="Sprite2D" parent="."]
+[node name="Score_cont4" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(35, 108.5)
 scale = Vector2(0.583, 0.57)
@@ -36,14 +37,14 @@ texture = ExtResource("2_nltto")
 region_enabled = true
 region_rect = Rect2(0, 0, 24, 100)
 
-[node name="Sprite2D5" type="Sprite2D" parent="."]
+[node name="Score_cont5" type="Sprite2D" parent="."]
 position = Vector2(203.482, 109.375)
 scale = Vector2(2.139, 0.5525)
 texture = ExtResource("2_nltto")
 region_enabled = true
 region_rect = Rect2(24, 0, 151, 100)
 
-[node name="Sprite2D6" type="Sprite2D" parent="."]
+[node name="Score_cont6" type="Sprite2D" parent="."]
 position = Vector2(371.5, 109.5)
 scale = Vector2(0.542, 0.55)
 texture = ExtResource("2_nltto")
@@ -67,3 +68,43 @@ theme_override_fonts/font = ExtResource("2_27fn8")
 theme_override_font_sizes/font_size = 55
 text = "Goal: "
 metadata/_edit_use_anchors_ = true
+
+[node name="Ball_cont" type="Sprite2D" parent="."]
+position = Vector2(100, 210)
+scale = Vector2(2, 2)
+texture = ExtResource("4_nltto")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball_cont"]
+scale = Vector2(0.45, 0.45)
+
+[node name="Ball_cont2" type="Sprite2D" parent="."]
+position = Vector2(100, 310)
+scale = Vector2(2, 2)
+texture = ExtResource("4_nltto")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball_cont2"]
+scale = Vector2(0.45, 0.45)
+
+[node name="Ball_cont3" type="Sprite2D" parent="."]
+position = Vector2(100, 410)
+scale = Vector2(2, 2)
+texture = ExtResource("4_nltto")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball_cont3"]
+scale = Vector2(0.45, 0.45)
+
+[node name="Ball_cont4" type="Sprite2D" parent="."]
+position = Vector2(100, 510)
+scale = Vector2(2, 2)
+texture = ExtResource("4_nltto")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball_cont4"]
+scale = Vector2(0.45, 0.45)
+
+[node name="Ball_cont5" type="Sprite2D" parent="."]
+position = Vector2(100, 610)
+scale = Vector2(2, 2)
+texture = ExtResource("4_nltto")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball_cont5"]
+scale = Vector2(0.45, 0.45)

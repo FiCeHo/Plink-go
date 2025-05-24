@@ -6,13 +6,19 @@ var initial_position : Vector2
 var physics_material : PhysicsMaterial
 var fallThreshold = 900
 var score
+var limit
+var gravity
 
-func _on_ready():
+func _ready():
 	physics_material = PhysicsMaterial.new()
 	physics_material.bounce = ball_data.bounce
 	get_node("RigidBody2D").physics_material_override = physics_material
 	ball_data.limit += Global.limit_sum
 	ball_data.value = ball_data.value * Global.value_mult
+	$RigidBody2D/Sprite2D.texture = ball_data.texture
+	score = ball_data.value
+	limit = ball_data.limit
+	gravity = ball_data.gravity
 
 func _process(delta):
 	if get_node("RigidBody2D").global_position.y > fallThreshold:
@@ -39,6 +45,7 @@ func _on_rigid_body_2d_body_entered(body: Node) -> void:
 	#if body.get_parent().name.begins_with("Pin"):
 		#var a = 0
 	if body.get_parent().name.contains("Multiplier"):
+		body.get_parent().collision()
 		score = ball_data.value * body.get_parent().multiplier
 		hud.call("score_up", score)
 		kill()

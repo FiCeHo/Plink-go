@@ -3,11 +3,11 @@ class_name ItemUtils
 
 ## 🔢 Default rarity weights (can be overridden)
 static var default_rarity_weights := {
-	"common": 40,
-	"uncommon": 30,
-	"rare": 20,
-	"epic": 7,
-	"legendary": 3
+	"common": 650,
+	"uncommon": 200,
+	"rare": 126,
+	"epic": 20,
+	"legendary": 4
 }
 
 # 🔄 Load all .tres resources from a given folder

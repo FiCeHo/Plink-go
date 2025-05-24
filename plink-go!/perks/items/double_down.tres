@@ -11,4 +11,4 @@ name = "Double Down"
 description = "must do something..."
 icon = ExtResource("1_l22s2")
 price = 13
-rarity = "legendary"
+rarity = "epic"
