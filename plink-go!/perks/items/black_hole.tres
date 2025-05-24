@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PerkData" load_steps=3 format=3 uid="uid://blsqb4ajo1xd4"]
+
+[ext_resource type="Texture2D" uid="uid://bwnc7kvjdp5x6" path="res://assets/perks/BlackHolePerk.png" id="1_csih0"]
+[ext_resource type="Script" uid="uid://7uoio7x1ilb0" path="res://perks/perk_data.gd" id="2_teh7s"]
+
+[resource]
+script = ExtResource("2_teh7s")
+id = "black_hole"
+type = "perk"
+name = "Black Hole"
+description = "Its black and its a hole"
+icon = ExtResource("1_csih0")
+price = 9
+rarity = "rare"

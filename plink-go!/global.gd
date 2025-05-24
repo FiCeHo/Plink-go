@@ -6,6 +6,11 @@ var mult_sum = 0
 var limit_sum = 0
 var value_mult = 1
 
-var initial_ball_array = [load("res://player.gd"), load("res://player.gd"), load("res://player.gd"),
-load("res://player.gd"), load("res://player.gd")]
+const initial_ball_array := [
+	preload("res://balls/items/ball.tres"),
+	preload("res://balls/items/ball.tres"),
+	preload("res://balls/items/ball.tres"),
+	preload("res://balls/items/ball.tres"),
+	preload("res://balls/items/ball.tres"),
+]
 var initial_perk_array = []

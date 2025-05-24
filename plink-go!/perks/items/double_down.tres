@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PerkData" load_steps=3 format=3 uid="uid://k56tw755jndr"]
+
+[ext_resource type="Texture2D" uid="uid://c6jj2wr5iny3d" path="res://assets/perks/DoubleDownPerk.png" id="1_l22s2"]
+[ext_resource type="Script" uid="uid://7uoio7x1ilb0" path="res://perks/perk_data.gd" id="2_4xuil"]
+
+[resource]
+script = ExtResource("2_4xuil")
+id = "double_down"
+type = "perk"
+name = "Double Down"
+description = "must do something..."
+icon = ExtResource("1_l22s2")
+price = 13
+rarity = "legendary"

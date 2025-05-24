@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="PerkData" load_steps=3 format=3 uid="uid://bbpkd3onmhmi8"]
 
 [ext_resource type="Texture2D" uid="uid://bmi23ewpynatq" path="res://assets/perks/BounceEmPerk.png" id="1_mrgam"]
-[ext_resource type="Script" path="res://perks/perk_data.gd" id="2_w3axa"]
+[ext_resource type="Script" uid="uid://7uoio7x1ilb0" path="res://perks/perk_data.gd" id="2_w3axa"]
 
 [resource]
 script = ExtResource("2_w3axa")
 id = "bounce_em"
+type = "perk"
 name = "Bounce'Em"
 description = "It probably does something"
 icon = ExtResource("1_mrgam")
