@@ -19,7 +19,11 @@ static func load_items_from_folder(folder_path: String) -> Array:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if file_name.ends_with(".tres.remap"):
+			if file_name.ends_with(".tres"):
+				var item = load(folder_path + "/" + file_name)
+				if item:
+					items.append(item)
+			elif file_name.ends_with(".tres.remap"):
 				var path = folder_path + "/" + file_name
 				var __config_file = ConfigFile.new()
 				__config_file.load(path)

@@ -79,39 +79,41 @@ func _on_item_selected(item_data: Resource, item_node: Control):
 	selected_from_shop = item_node.get_meta("source") == "shop"
 
 	name_label.text = item_data.name
-	desc_label.text = "[font_size=12]%s[/font_size]" % item_data.description
+	desc_label.text = item_data.description
 
 	var item_pos = item_node.get_global_position()
 	var item_size = item_node.size
-	var offset = Vector2(16, 0)
+	var offset = Vector2(22, 0)
 	
 	var panel_size = details_panel.size
 	var y_offset = (item_size.y - panel_size.y) / 2.0
 	
-	details_panel.global_position = item_pos + Vector2(item_size.x + offset.x, y_offset)
-	
 	buy_button.hide()
 	sell_button.hide()
 
-
 	if selected_from_shop:
 		buy_button.text = "Buy (%d $)" % item_data.price
+		buy_button.size
 		buy_button.size = buy_button.get_minimum_size()
+		
+		details_panel.global_position = item_pos + Vector2(item_size.x + offset.x, y_offset)
 
 		var button_size = buy_button.size
 		var x_center_offset = (item_size.x - button_size.x) / 2.0
 
-		buy_button.global_position = item_pos + Vector2(x_center_offset, 68)
+		buy_button.global_position = item_pos + Vector2(x_center_offset, 76)
 		buy_button.show()
 	else:
 		var sell_value = _get_sell_value(item_data)
 		sell_button.text = "Sell (%d $)" % sell_value
 		sell_button.size = sell_button.get_minimum_size()
+		
+		details_panel.global_position = item_pos - Vector2(panel_size.x + offset.x, -y_offset)
 
 		var button_size = sell_button.size
 		var x_center_offset = (item_size.x - button_size.x) / 2.0
 
-		sell_button.global_position = item_pos + Vector2(x_center_offset, 68)
+		sell_button.global_position = item_pos + Vector2(x_center_offset, 76)
 		sell_button.show()
 			
 	details_panel.show()

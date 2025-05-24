@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://n6g0wutn7lld"]
+[gd_scene load_steps=19 format=3 uid="uid://n6g0wutn7lld"]
 
 [ext_resource type="Script" uid="uid://bdjk52saa7fox" path="res://shop/shop_screen.gd" id="1_6fma4"]
 [ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://assets/game/PearSoda.ttf" id="2_td7g5"]
@@ -54,6 +54,84 @@ content_margin_left = 40.0
 content_margin_top = 40.0
 content_margin_right = 40.0
 content_margin_bottom = 40.0
+bg_color = Color(0.1008, 0.36, 0.29088, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0672, 0.24, 0.19392, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_drlw6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwshg"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.952941, 0.262745, 0.282353, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 2.46)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbi7f"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.65098, 0.105882, 0.145098, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 2.46)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qe1ud"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.890196, 0.188235, 0.227451, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 2.46)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_drlw6"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 2.46)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3mef"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kceon"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+draw_center = false
 
 [node name="ShopScreen" type="Control"]
 layout_mode = 3
@@ -75,6 +153,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_xwshg")
 
 [node name="Panel2" type="Panel" parent="."]
+visible = false
 z_index = 4096
 layout_mode = 1
 anchors_preset = 15
@@ -109,14 +188,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_5ji30")
 
 [node name="BallPanel" type="Panel" parent="ShopPanel"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -520.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
 offset_top = 40.0
-offset_right = -40.0
+offset_right = 240.0
 offset_bottom = 180.0
-grow_horizontal = 0
+grow_horizontal = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="ShopPanel/BallPanel"]
 layout_mode = 1
@@ -139,9 +218,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -400.0
+offset_left = -440.0
 offset_top = -180.0
-offset_right = -40.0
+offset_right = -80.0
 offset_bottom = -40.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -157,61 +236,59 @@ grow_vertical = 2
 [node name="PerkShop" type="HBoxContainer" parent="ShopPanel/PerkPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="ModifierPanel" type="Panel" parent="ShopPanel"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = -180.0
-offset_right = 280.0
-offset_bottom = -40.0
-grow_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="ShopPanel/ModifierPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ModifierShop" type="HBoxContainer" parent="ShopPanel/ModifierPanel/MarginContainer"]
-layout_mode = 2
-
 [node name="ContinueButton" type="Button" parent="ShopPanel"]
-layout_mode = 1
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 160.0
-offset_bottom = 100.0
+offset_left = 80.0
+offset_top = 225.0
+offset_right = 230.0
+offset_bottom = 285.0
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_td7g5")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxEmpty_drlw6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xwshg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pbi7f")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qe1ud")
 text = "Continue"
 
 [node name="RerollButton" type="Button" parent="ShopPanel"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 120.0
-offset_right = 160.0
-offset_bottom = 180.0
+offset_left = 80.0
+offset_top = 305.0
+offset_right = 230.0
+offset_bottom = 365.0
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_td7g5")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxEmpty_drlw6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xwshg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pbi7f")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qe1ud")
 text = "Reroll"
 
 [node name="ItemDetail" type="Panel" parent="ShopPanel"]
 z_index = 99
 layout_mode = 0
-offset_right = 115.0
-offset_bottom = 113.0
+offset_right = 200.0
+offset_bottom = 240.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_drlw6")
 
 [node name="NameLabel" type="Label" parent="ShopPanel/ItemDetail"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
+anchor_bottom = 0.125
 offset_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_td7g5")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_m3mef")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -223,38 +300,60 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/bold_italics_font_size = 0
-theme_override_font_sizes/italics_font_size = 0
-theme_override_font_sizes/mono_font_size = 0
-theme_override_font_sizes/normal_font_size = 0
-theme_override_font_sizes/bold_font_size = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_td7g5")
+theme_override_fonts/mono_font = ExtResource("2_td7g5")
+theme_override_fonts/italics_font = ExtResource("2_td7g5")
+theme_override_fonts/bold_italics_font = ExtResource("2_td7g5")
+theme_override_fonts/bold_font = ExtResource("2_td7g5")
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_kceon")
 bbcode_enabled = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BuyButton" type="Button" parent="ShopPanel"]
+visible = false
 layout_mode = 0
 offset_right = 50.0
 offset_bottom = 22.0
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_td7g5")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_drlw6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xwshg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pbi7f")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qe1ud")
 
 [node name="PlayerPerks" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 121.0
+offset_left = 1067.0
 offset_top = 160.0
-offset_right = 241.0
+offset_right = 1187.0
 offset_bottom = 566.0
 
 [node name="SellButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 4.0
-offset_top = -1.0
-offset_right = 12.0
-offset_bottom = 7.0
+visible = false
+offset_right = 50.0
+offset_bottom = 22.0
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_td7g5")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_drlw6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xwshg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pbi7f")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qe1ud")
 
 [node name="MoneyLabel" type="Label" parent="."]
 layout_mode = 0

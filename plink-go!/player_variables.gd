@@ -2,7 +2,7 @@ extends Node
 
 var ball_array = []
 var perk_array = []
-var money = 20
+var money = 200000000
 var current_score = 0
 var current_round = 1
 
