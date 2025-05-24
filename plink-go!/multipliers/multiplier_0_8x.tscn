@@ -11,4 +11,6 @@ script = ExtResource("2_0ow2b")
 texture = ExtResource("3_0ow2b")
 
 [node name="Label" parent="." index="1"]
+offset_left = -19.0
+offset_right = 19.0
 text = "x0.8"

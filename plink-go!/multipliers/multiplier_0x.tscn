@@ -14,4 +14,6 @@ debug_color = Color(1, 1, 1, 1)
 texture = ExtResource("3_4pgex")
 
 [node name="Label" parent="." index="1"]
+offset_left = -38.0
+offset_right = 38.0
 text = "x0"

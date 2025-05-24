@@ -51,7 +51,6 @@ region_enabled = true
 region_rect = Rect2(176, 0, 24, 100)
 
 [node name="Score" type="Label" parent="."]
-anchors_preset = -1
 offset_left = 40.0
 offset_top = 30.0
 theme_override_fonts/font = ExtResource("2_27fn8")

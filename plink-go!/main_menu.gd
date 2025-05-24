@@ -8,6 +8,7 @@ func _ready() -> void:
 	options.visible = false
 
 func _on_play_pressed() -> void:
+	PlayerVariables.new_game()
 	get_tree().change_scene_to_file("res://game/game.tscn")
 
 
