@@ -45,6 +45,7 @@ func load_perks():
 		Global.mult_sum += 1
 
 func _ready():
+	PlayerVariables.connect("update_score", _end_round)
 	options.visible = false
 	Global.initial_position = $Game/Container/Marker2D.global_position
 	load_perks()
@@ -61,10 +62,11 @@ func _ready():
 	update_display()
 
 func _end_round():
-	if PlayerVariables.current_score >= Global.goals[PlayerVariables.current_round - 1]:
+	if PlayerVariables.current_score >= Global.goals[PlayerVariables.current_round - 1] && !won:
+		won = true
 		var more_money = 3 + (5 - (ball_index - 1))
 		PlayerVariables.current_round += 1
-		$WinScreen/Win/Points.text += str(PlayerVariables.current_score) + " / " + str(Global.goals[PlayerVariables.current_round - 2])
+		$WinScreen/Win/Points.text += str(PlayerVariables.current_score).split(".")[0] + " / " + str(Global.goals[PlayerVariables.current_round - 2])
 		$WinScreen/Win/NextGoal.text += str(Global.goals[PlayerVariables.current_round - 1])
 		$WinScreen/Win/Money.text += str(PlayerVariables.money) + " + " + str(more_money)
 		PlayerVariables.money += more_money

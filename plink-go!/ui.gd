@@ -14,7 +14,7 @@ func load_goal(goal):
 
 		# print only what we want, add exp
 		str_goal = "{dec}e{exp}".format({"dec":("%1.2f" % _dec), "exp":str(_exp) })
-	$Goal.text = "Goal: " + str_goal
+	$Control/Goal.text = "Goal: " + str_goal
 
 func score_up(value):
 	score += roundf(value)
@@ -29,4 +29,4 @@ func score_up(value):
 
 		# print only what we want, add exp
 		str_score = "{dec}e{exp}".format({"dec":("%1.2f" % _dec), "exp":str(_exp) })
-	$Score.text = ("Score: " + str_score).substr(0, str(score).length() + 5)
+	$Control/Score.text = ("Score: " + str_score).substr(0, str(score).length() + 5)

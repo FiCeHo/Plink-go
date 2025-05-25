@@ -1,9 +1,14 @@
 extends Node
 
+signal update_score(score)
+
 var ball_array = []
 var perk_array = []
 var money = 200000000
-var current_score = 0
+var current_score = 0:
+	set(value):
+		current_score = value
+		emit_signal("update_score")
 var current_round = 1
 
 func _init():

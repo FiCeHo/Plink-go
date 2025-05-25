@@ -207,9 +207,17 @@ func _load_player_perks():
 		
 	for perk_data in PlayerVariables.perk_array:
 		var item = ShowItem.spawn(perk_data, "perk")
+		var holder = Sprite2D.new()
+		holder.texture = load("res://assets/holders/ballHolder.png")
+		holder.scale = Vector2(2.0, 2.0)
 		item.set_meta("source", "player")
 		item.selected.connect(_on_item_selected)
-		perk_list.add_child(item)
+		item.scale = Vector2(0.44, 0.44)
+		var control = Control.new()
+		control.size = Vector2(72, 72)
+		holder.add_child(item)
+		control.add_child(holder)
+		perk_list.add_child(control)
 		print("Spawned item is a:", item.get_class())
 
 func _update_money_display():
