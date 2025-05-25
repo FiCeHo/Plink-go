@@ -213,11 +213,8 @@ func _load_player_perks():
 		item.set_meta("source", "player")
 		item.selected.connect(_on_item_selected)
 		item.scale = Vector2(0.44, 0.44)
-		var control = Control.new()
-		control.size = Vector2(72, 72)
 		holder.add_child(item)
-		control.add_child(holder)
-		perk_list.add_child(control)
+		perk_list.add_child(holder)
 		print("Spawned item is a:", item.get_class())
 
 func _update_money_display():

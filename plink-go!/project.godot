@@ -13,7 +13,8 @@ config_version=5
 config/name="Plink-go!"
 run/main_scene="uid://dxgq4u6g37r8l"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="uid://g1ini1tp645l"
+boot_splash/image="uid://badptq8mkse3l"
+config/icon="uid://vouvdbue41ff"
 
 [autoload]
 
