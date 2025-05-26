@@ -16,8 +16,15 @@ var PlayerData = preload("res://player_variables.gd")
 @onready var perk_list = get_node("PlayerPerks")
 @onready var sell_button = get_node("SellButton")
 
+var ball_list
+var ball_data_array = PlayerVariables.ball_array
+
+@onready var ball_list_display = get_node("ShopPanel/BallPanel/MarginContainer/BallShop")
+
+
 var reroll_cost = 5
 var perk_amount = 3
+var ball_amount = 4
 var current_selected_item: Control = null
 var current_selected_type: String = ""
 var current_selected_data: Resource = null
@@ -45,6 +52,11 @@ func _ready():
 		item.set_meta("source", "shop")
 		item.selected.connect(_on_item_selected)
 		perk_list_display.add_child(item)
+	_load_player_items("perk")
+	_load_player_items("ball")
+	
+	_display_shop_items("perk")
+	_display_shop_items("ball")
 		
 	buy_button.pressed.connect(_on_buy_button_pressed)
 	sell_button.pressed.connect(_on_sell_button_pressed)
@@ -133,7 +145,8 @@ func _on_buy_button_pressed():
 		current_selected_type = ""
 		current_selected_data = null
 		
-		_load_player_perks()
+		_load_player_items("perk")
+		_load_player_items("ball")
 	
 func _on_sell_button_pressed():
 	if current_selected_type == "perk" and current_selected_data:
@@ -153,8 +166,9 @@ func _on_sell_button_pressed():
 	details_panel.hide()
 	sell_button.hide()
 
-	_load_player_perks()
-	
+	_load_player_items("perk")
+	_load_player_items("ball")
+
 func _on_reroll_button_pressed():
 	if PlayerVariables.money >= reroll_cost:
 		PlayerVariables.money -= reroll_cost
@@ -210,3 +224,82 @@ func _get_sell_value(item_data: Resource):
 	if PlayerVariables.has_perk("haggler"):
 		value = value * 2
 	return value
+
+func _display_shop_items(item_type: String):
+	var container: Node
+	var all_items: Array
+	var picked_items: Array
+
+	match item_type:
+		"perk":
+			container = perk_list_display
+			all_items = ItemUtils.get_all_perks()
+			if PlayerVariables.has_perk("havoc"):
+				picked_items = ItemUtils.pick_weighted_items_havoc(all_items, perk_amount, func(p): return p.rarity)
+			else:
+				picked_items = ItemUtils.pick_weighted_items(all_items, perk_amount, func(p): return p.rarity)
+
+		"ball":
+			container = ball_list_display
+			all_items = ItemUtils.get_all_balls()
+			if PlayerVariables.has_perk("havoc"):
+				picked_items = ItemUtils.pick_weighted_items_havoc(all_items, ball_amount, func(p): return p.rarity)
+			else:
+				picked_items = ItemUtils.pick_weighted_items(all_items, ball_amount, func(p): return p.rarity)
+		_:
+			return
+
+	for child in container.get_children():
+		child.queue_free()
+
+	for item_data in picked_items:
+		var item
+		if item_data.type == "ball":
+			item = ShowItem.spawn(item_data, item_type, true)
+		else:
+			item = ShowItem.spawn(item_data, item_type)
+		item.set_meta("source", "shop")
+		item.selected.connect(_on_item_selected)
+		container.add_child(item)
+		
+func is_ball_holder(node):
+	return node.name.contains("Ball_cont")
+
+func _load_player_items(item_type: String):
+	var container
+	var items
+
+	match item_type:
+		"perk":
+			container = perk_list
+			items = PlayerVariables.perk_array
+			for child in container.get_children():
+				child.queue_free()
+
+			for item_data in items:
+				var item = ShowItem.spawn(item_data, item_type)
+				item.set_meta("source", "player")
+				item.selected.connect(_on_item_selected)
+				item.get_node("Holder").self_modulate = Color.WHITE
+				container.add_child(item)
+
+		"ball":
+			ball_list = $ShopUI.get_children().filter(is_ball_holder)
+			var i = 0
+			for ball_holder in ball_list:
+				if i >= PlayerVariables.ball_array.size():
+					break  # avoid index errors
+					
+				var ball_data = PlayerVariables.ball_array[i]
+				var ball_card = ShowItem.spawn(ball_data, "ball", true)  # true = spawn card version
+				
+				if ball_card:
+					ball_card.set_meta("source", "player")
+					ball_card.selected.connect(_on_item_selected)
+					ball_holder.add_child(ball_card)
+			for holder in ball_list:
+				for child in holder.get_children():
+					child.queue_free()
+			i += 1
+		_:
+			return

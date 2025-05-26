@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://n6g0wutn7lld"]
+[gd_scene load_steps=20 format=3 uid="uid://n6g0wutn7lld"]
 
 [ext_resource type="Script" uid="uid://bdjk52saa7fox" path="res://shop/shop_screen.gd" id="1_6fma4"]
 [ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://assets/game/PearSoda.ttf" id="2_td7g5"]
 [ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://assets/game/bckgr.png" id="3_sko7u"]
 [ext_resource type="Texture2D" uid="uid://re856boqbox1" path="res://assets/game/coinTransition.png" id="4_drlw6"]
 [ext_resource type="AudioStream" uid="uid://b4vudmibdh8a2" path="res://assets/audio/Plink-go! Shop Theme.mp3" id="5_drlw6"]
+[ext_resource type="PackedScene" uid="uid://bqm518ik1xdg0" path="res://shop/shop_ui.tscn" id="6_xwshg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xwshg"]
 texture = ExtResource("3_sko7u")
@@ -153,6 +154,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_xwshg")
 
 [node name="Panel2" type="Panel" parent="."]
+visible = false
 z_index = 4096
 layout_mode = 1
 anchors_preset = 15
@@ -376,3 +378,5 @@ offset_bottom = 83.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_drlw6")
 autoplay = true
+
+[node name="ShopUI" parent="." instance=ExtResource("6_xwshg")]
