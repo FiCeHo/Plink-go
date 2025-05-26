@@ -22,6 +22,14 @@ static func spawn(item_data: Resource, item_type: String) -> Node:
 		if scene is PackedScene:
 			var item = scene.instantiate()
 			item.set(item_type + "_data", item_data)
+			if item_type == "ball":
+				if item_data.custom:
+					var col_scene = load("res://balls/collisions/collision_" + item_data.ID + ".tscn")
+					var collision = col_scene.instantiate()
+					item.get_node("RigidBody2D").get_node("CollisionShape2D").queue_free()
+					item.get_node("RigidBody2D").add_child(collision)
+					if item_data.ID == "beachball" || item_data.ID == "gumball":
+						item.get_node("RigidBody2D/Sprite2D").scale = Vector2(1.0, 1.0)
 			return item
 		else:
 			push_error("Scene is not a PackedScene: %s" % scene_path)

@@ -7,11 +7,12 @@ var limit_sum = 0
 var value_mult = 1
 
 const initial_ball_array := [
-	preload("res://balls/items/ball.tres"),
-	preload("res://balls/items/ball.tres"),
-	preload("res://balls/items/ball.tres"),
-	preload("res://balls/items/ball.tres"),
-	preload("res://balls/items/ball.tres"),
+	preload("res://balls/items/lady_finger.tres"),
+	preload("res://balls/items/lady_finger.tres"),
+	preload("res://balls/items/lady_finger.tres"),
+	preload("res://balls/items/lady_finger.tres"),
+	preload("res://balls/items/lady_finger.tres"),
+
 ]
 var initial_perk_array = []
 

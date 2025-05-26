@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BallData" load_steps=3 format=3 uid="uid://cge61ni40708"]
+
+[ext_resource type="Script" uid="uid://cxiw4djmlvklg" path="res://balls/ball_data.gd" id="1_c2cdl"]
+[ext_resource type="Texture2D" uid="uid://dba7u80b8leu5" path="res://assets/balls/D20Ball.png" id="2_fdoa2"]
+
+[resource]
+script = ExtResource("1_c2cdl")
+ID = "d20"
+custom = true
+limit = 0
+value = 1
+mult = 1
+bounce = 0.64
+gravity = 5.0
+texture = ExtResource("2_fdoa2")
+price = 8
+rarity = "epic"

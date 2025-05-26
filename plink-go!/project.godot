@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Plink-go!"
-run/main_scene="uid://csy071n5ov8lc"
+run/main_scene="uid://csp7cugwvb4x4"
 config/features=PackedStringArray("4.4", "Mobile")
+run/max_fps=60
 boot_splash/image="uid://badptq8mkse3l"
 config/icon="uid://vouvdbue41ff"
 

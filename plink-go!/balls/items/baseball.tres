@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BallData" load_steps=3 format=3 uid="uid://dhhrbv3mlhn2i"]
+
+[ext_resource type="Script" uid="uid://cxiw4djmlvklg" path="res://balls/ball_data.gd" id="1_h0p08"]
+[ext_resource type="Texture2D" uid="uid://1ix8qn2qati7" path="res://assets/balls/BaseBall.png" id="2_lemku"]
+
+[resource]
+script = ExtResource("1_h0p08")
+ID = "baseball"
+custom = false
+limit = 0
+value = 10
+mult = 1
+bounce = 0.8
+gravity = 5.0
+texture = ExtResource("2_lemku")
+price = 4
+rarity = "uncommon"

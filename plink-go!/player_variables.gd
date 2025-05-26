@@ -11,6 +11,19 @@ var current_score = 0:
 		emit_signal("update_score")
 var current_round = 1
 
+var perk_grav = false
+var perk_boost = false
+var perk_lifebouy = false
+var perk_stop = false
+var perk_mult = false
+var perk_reroll = false
+var perk_interest = false
+var perk_sell = false
+var perk_bounce = false
+var perk_rush = false
+var perk_magnet = false
+var perk_jackpot = false
+
 func _init():
 	ball_array = Global.initial_ball_array
 	

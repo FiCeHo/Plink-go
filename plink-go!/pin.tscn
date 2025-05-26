@@ -1,20 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://ki6r087tju3x"]
+[gd_scene load_steps=5 format=3 uid="uid://brkgag51w0s5b"]
 
-[ext_resource type="Script" uid="uid://bmx7heuw4dl3v" path="res://pin.gd" id="1_gflbs"]
-[ext_resource type="Texture2D" uid="uid://dfokb25mgn8b" path="res://assets/game/pin.png" id="1_nikp6"]
-[ext_resource type="AudioStream" uid="uid://brv2i1twgeav" path="res://171064__relwin__yanks_pc1c036_ring.wav" id="3_h4t62"]
+[ext_resource type="Script" uid="uid://bmx7heuw4dl3v" path="res://pin.gd" id="1_l1dkl"]
+[ext_resource type="Texture2D" uid="uid://dfokb25mgn8b" path="res://assets/game/pin.png" id="2_i7wse"]
+[ext_resource type="AudioStream" uid="uid://brv2i1twgeav" path="res://assets/audio/171064__relwin__yanks_pc1c036_ring.wav" id="3_llm1d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gflbs"]
 radius = 17.0
 
 [node name="Pin" type="Node2D"]
-script = ExtResource("1_gflbs")
+script = ExtResource("1_l1dkl")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("1_nikp6")
+texture = ExtResource("2_i7wse")
 
 [node name="Area2D" type="Area2D" parent="StaticBody2D"]
 audio_bus_name = &"SFX"
@@ -26,7 +26,8 @@ shape = SubResource("CircleShape2D_gflbs")
 shape = SubResource("CircleShape2D_gflbs")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_h4t62")
+stream = ExtResource("3_llm1d")
 bus = &"SFX"
 
 [connection signal="body_entered" from="StaticBody2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

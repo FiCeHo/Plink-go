@@ -6,6 +6,8 @@ var initial_position : Vector2
 var physics_material : PhysicsMaterial
 var fallThreshold = 900
 var score
+var value
+var mult
 var limit
 var gravity
 
@@ -16,13 +18,30 @@ func _ready():
 	ball_data.limit += Global.limit_sum
 	ball_data.value = ball_data.value * Global.value_mult
 	$RigidBody2D/Sprite2D.texture = ball_data.texture
-	score = ball_data.value
+	if ball_data.ID != "d20":
+		value = ball_data.value
+		if ball_data.ID != "baseball":
+			mult = ball_data.mult
+	else:
+		_mult_value_d20()
 	limit = ball_data.limit
 	gravity = ball_data.gravity
+	
+	if PlayerVariables.perk_grav:
+		gravity = gravity * 2
+	if PlayerVariables.perk_boost:
+		value += 100
+	if PlayerVariables.perk_mult:
+		mult = mult * 2
+	
+func _mult_value_d20():
+	randomize()
+	value = randi_range(1, 1000)
+	mult = randi_range(1, 1000)
 
 func _process(delta):
 	if get_node("RigidBody2D").global_position.y > fallThreshold:
-		score = ball_data.value * Global.void_multiplier
+		score = (value * mult) * Global.void_multiplier
 		hud.call("score_up", score)
 		kill()
 
@@ -46,6 +65,6 @@ func _on_rigid_body_2d_body_entered(body: Node) -> void:
 		#var a = 0
 	if body.get_parent().name.contains("Multiplier"):
 		body.get_parent().collision()
-		score = ball_data.value * body.get_parent().multiplier
+		score = (value * mult) * body.get_parent().multiplier
 		hud.call("score_up", score)
 		kill()

@@ -5,10 +5,13 @@
 
 [resource]
 script = ExtResource("1_46umi")
+ID = "ball"
+custom = false
 limit = 0
-value = 1000000
+value = 10
+mult = 1
 bounce = 0.64
-gravity = 5
+gravity = 5.0
 texture = ExtResource("2_liw2d")
-price = 0
+price = 2
 rarity = "common"

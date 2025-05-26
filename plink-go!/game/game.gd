@@ -28,13 +28,16 @@ func _unhandled_input(event: InputEvent):
 				player.global_position = $Game/Container/Marker2D.global_position
 				player.initial_position = $Game/Container/Marker2D.global_position
 				player.hud = get_node("UI")
+				if player.ball_data.ID == "baseball":
+					player.mult = 10 * (ball_index + 1)
 
 				add_child(player)
 				ball_index += 1
+
 				if ball_index < ball_data_array.size():
 					player_data = ball_data_array[ball_index]
 				else:
-					player.tree_exited.connect(_end_round)
+					player.tree_exited.connect(_last_ball)
 				previous_player = player
 
 func _load_player_perks():
@@ -47,7 +50,23 @@ func _load_player_perks():
 		#item.selected.connect(_on_item_selected)
 		item.get_node("Holder").self_modulate = Color8(255, 255, 255, 255)
 		perk_list.add_child(item)
-		print("Spawned item is a:", item.get_class())
+		
+		match perk_data.ID:
+			"black_hole":
+				PlayerVariables.perk_grav = true
+			"bounce_em":
+				PlayerVariables.perk_bounce = true
+			"double_down":
+				PlayerVariables.perk_mult = true
+			"haggler":
+				PlayerVariables.perk_sell = true
+			"jackpot":
+				PlayerVariables.perk_jackpot = true
+			"life_buoy":
+				PlayerVariables.perk_lifebouy = true
+			"point_booster":
+				PlayerVariables.perk_boost = true
+			
 
 func _ready():
 	PlayerVariables.connect("update_score", _end_round)
@@ -63,18 +82,42 @@ func _ready():
 	previous_player.global_position = Global.initial_position
 	previous_player.initial_position = Global.initial_position
 	previous_player.hud = get_node("UI")
+	if previous_player.ball_data.ID == "baseball":
+		previous_player.mult = 10 * ball_index
+	
 	add_child(previous_player)
+	player_data = ball_data_array[1]
 	update_display()
 
 func _end_round():
 	if PlayerVariables.current_score >= Global.goals[PlayerVariables.current_round - 1] && !won:
 		won = true
 		var more_money = 3 + (5 - (ball_index - 1))
+		$WinScreen/Win/Label.text += str(PlayerVariables.current_round) + " Results"
 		PlayerVariables.current_round += 1
 		$WinScreen/Win/Points.text += str(PlayerVariables.current_score).split(".")[0] + " / " + str(Global.goals[PlayerVariables.current_round - 2])
 		$WinScreen/Win/NextGoal.text += str(Global.goals[PlayerVariables.current_round - 1])
 		$WinScreen/Win/Money.text += str(PlayerVariables.money) + " + " + str(more_money)
 		PlayerVariables.money += more_money
+		$Animation.visible = true
+		$Animation/Panel2/AnimationPlayerWin.play("new_animation")
+		
+func _last_ball():
+	if PlayerVariables.current_score >= Global.goals[PlayerVariables.current_round - 1] && !won:
+		won = true
+		var more_money = 3 + (5 - (ball_index - 1))
+		$WinScreen/Win/Label.text += str(PlayerVariables.current_round) + " Results"
+		PlayerVariables.current_round += 1
+		$WinScreen/Win/Points.text += str(PlayerVariables.current_score).split(".")[0] + " / " + str(Global.goals[PlayerVariables.current_round - 2])
+		$WinScreen/Win/NextGoal.text += str(Global.goals[PlayerVariables.current_round - 1])
+		$WinScreen/Win/Money.text += str(PlayerVariables.money) + " + " + str(more_money)
+		PlayerVariables.money += more_money
+		$Animation.visible = true
+		$Animation/Panel2/AnimationPlayerWin.play("new_animation")
+	elif PlayerVariables.current_score < Global.goals[PlayerVariables.current_round - 1]:
+		$LoseScreen/Lose/Label.text += str(PlayerVariables.current_round) + " Results"
+		$LoseScreen/Lose/Points.text += str(PlayerVariables.current_score).split(".")[0] + " / " + str(Global.goals[PlayerVariables.current_round - 2])
+		$LoseScreen/Lose/Round.text += str(PlayerVariables.current_round)
 		$Animation.visible = true
 		$Animation/Panel2/AnimationPlayerWin.play("new_animation")
 
@@ -89,8 +132,12 @@ func is_ball_holder(node):
 	return node.name.contains("Ball_cont")
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	$WinScreen.layer = 50
-	$WinScreen/AnimationPlayer.play("new_animation")
+	if won:
+		$WinScreen.visible = true
+		$WinScreen/AnimationPlayer.play("new_animation")
+	else:
+		$LoseScreen.visible = true
+		$LoseScreen/AnimationPlayer.play("new_animation")
 
 func _on_button_pressed() -> void:
 	get_tree().paused = true

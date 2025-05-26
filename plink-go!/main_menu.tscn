@@ -1,17 +1,17 @@
-[gd_scene load_steps=22 format=3 uid="uid://csy071n5ov8lc"]
+[gd_scene load_steps=22 format=3 uid="uid://csp7cugwvb4x4"]
 
-[ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://assets/game/bckgr.png" id="1_06t4h"]
-[ext_resource type="Script" uid="uid://j3xufmlkj4a0" path="res://main_menu.gd" id="1_jix8l"]
-[ext_resource type="AudioStream" uid="uid://ixsyfp8cp5or" path="res://assets/audio/Plink-go! Main Theme.mp3" id="2_7vrkn"]
-[ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://assets/game/PearSoda.ttf" id="3_fu7sn"]
-[ext_resource type="Texture2D" uid="uid://5j4rgoh4f7jr" path="res://assets/options/grabber.png" id="5_8qtwp"]
-[ext_resource type="Script" uid="uid://bb2k50hg1abbf" path="res://audio_control.gd" id="5_glbon"]
-[ext_resource type="Texture2D" uid="uid://evhfa0dg14i8" path="res://assets/options/checkBoxCheckd.png" id="6_qe12f"]
-[ext_resource type="Texture2D" uid="uid://c7mwkvxw1t5mm" path="res://assets/options/checkBox.png" id="7_8qtwp"]
-[ext_resource type="Script" uid="uid://d2qimi1tdg3fj" path="res://check_box_mute.gd" id="9_dy7ct"]
+[ext_resource type="Script" uid="uid://j3xufmlkj4a0" path="res://main_menu.gd" id="1_7mn57"]
+[ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://assets/game/bckgr.png" id="2_6vmua"]
+[ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://assets/game/PearSoda.ttf" id="3_rv8kf"]
+[ext_resource type="AudioStream" uid="uid://ixsyfp8cp5or" path="res://assets/audio/Plink-go! Main Theme.mp3" id="4_5i8qu"]
+[ext_resource type="Texture2D" uid="uid://5j4rgoh4f7jr" path="res://assets/options/grabber.png" id="5_i6au4"]
+[ext_resource type="Script" uid="uid://bb2k50hg1abbf" path="res://audio_control.gd" id="6_ay3dt"]
+[ext_resource type="Texture2D" uid="uid://evhfa0dg14i8" path="res://assets/options/checkBoxCheckd.png" id="7_16tb2"]
+[ext_resource type="Texture2D" uid="uid://c7mwkvxw1t5mm" path="res://assets/options/checkBox.png" id="8_didrf"]
+[ext_resource type="Script" uid="uid://d2qimi1tdg3fj" path="res://check_box_mute.gd" id="9_nd5rl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rhts7"]
-texture = ExtResource("1_06t4h")
+texture = ExtResource("2_6vmua")
 modulate_color = Color(0.60933, 0.60933, 0.60933, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
@@ -119,7 +119,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jix8l")
+script = ExtResource("1_7mn57")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -152,7 +152,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_fu7sn")
+theme_override_fonts/font = ExtResource("3_rv8kf")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fu7sn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fu7sn")
@@ -167,7 +167,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_fu7sn")
+theme_override_fonts/font = ExtResource("3_rv8kf")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fu7sn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fu7sn")
@@ -182,7 +182,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_fu7sn")
+theme_override_fonts/font = ExtResource("3_rv8kf")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fu7sn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fu7sn")
@@ -191,7 +191,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
 text = "Exit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_7vrkn")
+stream = ExtResource("4_5i8qu")
 autoplay = true
 bus = &"Music"
 parameters/looping = true
@@ -212,7 +212,7 @@ grow_vertical = 2
 pivot_offset = Vector2(397, 142.5)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 20
-theme_override_fonts/normal_font = ExtResource("3_fu7sn")
+theme_override_fonts/normal_font = ExtResource("3_rv8kf")
 theme_override_font_sizes/normal_font_size = 200
 text = "Plink-GO!"
 horizontal_alignment = 1
@@ -249,7 +249,7 @@ offset_top = 16.5
 offset_right = 76.5
 offset_bottom = 71.5
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_fu7sn")
+theme_override_fonts/font = ExtResource("3_rv8kf")
 theme_override_font_sizes/font_size = 80
 text = "Options"
 horizontal_alignment = 1
@@ -265,7 +265,7 @@ offset_top = 211.5
 offset_right = -167.0
 offset_bottom = 286.5
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_fu7sn")
+theme_override_fonts/font = ExtResource("3_rv8kf")
 theme_override_font_sizes/font_size = 45
 text = "Music:"
 horizontal_alignment = 1
@@ -281,7 +281,7 @@ offset_top = 323.5
 offset_right = -151.0
 offset_bottom = 398.5
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_fu7sn")
+theme_override_fonts/font = ExtResource("3_rv8kf")
 theme_override_font_sizes/font_size = 45
 text = "SFX:"
 horizontal_alignment = 1
@@ -297,7 +297,7 @@ offset_top = 102.5
 offset_right = -176.0
 offset_bottom = 177.5
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_fu7sn")
+theme_override_fonts/font = ExtResource("3_rv8kf")
 theme_override_font_sizes/font_size = 45
 text = "Master:"
 horizontal_alignment = 1
@@ -321,7 +321,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_fu7sn")
+theme_override_fonts/font = ExtResource("3_rv8kf")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fu7sn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fu7sn")
@@ -342,17 +342,17 @@ offset_right = 214.5
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_icons/grabber = ExtResource("5_8qtwp")
-theme_override_icons/grabber_highlight = ExtResource("5_8qtwp")
-theme_override_icons/grabber_disabled = ExtResource("5_8qtwp")
-theme_override_icons/tick = ExtResource("5_8qtwp")
+theme_override_icons/grabber = ExtResource("5_i6au4")
+theme_override_icons/grabber_highlight = ExtResource("5_i6au4")
+theme_override_icons/grabber_disabled = ExtResource("5_i6au4")
+theme_override_icons/tick = ExtResource("5_i6au4")
 theme_override_styles/slider = SubResource("StyleBoxLine_jix8l")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_glbon")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_glbon")
 max_value = 1.0
 step = 0.05
 value = 0.5
-script = ExtResource("5_glbon")
+script = ExtResource("6_ay3dt")
 audio_bus_name = "Music"
 
 [node name="AudioControl2" type="HSlider" parent="Options"]
@@ -368,17 +368,17 @@ offset_right = 214.0
 offset_bottom = 112.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_icons/grabber = ExtResource("5_8qtwp")
-theme_override_icons/grabber_highlight = ExtResource("5_8qtwp")
-theme_override_icons/grabber_disabled = ExtResource("5_8qtwp")
-theme_override_icons/tick = ExtResource("5_8qtwp")
+theme_override_icons/grabber = ExtResource("5_i6au4")
+theme_override_icons/grabber_highlight = ExtResource("5_i6au4")
+theme_override_icons/grabber_disabled = ExtResource("5_i6au4")
+theme_override_icons/tick = ExtResource("5_i6au4")
 theme_override_styles/slider = SubResource("StyleBoxLine_jix8l")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_glbon")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_glbon")
 max_value = 1.0
 step = 0.05
 value = 0.5
-script = ExtResource("5_glbon")
+script = ExtResource("6_ay3dt")
 audio_bus_name = "SFX"
 
 [node name="AudioControl3" type="HSlider" parent="Options"]
@@ -394,17 +394,17 @@ offset_right = 214.0
 offset_bottom = -112.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_icons/grabber = ExtResource("5_8qtwp")
-theme_override_icons/grabber_highlight = ExtResource("5_8qtwp")
-theme_override_icons/grabber_disabled = ExtResource("5_8qtwp")
-theme_override_icons/tick = ExtResource("5_8qtwp")
+theme_override_icons/grabber = ExtResource("5_i6au4")
+theme_override_icons/grabber_highlight = ExtResource("5_i6au4")
+theme_override_icons/grabber_disabled = ExtResource("5_i6au4")
+theme_override_icons/tick = ExtResource("5_i6au4")
 theme_override_styles/slider = SubResource("StyleBoxLine_jix8l")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_glbon")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_glbon")
 max_value = 1.0
 step = 0.05
 value = 0.5
-script = ExtResource("5_glbon")
+script = ExtResource("6_ay3dt")
 audio_bus_name = "Master"
 
 [node name="CheckBox" type="CheckBox" parent="Options"]
@@ -420,13 +420,13 @@ offset_right = 389.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_fu7sn")
+theme_override_fonts/font = ExtResource("3_rv8kf")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
-theme_override_icons/checked = ExtResource("6_qe12f")
-theme_override_icons/unchecked = ExtResource("7_8qtwp")
+theme_override_icons/checked = ExtResource("7_16tb2")
+theme_override_icons/unchecked = ExtResource("8_didrf")
 text = " Mute"
-script = ExtResource("9_dy7ct")
+script = ExtResource("9_nd5rl")
 audio_bus_name = "Music"
 
 [node name="CheckBox2" type="CheckBox" parent="Options"]
@@ -442,13 +442,13 @@ offset_right = 389.0
 offset_bottom = 139.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_fu7sn")
+theme_override_fonts/font = ExtResource("3_rv8kf")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
-theme_override_icons/checked = ExtResource("6_qe12f")
-theme_override_icons/unchecked = ExtResource("7_8qtwp")
+theme_override_icons/checked = ExtResource("7_16tb2")
+theme_override_icons/unchecked = ExtResource("8_didrf")
 text = " Mute"
-script = ExtResource("9_dy7ct")
+script = ExtResource("9_nd5rl")
 audio_bus_name = "SFX"
 
 [node name="CheckBox3" type="CheckBox" parent="Options"]
@@ -464,13 +464,13 @@ offset_right = 389.0
 offset_bottom = -82.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_fu7sn")
+theme_override_fonts/font = ExtResource("3_rv8kf")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
-theme_override_icons/checked = ExtResource("6_qe12f")
-theme_override_icons/unchecked = ExtResource("7_8qtwp")
+theme_override_icons/checked = ExtResource("7_16tb2")
+theme_override_icons/unchecked = ExtResource("8_didrf")
 text = " Mute"
-script = ExtResource("9_dy7ct")
+script = ExtResource("9_nd5rl")
 audio_bus_name = "Master"
 
 [connection signal="pressed" from="MainButtons/Button" to="." method="_on_play_pressed"]

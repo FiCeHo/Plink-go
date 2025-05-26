@@ -1,10 +1,13 @@
 extends Resource
 class_name BallData 
 
+@export var ID : String = "ball"
+@export var custom : bool = false
 @export var limit = 0
 @export var value = 10
+@export var mult = 1
 @export var bounce = 0.64
-@export var gravity = 5
+@export var gravity : float = 5
 @export var texture : Texture
 @export var price : int = 0
 

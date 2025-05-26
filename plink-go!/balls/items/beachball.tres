@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BallData" load_steps=3 format=3 uid="uid://pa663i8pfkv4"]
+
+[ext_resource type="Script" uid="uid://cxiw4djmlvklg" path="res://balls/ball_data.gd" id="1_5eg6g"]
+[ext_resource type="Texture2D" uid="uid://c78xanac2n8ic" path="res://assets/balls/BeachBall.png" id="2_7wtl0"]
+
+[resource]
+script = ExtResource("1_5eg6g")
+ID = "beachball"
+custom = true
+limit = 0
+value = 10
+mult = 1
+bounce = 0.64
+gravity = 1.25
+texture = ExtResource("2_7wtl0")
+price = 4
+rarity = "uncommon"

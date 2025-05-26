@@ -45,7 +45,6 @@ func _ready():
 		item.set_meta("source", "shop")
 		item.selected.connect(_on_item_selected)
 		perk_list_display.add_child(item)
-		print("Spawned item is a:", item.get_class())
 		
 	buy_button.pressed.connect(_on_buy_button_pressed)
 	sell_button.pressed.connect(_on_sell_button_pressed)
@@ -53,13 +52,11 @@ func _ready():
 	reroll_button.pressed.connect(_on_reroll_button_pressed)
 	continue_button.pressed.connect(_on_continue_button_pressed)
 	_update_money_display()
-	buy_button.hide()  # Hide by default
+	buy_button.hide()
 	details_panel.hide()
 	sell_button.hide()
 	$Panel2/AnimationPlayer.play("new_animation")
 	
-	print_tree_pretty()
-		
 func _on_item_selected(item_data: Resource, item_node: Control):
 	# If the same item is clicked again, toggle it off
 	if current_selected_item == item_node and details_panel.visible:
@@ -123,7 +120,6 @@ func _on_buy_button_pressed():
 		return
 		
 	if current_selected_type == "perk" && PlayerVariables.money >= current_selected_data.price:
-		print("Bought perk:", current_selected_data.name)
 		PlayerVariables.money -= current_selected_data.price
 		_update_money_display()
 		PlayerVariables.perk_array.append(current_selected_data)
@@ -139,7 +135,6 @@ func _on_buy_button_pressed():
 		
 		_load_player_perks()
 	
-	
 func _on_sell_button_pressed():
 	if current_selected_type == "perk" and current_selected_data:
 		if PlayerVariables.perk_array.has(current_selected_data):
@@ -147,7 +142,6 @@ func _on_sell_button_pressed():
 			PlayerVariables.perk_array.erase(current_selected_data)
 			PlayerVariables.money += sell_value
 			_update_money_display()
-			print("Sold:", current_selected_data.name)
 
 	# Clean up
 	current_selected_item.queue_free()
@@ -168,8 +162,6 @@ func _on_reroll_button_pressed():
 		reroll_cost += 2
 		reroll_button.text = "Reroll (%d $)" % reroll_cost
 		_do_reroll()
-	else:
-		print("Not enough money to reroll!")
 
 func _on_continue_button_pressed():
 	get_tree().change_scene_to_file("res://game/game.tscn")
@@ -199,8 +191,6 @@ func _do_reroll():
 		item.selected.connect(_on_item_selected)
 		perk_list_display.add_child(item)
 
-	print("Shop rerolled!")
-	
 func _load_player_perks():
 	for child in perk_list.get_children():
 		child.queue_free()
@@ -211,7 +201,6 @@ func _load_player_perks():
 		item.selected.connect(_on_item_selected)
 		item.get_node("Holder").self_modulate = Color8(255, 255, 255, 255)
 		perk_list.add_child(item)
-		print("Spawned item is a:", item.get_class())
 
 func _update_money_display():
 	money_label.text = "Money: %d $" % PlayerVariables.money

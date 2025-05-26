@@ -1,6 +1,6 @@
-[gd_scene load_steps=35 format=3 uid="uid://ddyy5w7ux36uw"]
+[gd_scene load_steps=39 format=3 uid="uid://ddyy5w7ux36uw"]
 
-[ext_resource type="PackedScene" uid="uid://ki6r087tju3x" path="res://pin.tscn" id="1_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://brkgag51w0s5b" path="res://pin.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://cmlphfg306x4b" path="res://game/game.gd" id="1_feb5d"]
 [ext_resource type="Texture2D" uid="uid://re856boqbox1" path="res://assets/game/coinTransition.png" id="3_3vho3"]
 [ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://assets/game/bckgr.png" id="7_eow3j"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://2yaodhl2j7i4" path="res://assets/game/menuBars.png" id="9_j8tme"]
 [ext_resource type="AudioStream" uid="uid://c5v6vjmkri3ms" path="res://assets/audio/Plink-go! Game Theme.mp3" id="9_l8g03"]
 [ext_resource type="PackedScene" uid="uid://dmu33vhlv3hj" path="res://multipliers/multiplier_2x.tscn" id="9_mfdv2"]
-[ext_resource type="PackedScene" path="res://ui.tscn" id="10_4cobl"]
+[ext_resource type="PackedScene" uid="uid://dgdvb6d1hclgi" path="res://ui.tscn" id="10_4cobl"]
 [ext_resource type="PackedScene" uid="uid://buenj8vlktd6y" path="res://multipliers/multiplier_5x.tscn" id="10_iotsf"]
 [ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://assets/game/PearSoda.ttf" id="12_4cobl"]
 [ext_resource type="Texture2D" uid="uid://5j4rgoh4f7jr" path="res://assets/options/grabber.png" id="13_ln7ps"]
@@ -26,6 +26,7 @@ texture = ExtResource("3_3vho3")
 
 [sub_resource type="Animation" id="Animation_vsp63"]
 resource_name = "new_animation"
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -82,6 +83,21 @@ corner_radius_bottom_left = 16
 shadow_size = 5
 shadow_offset = Vector2(0, 2.46)
 
+[sub_resource type="Animation" id="Animation_ln7ps"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Win:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_4cobl"]
 resource_name = "new_animation"
 tracks/0/type = "value"
@@ -99,7 +115,44 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ln7ps"]
 _data = {
+&"RESET": SubResource("Animation_ln7ps"),
 &"new_animation": SubResource("Animation_4cobl")
+}
+
+[sub_resource type="Animation" id="Animation_u8s88"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lose:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pxxsx"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lose:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dxwpq"]
+_data = {
+&"RESET": SubResource("Animation_u8s88"),
+&"new_animation": SubResource("Animation_pxxsx")
 }
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_jdpby"]
@@ -183,9 +236,11 @@ libraries = {
 }
 
 [node name="WinScreen" type="CanvasLayer" parent="."]
-layer = -4
+layer = 6
+visible = false
 
 [node name="Win" type="Panel" parent="WinScreen"]
+modulate = Color(1, 1, 1, 0)
 z_index = 36
 anchors_preset = 8
 anchor_left = 0.5
@@ -212,7 +267,7 @@ offset_bottom = 71.5
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("12_4cobl")
 theme_override_font_sizes/font_size = 80
-text = "Round Results"
+text = "Round "
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -296,6 +351,107 @@ text = "Money: "
 [node name="AnimationPlayer" type="AnimationPlayer" parent="WinScreen"]
 libraries = {
 &"": SubResource("AnimationLibrary_ln7ps")
+}
+
+[node name="LoseScreen" type="CanvasLayer" parent="."]
+layer = 6
+visible = false
+
+[node name="Lose" type="Panel" parent="LoseScreen"]
+modulate = Color(1, 1, 1, 0)
+z_index = 36
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -444.5
+offset_top = -225.0
+offset_right = 444.5
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5e03w")
+
+[node name="Label" type="Label" parent="LoseScreen/Lose"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.5
+offset_top = 16.5
+offset_right = 76.5
+offset_bottom = 71.5
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("12_4cobl")
+theme_override_font_sizes/font_size = 80
+text = "Round "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Points" type="Label" parent="LoseScreen/Lose"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.5
+offset_top = -84.5
+offset_right = 136.5
+offset_bottom = -36.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_4cobl")
+theme_override_font_sizes/font_size = 50
+text = "Points earned: "
+
+[node name="Round" type="Label" parent="LoseScreen/Lose"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_4cobl")
+theme_override_font_sizes/font_size = 50
+text = "Max rounds achieved: "
+
+[node name="MainMenu" type="Button" parent="LoseScreen/Lose"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -258.5
+offset_top = -122.0
+offset_right = 258.5
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_4cobl")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_leid8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8bboj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_q52ks")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jucfl")
+text = "Return To Menu"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LoseScreen"]
+libraries = {
+&"": SubResource("AnimationLibrary_dxwpq")
 }
 
 [node name="Options" type="CanvasLayer" parent="."]
@@ -575,6 +731,7 @@ script = ExtResource("17_mhvfb")
 audio_bus_name = "Master"
 
 [node name="UI" parent="." instance=ExtResource("10_4cobl")]
+layer = -1
 
 [node name="Game" type="CanvasLayer" parent="."]
 layer = 0
@@ -756,6 +913,7 @@ grow_vertical = 2
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="animation_finished" from="Animation/Panel2/AnimationPlayerWin" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="WinScreen/Win/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="LoseScreen/Lose/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Options/Options/Resume" to="." method="_on_back_opts_pressed"]
 [connection signal="pressed" from="Options/Options/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="value_changed" from="Options/Options/AudioControl" to="Options/Options/AudioControl" method="_on_value_changed"]

@@ -1,10 +1,17 @@
-[gd_resource type="Resource" script_class="BallData" load_steps=2 format=3 uid="uid://dlfvia7iq52nn"]
+[gd_resource type="Resource" script_class="BallData" load_steps=3 format=3 uid="uid://dlfvia7iq52nn"]
 
 [ext_resource type="Script" uid="uid://cxiw4djmlvklg" path="res://balls/ball_data.gd" id="1_8ns2a"]
+[ext_resource type="Texture2D" uid="uid://dxvfymeahidid" path="res://assets/balls/FatManBall.png" id="2_xulnd"]
 
 [resource]
 script = ExtResource("1_8ns2a")
+ID = "fat_man"
+custom = false
 limit = 0
 value = 100
+mult = 1
 bounce = 0.64
-gravity = 10
+gravity = 10.0
+texture = ExtResource("2_xulnd")
+price = 3
+rarity = "common"

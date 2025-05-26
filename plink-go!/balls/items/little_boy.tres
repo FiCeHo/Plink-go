@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BallData" load_steps=3 format=3 uid="uid://3eqntgv35eka"]
+
+[ext_resource type="Script" uid="uid://cxiw4djmlvklg" path="res://balls/ball_data.gd" id="1_fsaov"]
+[ext_resource type="Texture2D" uid="uid://co1igblp5lw7v" path="res://assets/balls/LittleBoyBall.png" id="2_xp3mh"]
+
+[resource]
+script = ExtResource("1_fsaov")
+ID = "little_boy"
+custom = false
+limit = 0
+value = 1
+mult = 1
+bounce = 0.64
+gravity = 2.5
+texture = ExtResource("2_xp3mh")
+price = 3
+rarity = "common"

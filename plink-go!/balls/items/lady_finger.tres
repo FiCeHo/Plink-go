@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BallData" load_steps=3 format=3 uid="uid://da5eyd0dpnm3"]
+
+[ext_resource type="Script" uid="uid://cxiw4djmlvklg" path="res://balls/ball_data.gd" id="1_6djw3"]
+[ext_resource type="Texture2D" uid="uid://b4xtha3u6ljke" path="res://assets/balls/LadyFinger.png" id="2_3ywkm"]
+
+[resource]
+script = ExtResource("1_6djw3")
+ID = "lady_finger"
+custom = true
+limit = 0
+value = 20
+mult = 20
+bounce = 0.8
+gravity = 5.0
+texture = ExtResource("2_3ywkm")
+price = 4
+rarity = "uncommon"
