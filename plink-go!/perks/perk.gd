@@ -12,7 +12,7 @@ func _ready():
 
 func update_display():
 	if perk_data and perk_data.icon:
-		$TextureRect.texture = perk_data.icon
+		$Holder/TextureRect.texture = perk_data.icon
 
 func _on_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:

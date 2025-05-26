@@ -8,6 +8,7 @@ var player_data
 var ball_index = 1
 var previous_player
 var won = false
+@onready var perk_list = $PlayerPerks
 
 @onready var options = $Options
 
@@ -36,19 +37,23 @@ func _unhandled_input(event: InputEvent):
 					player.tree_exited.connect(_end_round)
 				previous_player = player
 
-func load_perks():
-	if perk_array.has("2xPoints"):
-		Global.value_mult = Global.value_mult * 2
-	if perk_array.has("1Up"):
-		Global.limit_sum += 1
-	if perk_array.has("+1Mult"):
-		Global.mult_sum += 1
+func _load_player_perks():
+	for child in perk_list.get_children():
+		child.queue_free()
+		
+	for perk_data in PlayerVariables.perk_array:
+		var item = ShowItem.spawn(perk_data, "perk")
+		item.set_meta("source", "player")
+		#item.selected.connect(_on_item_selected)
+		item.get_node("Holder").self_modulate = Color8(255, 255, 255, 255)
+		perk_list.add_child(item)
+		print("Spawned item is a:", item.get_class())
 
 func _ready():
 	PlayerVariables.connect("update_score", _end_round)
 	options.visible = false
 	Global.initial_position = $Game/Container/Marker2D.global_position
-	load_perks()
+	_load_player_perks()
 	if PlayerVariables.current_round >= 3:
 		var next_goal = (Global.goals[PlayerVariables.current_round - 1] * 2) + (Global.goals[PlayerVariables.current_round - 2] * 2)
 		Global.goals.append(next_goal)

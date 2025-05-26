@@ -10,6 +10,7 @@ script = ExtResource("1_37p78")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
+anchors_preset = 0
 offset_left = 10.0
 offset_bottom = 40.0
 
@@ -57,6 +58,7 @@ region_enabled = true
 region_rect = Rect2(176, 0, 24, 100)
 
 [node name="Score" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 40.0
 offset_top = 30.0
 offset_right = 213.0
@@ -67,6 +69,7 @@ text = "Score: 0"
 vertical_alignment = 1
 
 [node name="Goal" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 40.0
 offset_top = 83.0
 offset_right = 153.0

@@ -230,6 +230,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
 
 [node name="PerkShop" type="HBoxContainer" parent="ShopPanel/PerkPanel/MarginContainer"]
 layout_mode = 2
@@ -340,10 +342,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -213.0
+offset_left = -180.0
 offset_top = -203.0
-offset_right = -93.0
-offset_bottom = 203.0
+offset_right = -60.0
+offset_bottom = 273.0
 grow_horizontal = 0
 grow_vertical = 2
 

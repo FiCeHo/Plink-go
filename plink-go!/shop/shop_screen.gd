@@ -128,7 +128,7 @@ func _on_buy_button_pressed():
 		_update_money_display()
 		PlayerVariables.perk_array.append(current_selected_data)
 			# Disable card
-		current_selected_item.get_node("TextureRect").visible = false
+		current_selected_item.get_node("Holder").visible = false
 		current_selected_item.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 		details_panel.hide()
@@ -207,14 +207,10 @@ func _load_player_perks():
 		
 	for perk_data in PlayerVariables.perk_array:
 		var item = ShowItem.spawn(perk_data, "perk")
-		var holder = Sprite2D.new()
-		holder.texture = load("res://assets/holders/ballHolder.png")
-		holder.scale = Vector2(2.0, 2.0)
 		item.set_meta("source", "player")
 		item.selected.connect(_on_item_selected)
-		item.scale = Vector2(0.44, 0.44)
-		holder.add_child(item)
-		perk_list.add_child(holder)
+		item.get_node("Holder").self_modulate = Color8(255, 255, 255, 255)
+		perk_list.add_child(item)
 		print("Spawned item is a:", item.get_class())
 
 func _update_money_display():
