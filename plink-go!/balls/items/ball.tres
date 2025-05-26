@@ -5,7 +5,9 @@
 
 [resource]
 script = ExtResource("1_46umi")
-ID = "ball"
+id = "ball"
+name = "Ball"
+type = "ball"
 custom = false
 limit = 0
 value = 10

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BallData" load_steps=3 format=3 uid="uid://x1m5aew3erjo"]
+[gd_resource type="Resource" script_class="BallData" load_steps=3 format=3 uid="uid://dtanv61w6y0ti"]
 
 [ext_resource type="Script" uid="uid://cxiw4djmlvklg" path="res://balls/ball_data.gd" id="1_kv5te"]
 [ext_resource type="Texture2D" uid="uid://b8gk37e3dd5u6" path="res://assets/balls/GumBall.png" id="2_lhsgr"]
@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("1_kv5te")
 id = "gumball"
+name = "Gumball"
+type = "ball"
 custom = true
 limit = 0
 value = 10

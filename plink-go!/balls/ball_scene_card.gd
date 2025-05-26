@@ -11,8 +11,8 @@ func _ready():
 	connect("gui_input", _on_gui_input)
 
 func update_display():
-	if ball_data and ball_data.icon:
-		$Holder/TextureRect.texture = ball_data.icon
+	if ball_data and ball_data.texture:
+		$Holder/TextureRect.texture = ball_data.texture
 
 func _on_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:

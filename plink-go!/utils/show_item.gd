@@ -17,7 +17,7 @@ static func spawn(item_data: Resource, item_type: String, as_card := false) -> N
 			
 	var suffix
 	if as_card:
-		suffix = "_scene_item.tscn"
+		suffix = "_scene_card.tscn"
 	else:
 		suffix = "_scene.tscn"
 	var scene_path = base_path + item_type + suffix
@@ -26,7 +26,9 @@ static func spawn(item_data: Resource, item_type: String, as_card := false) -> N
 		var scene = load(scene_path)
 		if scene is PackedScene:
 			var item = scene.instantiate()
-			if item_type == "ball":
+			if suffix.ends_with("_card.tscn"):
+				var a
+			elif item_type == "ball":
 				if item_data.custom:
 					var col_scene = load("res://balls/collisions/collision_" + item_data.id + ".tscn")
 					var collision = col_scene.instantiate()

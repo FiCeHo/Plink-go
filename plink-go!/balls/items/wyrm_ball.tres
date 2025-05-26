@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BallData" load_steps=3 format=3 uid="uid://bgitnmqmkhxnn"]
+[gd_resource type="Resource" script_class="BallData" load_steps=3 format=3 uid="uid://6xoosbnkpaw8"]
 
 [ext_resource type="Script" uid="uid://cxiw4djmlvklg" path="res://balls/ball_data.gd" id="1_aq0oe"]
 [ext_resource type="Texture2D" uid="uid://bo2s0v3n44ta8" path="res://assets/balls/WyrmBall.png" id="2_ewi4x"]
@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("1_aq0oe")
 id = "wyrm_ball"
+name = "Wyrm Ball"
+type = "ball"
 custom = false
 limit = 0
 value = 7

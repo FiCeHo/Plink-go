@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://assets/game/bckgr.png" id="3_sko7u"]
 [ext_resource type="Texture2D" uid="uid://re856boqbox1" path="res://assets/game/coinTransition.png" id="4_drlw6"]
 [ext_resource type="AudioStream" uid="uid://b4vudmibdh8a2" path="res://assets/audio/Plink-go! Shop Theme.mp3" id="5_drlw6"]
-[ext_resource type="PackedScene" uid="uid://bqm518ik1xdg0" path="res://shop/shop_ui.tscn" id="6_xwshg"]
+[ext_resource type="PackedScene" path="res://shop/shop_ui.tscn" id="6_xwshg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xwshg"]
 texture = ExtResource("3_sko7u")

@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("1_6djw3")
 id = "lady_finger"
+name = "Lady Finger"
+type = "ball"
 custom = true
 limit = 0
 value = 20

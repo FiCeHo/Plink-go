@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("1_fsaov")
 id = "little_boy"
+name = "Little Boy"
+type = "ball"
 custom = false
 limit = 0
 value = 1

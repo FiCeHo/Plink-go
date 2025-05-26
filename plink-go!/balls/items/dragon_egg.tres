@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BallData" load_steps=3 format=3 uid="uid://cv3p2qj4rtnk7"]
+[gd_resource type="Resource" script_class="BallData" load_steps=3 format=3 uid="uid://dxmrq13x33086"]
 
 [ext_resource type="Script" uid="uid://cxiw4djmlvklg" path="res://balls/ball_data.gd" id="1_dek14"]
 [ext_resource type="Texture2D" uid="uid://bg505aijwg5xw" path="res://assets/balls/DragonEggBall.png" id="2_uubkg"]
@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("1_dek14")
 id = "dragon_egg"
+name = "Dragon Egg"
+type = "ball"
 custom = true
 limit = 0
 value = 1000
