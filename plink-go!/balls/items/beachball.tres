@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_5eg6g")
-ID = "beachball"
+id = "beachball"
 custom = true
 limit = 0
 value = 10

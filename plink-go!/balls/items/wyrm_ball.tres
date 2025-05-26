@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_aq0oe")
-ID = "ball"
+id = "wyrm_ball"
 custom = false
 limit = 0
 value = 7

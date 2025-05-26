@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_h0p08")
-ID = "baseball"
+id = "baseball"
 custom = false
 limit = 0
 value = 10

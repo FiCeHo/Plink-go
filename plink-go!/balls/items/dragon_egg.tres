@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_dek14")
-ID = "dragon_egg"
+id = "dragon_egg"
 custom = true
 limit = 0
 value = 1000

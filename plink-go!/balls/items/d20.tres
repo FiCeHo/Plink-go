@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_c2cdl")
-ID = "d20"
+id = "d20"
 custom = true
 limit = 0
 value = 1

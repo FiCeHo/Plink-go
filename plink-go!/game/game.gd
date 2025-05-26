@@ -51,7 +51,7 @@ func _load_player_perks():
 		item.get_node("Holder").self_modulate = Color8(255, 255, 255, 255)
 		perk_list.add_child(item)
 		
-		match perk_data.ID:
+		match perk_data.id:
 			"black_hole":
 				PlayerVariables.perk_grav = true
 			"bounce_em":

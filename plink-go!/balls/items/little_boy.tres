@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_fsaov")
-ID = "little_boy"
+id = "little_boy"
 custom = false
 limit = 0
 value = 1

@@ -32,26 +32,7 @@ var selected_from_shop := false
 
 func _ready():
 	PlayerVariables.current_score = 0
-	_load_player_perks()
-	var all_perks = ItemUtils.get_all_perks()
-	var perk_data_list
-	if PlayerVariables.has_perk("havoc"):
-		perk_data_list = ItemUtils.pick_weighted_items_havoc(
-			all_perks,
-			perk_amount,
-			func(perk): return perk.rarity
-		)
-	else:
-		perk_data_list = ItemUtils.pick_weighted_items(
-			all_perks,
-			perk_amount,
-			func(perk): return perk.rarity
-		)
-	for perk_data in perk_data_list:
-		var item = ShowItem.spawn(perk_data, "perk")
-		item.set_meta("source", "shop")
-		item.selected.connect(_on_item_selected)
-		perk_list_display.add_child(item)
+	
 	_load_player_items("perk")
 	_load_player_items("ball")
 	

@@ -28,11 +28,11 @@ static func spawn(item_data: Resource, item_type: String, as_card := false) -> N
 			var item = scene.instantiate()
 			if item_type == "ball":
 				if item_data.custom:
-					var col_scene = load("res://balls/collisions/collision_" + item_data.ID + ".tscn")
+					var col_scene = load("res://balls/collisions/collision_" + item_data.id + ".tscn")
 					var collision = col_scene.instantiate()
 					item.get_node("RigidBody2D").get_node("CollisionShape2D").queue_free()
 					item.get_node("RigidBody2D").add_child(collision)
-					if item_data.ID == "beachball" || item_data.ID == "gumball":
+					if item_data.id == "beachball" || item_data.id == "gumball":
 						item.get_node("RigidBody2D/Sprite2D").scale = Vector2(1.0, 1.0)
 
 			# Assign data to correct property
