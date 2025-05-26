@@ -1,6 +1,7 @@
 extends Resource
 class_name BallData 
 
+@export var id: String
 @export var limit = 0
 @export var value = 10
 @export var bounce = 0.64

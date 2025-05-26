@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_46umi")
+id = "ball"
 limit = 0
 value = 1000000
 bounce = 0.64

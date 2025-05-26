@@ -1,7 +1,7 @@
 extends Node
 class_name ShowItem
 
-static func spawn(item_data: Resource, item_type: String) -> Node:
+static func spawn(item_data: Resource, item_type: String, as_card := false) -> Node:
 	var base_path = ""
 
 	match item_type:
@@ -14,18 +14,37 @@ static func spawn(item_data: Resource, item_type: String) -> Node:
 		_:
 			push_error("Unknown item type: %s" % item_type)
 			return null
-	
-	var scene_path = base_path + item_type + "_scene.tscn"
+			
+	var suffix
+	if as_card:
+		suffix = "_scene_item.tscn"
+	else:
+		suffix = "_scene.tscn"
+	var scene_path = base_path + item_type + suffix
 
 	if ResourceLoader.exists(scene_path):
 		var scene = load(scene_path)
 		if scene is PackedScene:
 			var item = scene.instantiate()
-			item.set(item_type + "_data", item_data)
+
+			# Assign data to correct property
+			if item.has_method("set"):
+				match item_type:
+					"perk":
+						if "perk_data" in item:
+							item.perk_data = item_data
+					"ball":
+						if "ball_data" in item:
+							item.ball_data = item_data
+					"modifier":
+						if "modifier_data" in item:
+							item.modifier_data = item_data
+
+			# Mark its type for reference
+			item.set_meta("item_type", item_type)
+			item.set_meta("is_card", as_card)
 			return item
-		else:
-			push_error("Scene is not a PackedScene: %s" % scene_path)
 	else:
 		push_error("Missing item scene: %s" % scene_path)
-
+		return null
 	return null

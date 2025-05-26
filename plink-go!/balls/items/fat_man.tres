@@ -4,7 +4,10 @@
 
 [resource]
 script = ExtResource("1_8ns2a")
+id = "fat_man"
 limit = 0
 value = 100
 bounce = 0.64
 gravity = 10
+price = 0
+rarity = "common"
