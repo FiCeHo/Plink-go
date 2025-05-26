@@ -18,9 +18,9 @@ func _ready():
 	ball_data.limit += Global.limit_sum
 	ball_data.value = ball_data.value * Global.value_mult
 	$RigidBody2D/Sprite2D.texture = ball_data.texture
-	if ball_data.ID != "d20":
+	if ball_data.id != "d20":
 		value = ball_data.value
-		if ball_data.ID != "baseball":
+		if ball_data.id != "baseball":
 			mult = ball_data.mult
 	else:
 		_mult_value_d20()

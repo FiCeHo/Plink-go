@@ -2,6 +2,7 @@ extends Resource
 class_name BallData 
 
 @export var id : String = "ball"
+@export var type : String = "ball"
 @export var custom : bool = false
 @export var limit = 0
 @export var value = 10

@@ -65,14 +65,14 @@ static func pick_weighted_items(
 	var owned_ids := PlayerVariables.perk_array.map(func(perk): return perk.id)
 
 	# Use a working pool of items the player doesn't own
-	var available_pool := pool.filter(func(item): return not owned_ids.has(item.ID))
+	var available_pool := pool.filter(func(item): return not owned_ids.has(item.id))
 
 	# Keep track of picked IDs to avoid repeats
 	var picked_ids := []
 
 	while selected.size() < count and available_pool.size() > 0:
 		# Only include items we haven't picked yet
-		var remaining_pool = available_pool.filter(func(item): return not picked_ids.has(item.ID))
+		var remaining_pool = available_pool.filter(func(item): return not picked_ids.has(item.id))
 		if remaining_pool.is_empty():
 			break
 
@@ -95,7 +95,7 @@ static func pick_weighted_items(
 			if choice <= running_total:
 				var picked = entry.item
 				selected.append(picked)
-				picked_ids.append(picked.ID)  # ✅ Track ID, not object
+				picked_ids.append(picked.id)  # ✅ Track ID, not object
 				break
 
 	return selected

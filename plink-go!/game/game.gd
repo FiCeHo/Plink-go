@@ -28,7 +28,7 @@ func _unhandled_input(event: InputEvent):
 				player.global_position = $Game/Container/Marker2D.global_position
 				player.initial_position = $Game/Container/Marker2D.global_position
 				player.hud = get_node("UI")
-				if player.ball_data.ID == "baseball":
+				if player.ball_data.id == "baseball":
 					player.mult = 10 * (ball_index + 1)
 
 				add_child(player)
@@ -82,7 +82,7 @@ func _ready():
 	previous_player.global_position = Global.initial_position
 	previous_player.initial_position = Global.initial_position
 	previous_player.hud = get_node("UI")
-	if previous_player.ball_data.ID == "baseball":
+	if previous_player.ball_data.id == "baseball":
 		previous_player.mult = 10 * ball_index
 	
 	add_child(previous_player)
