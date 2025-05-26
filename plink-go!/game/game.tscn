@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://ki6r087tju3x" path="res://pin.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://cmlphfg306x4b" path="res://game/game.gd" id="1_feb5d"]
 [ext_resource type="Texture2D" uid="uid://re856boqbox1" path="res://assets/game/coinTransition.png" id="3_3vho3"]
-[ext_resource type="PackedScene" uid="uid://cbf1bg60e4jj2" path="res://ui.tscn" id="3_j5wjh"]
 [ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://assets/game/bckgr.png" id="7_eow3j"]
 [ext_resource type="PackedScene" uid="uid://du38yl3g4ve6m" path="res://multipliers/multiplier_0x.tscn" id="7_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://cueqy8h8k7hne" path="res://multipliers/multiplier_0_8x.tscn" id="8_hve3p"]
 [ext_resource type="Texture2D" uid="uid://2yaodhl2j7i4" path="res://assets/game/menuBars.png" id="9_j8tme"]
 [ext_resource type="AudioStream" uid="uid://c5v6vjmkri3ms" path="res://assets/audio/Plink-go! Game Theme.mp3" id="9_l8g03"]
 [ext_resource type="PackedScene" uid="uid://dmu33vhlv3hj" path="res://multipliers/multiplier_2x.tscn" id="9_mfdv2"]
+[ext_resource type="PackedScene" path="res://ui.tscn" id="10_4cobl"]
 [ext_resource type="PackedScene" uid="uid://buenj8vlktd6y" path="res://multipliers/multiplier_5x.tscn" id="10_iotsf"]
 [ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://assets/game/PearSoda.ttf" id="12_4cobl"]
 [ext_resource type="Texture2D" uid="uid://5j4rgoh4f7jr" path="res://assets/options/grabber.png" id="13_ln7ps"]
@@ -574,8 +574,7 @@ text = " Mute"
 script = ExtResource("17_mhvfb")
 audio_bus_name = "Master"
 
-[node name="UI" parent="." instance=ExtResource("3_j5wjh")]
-layer = -1
+[node name="UI" parent="." instance=ExtResource("10_4cobl")]
 
 [node name="Game" type="CanvasLayer" parent="."]
 layer = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dxgq4u6g37r8l"]
+[gd_scene load_steps=22 format=3 uid="uid://csy071n5ov8lc"]
 
 [ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://assets/game/bckgr.png" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://j3xufmlkj4a0" path="res://main_menu.gd" id="1_jix8l"]
