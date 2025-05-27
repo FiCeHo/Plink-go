@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqm518ik1xdg0"]
+[gd_scene load_steps=3 format=3 uid="uid://ixikigwdh41c"]
 
-[ext_resource type="Script" uid="uid://bumyqtw3lim3i" path="res://shop/shop_ui.gd" id="1_ij1gs"]
+[ext_resource type="Script" path="res://shop/shop_ui.gd" id="1_ij1gs"]
 [ext_resource type="Texture2D" uid="uid://cnxxih6ya545r" path="res://assets/holders/ballHolder.png" id="4_jsmax"]
 
 [node name="UI" type="CanvasLayer"]
+layer = 128
 script = ExtResource("1_ij1gs")
 
 [node name="Control" type="Control" parent="."]
@@ -12,27 +13,82 @@ anchors_preset = 0
 offset_left = 10.0
 offset_bottom = 40.0
 
-[node name="Ball_cont" type="Sprite2D" parent="."]
-position = Vector2(100, 210)
+[node name="Ball_cont" type="Panel" parent="."]
+offset_left = 100.0
+offset_top = 210.0
+offset_right = 100.0
+offset_bottom = 210.0
 scale = Vector2(2, 2)
+
+[node name="TextureRect" type="TextureRect" parent="Ball_cont"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_jsmax")
 
-[node name="Ball_cont2" type="Sprite2D" parent="."]
-position = Vector2(100, 310)
+[node name="Ball_cont2" type="Panel" parent="."]
+offset_left = 100.0
+offset_top = 310.0
+offset_right = 100.0
+offset_bottom = 310.0
 scale = Vector2(2, 2)
+
+[node name="TextureRect" type="TextureRect" parent="Ball_cont2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_jsmax")
 
-[node name="Ball_cont3" type="Sprite2D" parent="."]
-position = Vector2(100, 410)
+[node name="Ball_cont3" type="Panel" parent="."]
+offset_left = 100.0
+offset_top = 410.0
+offset_right = 100.0
+offset_bottom = 410.0
 scale = Vector2(2, 2)
+
+[node name="TextureRect" type="TextureRect" parent="Ball_cont3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_jsmax")
 
-[node name="Ball_cont4" type="Sprite2D" parent="."]
-position = Vector2(100, 510)
+[node name="Ball_cont4" type="Panel" parent="."]
+offset_left = 100.0
+offset_top = 510.0
+offset_right = 100.0
+offset_bottom = 510.0
 scale = Vector2(2, 2)
+
+[node name="TextureRect" type="TextureRect" parent="Ball_cont4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_jsmax")
 
-[node name="Ball_cont5" type="Sprite2D" parent="."]
-position = Vector2(100, 610)
+[node name="Ball_cont5" type="Panel" parent="."]
+offset_left = 100.0
+offset_top = 610.0
+offset_right = 100.0
+offset_bottom = 610.0
 scale = Vector2(2, 2)
+
+[node name="TextureRect" type="TextureRect" parent="Ball_cont5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_jsmax")

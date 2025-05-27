@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgdvb6d1hclgi"]
+[gd_scene load_steps=5 format=3 uid="uid://cbf1bg60e4jj2"]
 
 [ext_resource type="Texture2D" uid="uid://d373wed3wawcd" path="res://assets/holders/ScoreHolder.png" id="2_n74dh"]
 [ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://assets/game/PearSoda.ttf" id="3_citti"]

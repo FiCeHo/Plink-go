@@ -98,8 +98,11 @@ func _on_item_selected(item_data: Resource, item_node: Control):
 		sell_button.text = "Sell (%d $)" % sell_value
 		sell_button.size = sell_button.get_minimum_size()
 		
-		details_panel.global_position = item_pos - Vector2(panel_size.x + offset.x, -y_offset)
-
+		if current_selected_data.type == "ball": 
+			details_panel.global_position = item_pos + Vector2(item_size.x + offset.x, y_offset)
+		else:
+			details_panel.global_position = item_pos - Vector2(panel_size.x + offset.x, -y_offset)
+		
 		var button_size = sell_button.size
 		var x_center_offset = (item_size.x - button_size.x) / 2.0
 
@@ -128,7 +131,17 @@ func _on_buy_button_pressed():
 		
 		_load_player_items("perk")
 		_load_player_items("ball")
-	
+		
+	if current_selected_type == "ball" && PlayerVariables.money >= current_selected_data.price:
+		PlayerVariables.money -= current_selected_data.price
+		_update_money_display()
+		var i = 0
+		for perk in PlayerVariables.ball_array:
+			if PlayerVariables.ball_array[i] == null:
+				PlayerVariables.ball_array[i] = current_selected_item
+				continue
+		_load_player_items("ball")
+		
 func _on_sell_button_pressed():
 	if current_selected_type == "perk" and current_selected_data:
 		if PlayerVariables.perk_array.has(current_selected_data):
@@ -266,21 +279,25 @@ func _load_player_items(item_type: String):
 
 		"ball":
 			ball_list = $ShopUI.get_children().filter(is_ball_holder)
+
+			for holder in ball_list:
+				for child in holder.get_children():
+					if child.has_meta("is_dynamic_card") and child.get_meta("is_dynamic_card"):
+						child.queue_free()
+
 			var i = 0
 			for ball_holder in ball_list:
 				if i >= PlayerVariables.ball_array.size():
-					break  # avoid index errors
-					
+					break
+
 				var ball_data = PlayerVariables.ball_array[i]
-				var ball_card = ShowItem.spawn(ball_data, "ball", true)  # true = spawn card version
-				
+				var ball_card = ShowItem.spawn(ball_data, "ball", true)
+
 				if ball_card:
 					ball_card.set_meta("source", "player")
+					ball_card.set_meta("is_dynamic_card", true)
 					ball_card.selected.connect(_on_item_selected)
 					ball_holder.add_child(ball_card)
-			for holder in ball_list:
-				for child in holder.get_children():
-					child.queue_free()
-			i += 1
+				i += 1
 		_:
 			return
