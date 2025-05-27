@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var hud : CanvasLayer
+@export var ui : CanvasLayer
 @export var ball_data: BallData
 var initial_position : Vector2
 var physics_material : PhysicsMaterial
@@ -10,13 +10,13 @@ var value
 var mult
 var limit
 var gravity
+var last_ball = false
 
 func _ready():
 	physics_material = PhysicsMaterial.new()
-	physics_material.bounce = ball_data.bounce
+	physics_material.bounce = ball_data.bounce 
 	get_node("RigidBody2D").physics_material_override = physics_material
-	ball_data.limit += Global.limit_sum
-	ball_data.value = ball_data.value * Global.value_mult
+	ball_data.value = ball_data.value + PlayerVariables.perk_boost
 	$RigidBody2D/Sprite2D.texture = ball_data.texture
 	if ball_data.id != "d20":
 		value = ball_data.value
@@ -25,14 +25,7 @@ func _ready():
 	else:
 		_mult_value_d20()
 	limit = ball_data.limit
-	gravity = ball_data.gravity
-	
-	if PlayerVariables.perk_grav:
-		gravity = gravity * 2
-	if PlayerVariables.perk_boost:
-		value += 100
-	if PlayerVariables.perk_mult:
-		mult = mult * 2
+	gravity = ball_data.gravity * PlayerVariables.perk_grav
 	
 func _mult_value_d20():
 	randomize()
@@ -42,7 +35,7 @@ func _mult_value_d20():
 func _process(delta):
 	if get_node("RigidBody2D").global_position.y > fallThreshold:
 		score = (value * mult) * Global.void_multiplier
-		hud.call("score_up", score)
+		ui.call("score_up", score)
 		kill()
 
 func kill():
@@ -61,10 +54,17 @@ func respawn():
 	rotation = 0
 
 func _on_rigid_body_2d_body_entered(body: Node) -> void:
-	#if body.get_parent().name.begins_with("Pin"):
-		#var a = 0
+	if body.get_parent().name.begins_with("Pin"):
+		value += PlayerVariables.perk_bounce
+		ui.call("score_up", PlayerVariables.perk_rush)
 	if body.get_parent().name.contains("Multiplier"):
 		body.get_parent().collision()
-		score = (value * mult) * body.get_parent().multiplier
-		hud.call("score_up", score)
+		var multiplier = body.get_parent().multiplier
+		if PlayerVariables.perk_lifebuoy:
+			multiplier = 1
+			PlayerVariables.perk_lifebuoy = false
+		score = (value * (mult * PlayerVariables.perk_mult)) * (multiplier * PlayerVariables.perk_mult)
+		ui.call("score_up", score)
+		if last_ball:
+			ui.call("jackpot")
 		kill()

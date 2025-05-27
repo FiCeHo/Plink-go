@@ -8,6 +8,7 @@ var player_data
 var ball_index = 1
 var previous_player
 var won = false
+var current_goal
 @onready var perk_list = $PlayerPerks
 
 @onready var options = $Options
@@ -27,7 +28,7 @@ func _unhandled_input(event: InputEvent):
 
 				player.global_position = $Game/Container/Marker2D.global_position
 				player.initial_position = $Game/Container/Marker2D.global_position
-				player.hud = get_node("UI")
+				player.ui = get_node("UI")
 				if player.ball_data.id == "baseball":
 					player.mult = 10 * (ball_index + 1)
 
@@ -38,6 +39,7 @@ func _unhandled_input(event: InputEvent):
 					player_data = ball_data_array[ball_index]
 				else:
 					player.tree_exited.connect(_last_ball)
+					player.last_ball = true
 				previous_player = player
 
 func _load_player_perks():
@@ -53,35 +55,48 @@ func _load_player_perks():
 		
 		match perk_data.id:
 			"black_hole":
-				PlayerVariables.perk_grav = true
+				PlayerVariables.perk_grav *= 2
 			"bounce_em":
-				PlayerVariables.perk_bounce = true
+				PlayerVariables.perk_bounce += 1
 			"double_down":
-				PlayerVariables.perk_mult = true
+				PlayerVariables.perk_mult *= 2
 			"haggler":
-				PlayerVariables.perk_sell = true
+				PlayerVariables.perk_sell *= 2
 			"jackpot":
-				PlayerVariables.perk_jackpot = true
+				PlayerVariables.perk_jackpot *= 2
 			"life_buoy":
-				PlayerVariables.perk_lifebouy = true
+				PlayerVariables.perk_lifebuoy = true
 			"point_booster":
-				PlayerVariables.perk_boost = true
+				PlayerVariables.perk_boost += 100
+			"bounce_rush":
+				PlayerVariables.perk_rush += 10
+			"investor":
+				PlayerVariables.perk_interest *= 2
+			"quality_magnet":
+				PlayerVariables.perk_magnet = true
+			"sale_hunter":
+				PlayerVariables.perk_reroll *= 2
+			"stop":
+				PlayerVariables.perk_stop *= 0.9
 			
 
 func _ready():
 	PlayerVariables.connect("update_score", _end_round)
+	current_goal = Global.goals[PlayerVariables.current_round - 1]
 	options.visible = false
+	PlayerVariables.reset_perks()
 	Global.initial_position = $Game/Container/Marker2D.global_position
 	_load_player_perks()
 	if PlayerVariables.current_round >= 3:
-		var next_goal = (Global.goals[PlayerVariables.current_round - 1] * 2) + (Global.goals[PlayerVariables.current_round - 2] * 2)
+		var next_goal = (Global.goals[PlayerVariables.current_round - 1] * 2) + (Global.goals[PlayerVariables.current_round - 2] * 2 / PlayerVariables.perk_stop)
 		Global.goals.append(next_goal)
+	Global.goals[PlayerVariables.current_round - 1] *= PlayerVariables.perk_stop
 	$UI.load_goal(Global.goals[PlayerVariables.current_round - 1])
 	player_data = ball_data_array[0]
 	previous_player = ShowItem.spawn(player_data, "ball")
 	previous_player.global_position = Global.initial_position
 	previous_player.initial_position = Global.initial_position
-	previous_player.hud = get_node("UI")
+	previous_player.ui = get_node("UI")
 	if previous_player.ball_data.id == "baseball":
 		previous_player.mult = 10 * ball_index
 	
@@ -90,9 +105,10 @@ func _ready():
 	update_display()
 
 func _end_round():
-	if PlayerVariables.current_score >= Global.goals[PlayerVariables.current_round - 1] && !won:
+	if PlayerVariables.current_score >= current_goal && !won:
+		get_tree().paused = true
 		won = true
-		var more_money = 3 + (5 - (ball_index - 1))
+		var more_money = (3 + (5 - (ball_index - 1))) * PlayerVariables.perk_interest
 		$WinScreen/Win/Label.text += str(PlayerVariables.current_round) + " Results"
 		PlayerVariables.current_round += 1
 		$WinScreen/Win/Points.text += str(PlayerVariables.current_score).split(".")[0] + " / " + str(Global.goals[PlayerVariables.current_round - 2])
@@ -103,7 +119,8 @@ func _end_round():
 		$Animation/Panel2/AnimationPlayerWin.play("new_animation")
 		
 func _last_ball():
-	if PlayerVariables.current_score >= Global.goals[PlayerVariables.current_round - 1] && !won:
+	if PlayerVariables.current_score >= current_goal && !won:
+		get_tree().paused = true
 		won = true
 		var more_money = 3 + (5 - (ball_index - 1))
 		$WinScreen/Win/Label.text += str(PlayerVariables.current_round) + " Results"
@@ -114,9 +131,10 @@ func _last_ball():
 		PlayerVariables.money += more_money
 		$Animation.visible = true
 		$Animation/Panel2/AnimationPlayerWin.play("new_animation")
-	elif PlayerVariables.current_score < Global.goals[PlayerVariables.current_round - 1]:
+	elif PlayerVariables.current_score < current_goal:
+		get_tree().paused = true
 		$LoseScreen/Lose/Label.text += str(PlayerVariables.current_round) + " Results"
-		$LoseScreen/Lose/Points.text += str(PlayerVariables.current_score).split(".")[0] + " / " + str(Global.goals[PlayerVariables.current_round - 2])
+		$LoseScreen/Lose/Points.text += str(PlayerVariables.current_score).split(".")[0] + " / " + str(Global.goals[PlayerVariables.current_round - 1])
 		$LoseScreen/Lose/Round.text += str(PlayerVariables.current_round)
 		$Animation.visible = true
 		$Animation/Panel2/AnimationPlayerWin.play("new_animation")
@@ -153,7 +171,9 @@ func _on_back_opts_pressed() -> void:
 func _on_main_menu_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://main_menu.tscn")
-
+	queue_free()
 
 func _on_continue_pressed() -> void:
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://shop/shop_screen.tscn")
+	queue_free()

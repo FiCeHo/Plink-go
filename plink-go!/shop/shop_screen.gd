@@ -147,7 +147,7 @@ func _on_sell_button_pressed():
 		if PlayerVariables.perk_array.has(current_selected_data):
 			var sell_value = _get_sell_value(current_selected_data)
 			PlayerVariables.perk_array.erase(current_selected_data)
-			PlayerVariables.money += sell_value
+			PlayerVariables.money += sell_value * PlayerVariables.perk_sell
 			_update_money_display()
 
 	# Clean up
@@ -165,7 +165,7 @@ func _on_sell_button_pressed():
 
 func _on_reroll_button_pressed():
 	if PlayerVariables.money >= reroll_cost:
-		PlayerVariables.money -= reroll_cost
+		PlayerVariables.money -= reroll_cost / PlayerVariables.perk_reroll
 		_update_money_display()
 		reroll_cost += 2
 		reroll_button.text = "Reroll (%d $)" % reroll_cost
@@ -250,6 +250,7 @@ func _display_shop_items(item_type: String):
 		var item
 		if item_data.type == "ball":
 			item = ShowItem.spawn(item_data, item_type, true)
+			item.get_node("TextureRect").scale = Vector2(1, 1)
 		else:
 			item = ShowItem.spawn(item_data, item_type)
 		item.set_meta("source", "shop")

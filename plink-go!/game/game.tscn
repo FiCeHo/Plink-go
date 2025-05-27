@@ -215,6 +215,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_j5wjh")
 
 [node name="Animation" type="CanvasLayer" parent="."]
+process_mode = 3
 layer = 4
 
 [node name="Panel2" type="Panel" parent="Animation"]
@@ -236,6 +237,7 @@ libraries = {
 }
 
 [node name="WinScreen" type="CanvasLayer" parent="."]
+process_mode = 3
 layer = 6
 visible = false
 
@@ -354,6 +356,7 @@ libraries = {
 }
 
 [node name="LoseScreen" type="CanvasLayer" parent="."]
+process_mode = 3
 layer = 6
 visible = false
 
@@ -892,6 +895,7 @@ icon = ExtResource("9_j8tme")
 icon_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("9_l8g03")
 autoplay = true
 bus = &"Music"

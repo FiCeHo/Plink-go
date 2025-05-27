@@ -12,7 +12,7 @@ func _ready():
 
 func update_display():
 	if ball_data and ball_data.texture:
-		$Holder/TextureRect.texture = ball_data.texture
+		$TextureRect.texture = ball_data.texture
 
 func _on_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
