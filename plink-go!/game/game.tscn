@@ -459,6 +459,7 @@ libraries = {
 
 [node name="Options" type="CanvasLayer" parent="."]
 layer = 11
+visible = false
 
 [node name="Options" type="Panel" parent="Options"]
 process_mode = 2

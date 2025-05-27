@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://n6g0wutn7lld"]
+[gd_scene load_steps=37 format=3 uid="uid://n6g0wutn7lld"]
 
 [ext_resource type="Script" uid="uid://bdjk52saa7fox" path="res://shop/shop_screen.gd" id="1_6fma4"]
 [ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://assets/game/PearSoda.ttf" id="2_td7g5"]
@@ -6,6 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://re856boqbox1" path="res://assets/game/coinTransition.png" id="4_drlw6"]
 [ext_resource type="AudioStream" uid="uid://b4vudmibdh8a2" path="res://assets/audio/Plink-go! Shop Theme.mp3" id="5_drlw6"]
 [ext_resource type="PackedScene" uid="uid://ixikigwdh41c" path="res://shop/shop_ui.tscn" id="6_xwshg"]
+[ext_resource type="Texture2D" uid="uid://5j4rgoh4f7jr" path="res://assets/options/grabber.png" id="7_q8qnl"]
+[ext_resource type="Script" uid="uid://bb2k50hg1abbf" path="res://audio_control.gd" id="8_a6v1f"]
+[ext_resource type="Texture2D" uid="uid://evhfa0dg14i8" path="res://assets/options/checkBoxCheckd.png" id="9_5qdmw"]
+[ext_resource type="Texture2D" uid="uid://c7mwkvxw1t5mm" path="res://assets/options/checkBox.png" id="10_gylyq"]
+[ext_resource type="Script" uid="uid://d2qimi1tdg3fj" path="res://check_box_mute.gd" id="11_yxc17"]
+[ext_resource type="Texture2D" uid="uid://2yaodhl2j7i4" path="res://assets/game/menuBars.png" id="12_a6v1f"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xwshg"]
 texture = ExtResource("3_sko7u")
@@ -133,6 +139,81 @@ content_margin_top = 8.0
 content_margin_right = 8.0
 content_margin_bottom = 8.0
 draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3kav"]
+bg_color = Color(0.1386, 0.15723, 0.18, 0.941176)
+border_blend = true
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+shadow_offset = Vector2(0, 4.815)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mvqrh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8fry"]
+bg_color = Color(0.953209, 0.263424, 0.282441, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 2.46)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxqh4"]
+bg_color = Color(0.65098, 0.105882, 0.145098, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 2.46)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6yex6"]
+bg_color = Color(0.890196, 0.188235, 0.227451, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 2.46)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_68hgi"]
+color = Color(1, 1, 1, 1)
+thickness = 20
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_wpqo7"]
+color = Color(0.34, 0.493, 0.68, 1)
+thickness = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fkbbd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qdmw"]
+bg_color = Color(0.953209, 0.263424, 0.282441, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 2.46)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gylyq"]
+bg_color = Color(0.65098, 0.105882, 0.145098, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 2.46)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxc17"]
+bg_color = Color(0.890196, 0.188235, 0.227451, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 2.46)
 
 [node name="ShopScreen" type="Control"]
 layout_mode = 3
@@ -379,6 +460,310 @@ offset_bottom = 83.0
 process_mode = 3
 stream = ExtResource("5_drlw6")
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="ShopUI" parent="." instance=ExtResource("6_xwshg")]
+
+[node name="Options" type="CanvasLayer" parent="."]
+layer = 11
+visible = false
+
+[node name="Options" type="Panel" parent="Options"]
+process_mode = 2
+z_index = 36
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -444.5
+offset_top = -287.5
+offset_right = 444.5
+offset_bottom = 287.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d3kav")
+
+[node name="Label" type="Label" parent="Options/Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.5
+offset_top = 16.5
+offset_right = 76.5
+offset_bottom = 71.5
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_td7g5")
+theme_override_font_sizes/font_size = 80
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music" type="Label" parent="Options/Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -387.0
+offset_top = 211.5
+offset_right = -167.0
+offset_bottom = 286.5
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_td7g5")
+theme_override_font_sizes/font_size = 45
+text = "Music:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFX" type="Label" parent="Options/Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -371.0
+offset_top = 323.5
+offset_right = -151.0
+offset_bottom = 398.5
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_td7g5")
+theme_override_font_sizes/font_size = 45
+text = "SFX:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Master" type="Label" parent="Options/Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -396.0
+offset_top = 102.5
+offset_right = -176.0
+offset_bottom = 177.5
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_td7g5")
+theme_override_font_sizes/font_size = 45
+text = "Master:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Resume" type="Button" parent="Options/Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = -140.0
+offset_right = 343.0
+offset_bottom = -39.0
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_td7g5")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mvqrh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y8fry")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dxqh4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6yex6")
+text = "Resume"
+
+[node name="MainMenu" type="Button" parent="Options/Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -525.0
+offset_top = -140.0
+offset_right = -70.0
+offset_bottom = -39.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_td7g5")
+theme_override_font_sizes/font_size = 74
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mvqrh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y8fry")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dxqh4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6yex6")
+text = "Return to menu"
+
+[node name="AudioControl" type="HSlider" parent="Options/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.5
+offset_top = -68.0
+offset_right = 214.5
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/grabber = ExtResource("7_q8qnl")
+theme_override_icons/grabber_highlight = ExtResource("7_q8qnl")
+theme_override_icons/grabber_disabled = ExtResource("7_q8qnl")
+theme_override_icons/tick = ExtResource("7_q8qnl")
+theme_override_styles/slider = SubResource("StyleBoxLine_68hgi")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_wpqo7")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_wpqo7")
+max_value = 1.0
+step = 0.05
+value = 0.5
+script = ExtResource("8_a6v1f")
+audio_bus_name = "Music"
+
+[node name="AudioControl2" type="HSlider" parent="Options/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = 46.0
+offset_right = 214.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/grabber = ExtResource("7_q8qnl")
+theme_override_icons/grabber_highlight = ExtResource("7_q8qnl")
+theme_override_icons/grabber_disabled = ExtResource("7_q8qnl")
+theme_override_icons/tick = ExtResource("7_q8qnl")
+theme_override_styles/slider = SubResource("StyleBoxLine_68hgi")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_wpqo7")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_wpqo7")
+max_value = 1.0
+step = 0.05
+value = 0.5
+script = ExtResource("8_a6v1f")
+audio_bus_name = "SFX"
+
+[node name="AudioControl3" type="HSlider" parent="Options/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -178.0
+offset_right = 214.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/grabber = ExtResource("7_q8qnl")
+theme_override_icons/grabber_highlight = ExtResource("7_q8qnl")
+theme_override_icons/grabber_disabled = ExtResource("7_q8qnl")
+theme_override_icons/tick = ExtResource("7_q8qnl")
+theme_override_styles/slider = SubResource("StyleBoxLine_68hgi")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_wpqo7")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_wpqo7")
+max_value = 1.0
+step = 0.05
+value = 0.5
+script = ExtResource("8_a6v1f")
+audio_bus_name = "Master"
+
+[node name="CheckBox" type="CheckBox" parent="Options/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 253.0
+offset_top = -97.0
+offset_right = 389.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_td7g5")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fkbbd")
+theme_override_icons/checked = ExtResource("9_5qdmw")
+theme_override_icons/unchecked = ExtResource("10_gylyq")
+text = " Mute"
+script = ExtResource("11_yxc17")
+audio_bus_name = "Music"
+
+[node name="CheckBox2" type="CheckBox" parent="Options/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 253.0
+offset_top = 18.0
+offset_right = 389.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_td7g5")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fkbbd")
+theme_override_icons/checked = ExtResource("9_5qdmw")
+theme_override_icons/unchecked = ExtResource("10_gylyq")
+text = " Mute"
+script = ExtResource("11_yxc17")
+audio_bus_name = "SFX"
+
+[node name="CheckBox3" type="CheckBox" parent="Options/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 253.0
+offset_top = -203.0
+offset_right = 389.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_td7g5")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fkbbd")
+theme_override_icons/checked = ExtResource("9_5qdmw")
+theme_override_icons/unchecked = ExtResource("10_gylyq")
+text = " Mute"
+script = ExtResource("11_yxc17")
+audio_bus_name = "Master"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -116.0
+offset_top = 30.0
+offset_right = -40.0
+offset_bottom = 104.0
+grow_horizontal = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_5qdmw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gylyq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_yxc17")
+icon = ExtResource("12_a6v1f")
+icon_alignment = 1
+
+[connection signal="pressed" from="Options/Options/Resume" to="." method="_on_back_opts_pressed"]
+[connection signal="pressed" from="Options/Options/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="value_changed" from="Options/Options/AudioControl" to="Options/Options/AudioControl" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/Options/AudioControl2" to="Options/Options/AudioControl2" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/Options/AudioControl3" to="Options/Options/AudioControl3" method="_on_value_changed"]
+[connection signal="toggled" from="Options/Options/CheckBox" to="Options/Options/CheckBox" method="_on_toggled"]
+[connection signal="toggled" from="Options/Options/CheckBox2" to="Options/Options/CheckBox2" method="_on_toggled"]
+[connection signal="toggled" from="Options/Options/CheckBox3" to="Options/Options/CheckBox3" method="_on_toggled"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

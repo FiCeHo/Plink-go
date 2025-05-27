@@ -15,6 +15,7 @@ var PlayerData = preload("res://player_variables.gd")
 
 @onready var perk_list = get_node("PlayerPerks")
 @onready var sell_button = get_node("SellButton")
+@onready var options = $Options
 
 var perk_limit
 var ball_list
@@ -335,3 +336,17 @@ func _load_player_items(item_type: String):
 				i += 1
 		_:
 			return
+
+func _on_button_pressed() -> void:
+	get_tree().paused = true
+	options.layer = 10
+	options.visible = true
+
+func _on_back_opts_pressed() -> void:
+	options.visible = false
+	options.layer = -4
+	get_tree().paused = false
+	
+func _on_main_menu_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://main_menu.tscn")
