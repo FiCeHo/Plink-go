@@ -54,3 +54,15 @@ func has_perk(perk_id: String) -> bool:
 		if perk.id == perk_id:
 			return true
 	return false
+	
+func compact_ball_array():
+	var compacted = []
+
+	for ball in ball_array:
+		if ball != null:
+			compacted.append(ball)
+
+	while compacted.size() < ball_array.size():
+		compacted.append(null)
+
+	ball_array = compacted

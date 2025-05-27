@@ -132,14 +132,27 @@ func _on_buy_button_pressed():
 		_load_player_items("perk")
 		_load_player_items("ball")
 		
-	if current_selected_type == "ball" && PlayerVariables.money >= current_selected_data.price:
-		PlayerVariables.money -= current_selected_data.price
-		_update_money_display()
-		var i = 0
-		for perk in PlayerVariables.ball_array:
+	if current_selected_type == "ball" and PlayerVariables.money >= current_selected_data.price:
+
+		var inserted := false
+		for i in PlayerVariables.ball_array.size():
 			if PlayerVariables.ball_array[i] == null:
-				PlayerVariables.ball_array[i] = current_selected_item
-				continue
+				PlayerVariables.money -= current_selected_data.price
+				_update_money_display()
+				PlayerVariables.ball_array[i] = current_selected_data
+				inserted = true
+				break
+		if inserted:
+			current_selected_item.get_node("TextureRect").visible = false
+			current_selected_item.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+			details_panel.hide()
+			buy_button.hide()
+
+			current_selected_item = null
+			current_selected_type = ""
+			current_selected_data = null
+
 		_load_player_items("ball")
 		
 func _on_sell_button_pressed():
@@ -149,8 +162,20 @@ func _on_sell_button_pressed():
 			PlayerVariables.perk_array.erase(current_selected_data)
 			PlayerVariables.money += sell_value * PlayerVariables.perk_sell
 			_update_money_display()
+	elif current_selected_type == "ball" and current_selected_data:
+		var index := PlayerVariables.ball_array.find(current_selected_data)
+		if index != -1:
+			var sell_value = _get_sell_value(current_selected_data)
 
-	# Clean up
+			# Create a modifiable copy
+			var new_array = PlayerVariables.ball_array.duplicate()
+			new_array[index] = null
+			PlayerVariables.ball_array = new_array  # Replace the original array
+
+			PlayerVariables.money += sell_value
+			_update_money_display()
+			PlayerVariables.compact_ball_array()
+			
 	current_selected_item.queue_free()
 	current_selected_item = null
 	current_selected_type = ""
