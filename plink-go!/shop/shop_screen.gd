@@ -223,6 +223,11 @@ func _do_reroll():
 		item.set_meta("source", "shop")
 		item.selected.connect(_on_item_selected)
 		perk_list_display.add_child(item)
+	
+	for child in ball_list_display.get_children():
+		child.queue_free()
+	
+	_display_shop_items("ball")
 
 func _load_player_perks():
 	for child in perk_list.get_children():
