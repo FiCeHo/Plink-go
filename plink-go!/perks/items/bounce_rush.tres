@@ -10,5 +10,5 @@ type = "perk"
 name = "Bounce Rush"
 description = "Each bounce adds 10 points to the global score"
 icon = ExtResource("1_ulymk")
-price = 0
+price = 3
 rarity = "common"

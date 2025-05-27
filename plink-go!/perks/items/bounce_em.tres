@@ -10,5 +10,5 @@ type = "perk"
 name = "Bounce'Em"
 description = "Each bounce adds 1 point to the ball's base value"
 icon = ExtResource("1_mrgam")
-price = 5
+price = 4
 rarity = "common"

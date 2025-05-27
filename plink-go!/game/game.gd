@@ -82,6 +82,9 @@ func _load_player_perks():
 			
 
 func _ready():
+	for i in ball_data_array.size():
+		if ball_data_array[i] == null:
+			ball_data_array[i] = preload("res://balls/items/pebble.tres")
 	PlayerVariables.connect("update_score", _end_round_early)
 	current_goal = Global.goals[PlayerVariables.current_round - 1]
 	options.visible = false

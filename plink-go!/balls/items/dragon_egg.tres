@@ -17,4 +17,4 @@ bounce = 0.42
 gravity = 5.0
 texture = ExtResource("2_uubkg")
 price = 10
-rarity = "common"
+rarity = "legendary"
