@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PerkData" load_steps=3 format=3 uid="uid://cduw8pc28ruor"]
+
+[ext_resource type="Texture2D" uid="uid://xkutbcbh65qs" path="res://assets/perks/InvestorPerk.png" id="1_0l0h5"]
+[ext_resource type="Script" uid="uid://7uoio7x1ilb0" path="res://perks/perk_data.gd" id="2_51l3r"]
+
+[resource]
+script = ExtResource("2_51l3r")
+id = "investor"
+type = "perk"
+name = "Investor"
+description = "placeholder"
+icon = ExtResource("1_0l0h5")
+price = 0
+rarity = "common"

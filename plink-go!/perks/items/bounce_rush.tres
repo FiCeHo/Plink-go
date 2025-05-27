@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PerkData" load_steps=3 format=3 uid="uid://5fb4r71sknw5"]
+
+[ext_resource type="Texture2D" uid="uid://dofjdqyln6v0" path="res://assets/perks/BounceRushPerk.png" id="1_ulymk"]
+[ext_resource type="Script" uid="uid://7uoio7x1ilb0" path="res://perks/perk_data.gd" id="2_o2p0l"]
+
+[resource]
+script = ExtResource("2_o2p0l")
+id = "bounce_rush"
+type = "perk"
+name = "Bounce Rush"
+description = "placeholder"
+icon = ExtResource("1_ulymk")
+price = 0
+rarity = "common"

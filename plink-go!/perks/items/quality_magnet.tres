@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PerkData" load_steps=3 format=3 uid="uid://dy6lmpo170ib7"]
+
+[ext_resource type="Texture2D" uid="uid://h3b16p281mmg" path="res://assets/perks/QualityMagnetPerk.png" id="1_4jfuf"]
+[ext_resource type="Script" uid="uid://7uoio7x1ilb0" path="res://perks/perk_data.gd" id="2_ggfv3"]
+
+[resource]
+script = ExtResource("2_ggfv3")
+id = "quality_magnet"
+type = "perk"
+name = "Quality Magnet"
+description = "placeholder"
+icon = ExtResource("1_4jfuf")
+price = 0
+rarity = "common"

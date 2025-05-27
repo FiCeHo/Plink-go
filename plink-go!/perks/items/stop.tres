@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PerkData" load_steps=3 format=3 uid="uid://c12xgyqbifej4"]
+
+[ext_resource type="Texture2D" uid="uid://b5u5ye0mlqrwh" path="res://assets/perks/StopPerk.png" id="1_hkl7s"]
+[ext_resource type="Script" uid="uid://7uoio7x1ilb0" path="res://perks/perk_data.gd" id="2_5a5h4"]
+
+[resource]
+script = ExtResource("2_5a5h4")
+id = "stop"
+type = "perk"
+name = "Stop"
+description = "placeholder"
+icon = ExtResource("1_hkl7s")
+price = 0
+rarity = "common"
