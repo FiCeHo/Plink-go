@@ -4,7 +4,7 @@ signal update_score(score)
 
 var ball_array = []
 var perk_array = []
-var money = 200000000
+var money = 5
 var current_score = 0:
 	set(value):
 		current_score = value
@@ -44,7 +44,7 @@ func reset_perks():
 func new_game():
 	ball_array = Global.initial_ball_array
 	perk_array = []
-	#money = 5
+	money = 5
 	current_score = 0
 	current_round = 1
 	reset_perks()
