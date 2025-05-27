@@ -32,7 +32,8 @@ func _unhandled_input(event: InputEvent):
 				if player.ball_data.id == "baseball":
 					player.mult = 10 * (ball_index + 1)
 
-				add_child(player)
+				$Balls.add_child(player)
+				player.connect("dead", _last_ball)
 				ball_index += 1
 
 				if ball_index < ball_data_array.size():
@@ -81,7 +82,7 @@ func _load_player_perks():
 			
 
 func _ready():
-	PlayerVariables.connect("update_score", _end_round)
+	PlayerVariables.connect("update_score", _end_round_early)
 	current_goal = Global.goals[PlayerVariables.current_round - 1]
 	options.visible = false
 	PlayerVariables.reset_perks()
@@ -100,11 +101,12 @@ func _ready():
 	if previous_player.ball_data.id == "baseball":
 		previous_player.mult = 10 * ball_index
 	
-	add_child(previous_player)
+	$Balls.add_child(previous_player)
+	previous_player.connect("dead", _last_ball)
 	player_data = ball_data_array[1]
 	update_display()
 
-func _end_round():
+func _end_round_early():
 	if PlayerVariables.current_score >= current_goal && !won:
 		get_tree().paused = true
 		won = true
@@ -118,11 +120,11 @@ func _end_round():
 		$Animation.visible = true
 		$Animation/Panel2/AnimationPlayerWin.play("new_animation")
 		
-func _last_ball():
+func _end_round():
 	if PlayerVariables.current_score >= current_goal && !won:
 		get_tree().paused = true
 		won = true
-		var more_money = 3 + (5 - (ball_index - 1))
+		var more_money = (3 + (5 - (ball_index - 1))) * PlayerVariables.perk_interest
 		$WinScreen/Win/Label.text += str(PlayerVariables.current_round) + " Results"
 		PlayerVariables.current_round += 1
 		$WinScreen/Win/Points.text += str(PlayerVariables.current_score).split(".")[0] + " / " + str(Global.goals[PlayerVariables.current_round - 2])
@@ -138,6 +140,11 @@ func _last_ball():
 		$LoseScreen/Lose/Round.text += str(PlayerVariables.current_round)
 		$Animation.visible = true
 		$Animation/Panel2/AnimationPlayerWin.play("new_animation")
+		
+func _last_ball():
+	var balls = get_node("Balls").get_children()
+	if balls.size() == 1:
+		_end_round()
 
 func update_display():
 	ball_holders = $UI.get_children().filter(is_ball_holder)
@@ -171,9 +178,7 @@ func _on_back_opts_pressed() -> void:
 func _on_main_menu_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://main_menu.tscn")
-	queue_free()
 
 func _on_continue_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://shop/shop_screen.tscn")
-	queue_free()

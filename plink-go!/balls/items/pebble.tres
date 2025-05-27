@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BallData" load_steps=3 format=3 uid="uid://cc4m7b015c62"]
+
+[ext_resource type="Script" uid="uid://cxiw4djmlvklg" path="res://balls/ball_data.gd" id="1_odq72"]
+[ext_resource type="Texture2D" uid="uid://colq4utm2g8f3" path="res://assets/balls/Pebble.png" id="2_0v7dw"]
+
+[resource]
+script = ExtResource("1_odq72")
+id = "pebble"
+name = "Pebble"
+description = "Useless rock"
+type = "ball"
+custom = true
+limit = 0
+value = 1
+mult = 1
+bounce = 0.32
+gravity = 10.0
+texture = ExtResource("2_0v7dw")
+price = 0
+rarity = "common"

@@ -7,6 +7,7 @@
 script = ExtResource("1_h0p08")
 id = "baseball"
 name = "Baseball"
+description = "Scores 10 points and gets a multiplier equal to its position times 10"
 type = "ball"
 custom = false
 limit = 0

@@ -1,5 +1,7 @@
 extends Node2D
 
+signal dead()
+
 @export var ui : CanvasLayer
 @export var ball_data: BallData
 var initial_position : Vector2
@@ -34,13 +36,14 @@ func _mult_value_d20():
 
 func _process(delta):
 	if get_node("RigidBody2D").global_position.y > fallThreshold:
-		score = (value * mult) * Global.void_multiplier
+		score = (value * (mult * PlayerVariables.perk_mult)) * (Global.void_multiplier * PlayerVariables.perk_mult)
 		ui.call("score_up", score)
 		kill()
 
 func kill():
 	if ball_data.limit == 0:
 		queue_free()
+		emit_signal("dead")
 	else:
 		ball_data.limit -= 1
 		respawn()

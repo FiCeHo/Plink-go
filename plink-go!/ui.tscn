@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbf1bg60e4jj2"]
 
-[ext_resource type="Script" uid="uid://bg1c6ff0b4v22" path="res://ui.gd" id="1_nltto"]
+[ext_resource type="Script" uid="uid://bsfo7pkwii80l" path="res://ui.gd" id="1_nltto"]
 [ext_resource type="Texture2D" uid="uid://d373wed3wawcd" path="res://assets/holders/ScoreHolder.png" id="2_n74dh"]
 [ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://assets/game/PearSoda.ttf" id="3_citti"]
 [ext_resource type="Texture2D" uid="uid://cnxxih6ya545r" path="res://assets/holders/ballHolder.png" id="4_nancp"]

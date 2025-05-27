@@ -7,6 +7,7 @@
 script = ExtResource("1_kv5te")
 id = "gumball"
 name = "Gumball"
+description = "Half as small as a normal ball but twice as bouncy"
 type = "ball"
 custom = true
 limit = 0

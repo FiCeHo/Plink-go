@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://dxgq4u6g37r8l"]
 
-[ext_resource type="Script" uid="uid://j3xufmlkj4a0" path="res://main_menu.gd" id="1_7mn57"]
+[ext_resource type="Script" uid="uid://nr61gb7dvxa3" path="res://main_menu.gd" id="1_7mn57"]
 [ext_resource type="Texture2D" uid="uid://c2ep4ulm4ss2v" path="res://assets/game/bckgr.png" id="2_6vmua"]
 [ext_resource type="FontFile" uid="uid://ci4buvranebo7" path="res://assets/game/PearSoda.ttf" id="3_rv8kf"]
 [ext_resource type="AudioStream" uid="uid://ixsyfp8cp5or" path="res://assets/audio/Plink-go! Main Theme.mp3" id="4_5i8qu"]

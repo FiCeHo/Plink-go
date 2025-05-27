@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ixikigwdh41c"]
 
-[ext_resource type="Script" path="res://shop/shop_ui.gd" id="1_ij1gs"]
+[ext_resource type="Script" uid="uid://bumyqtw3lim3i" path="res://shop/shop_ui.gd" id="1_ij1gs"]
 [ext_resource type="Texture2D" uid="uid://cnxxih6ya545r" path="res://assets/holders/ballHolder.png" id="4_jsmax"]
 
 [node name="UI" type="CanvasLayer"]

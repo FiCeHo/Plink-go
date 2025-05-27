@@ -7,6 +7,7 @@
 script = ExtResource("1_c2cdl")
 id = "d20"
 name = "D20"
+description = "Scores 1-1000 points with 1-1000 mult randomly"
 type = "ball"
 custom = true
 limit = 0

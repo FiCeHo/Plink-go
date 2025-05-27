@@ -11,4 +11,4 @@ name = "Havoc"
 description = "Allows perks to appear multiple times in the shop"
 icon = ExtResource("1_vh7ha")
 price = 11
-rarity = "legendary"
+rarity = "common"

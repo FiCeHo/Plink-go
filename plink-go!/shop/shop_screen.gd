@@ -16,6 +16,7 @@ var PlayerData = preload("res://player_variables.gd")
 @onready var perk_list = get_node("PlayerPerks")
 @onready var sell_button = get_node("SellButton")
 
+var perk_limit
 var ball_list
 var ball_data_array = PlayerVariables.ball_array
 
@@ -115,7 +116,8 @@ func _on_buy_button_pressed():
 	if not current_selected_item:
 		return
 		
-	if current_selected_type == "perk" && PlayerVariables.money >= current_selected_data.price:
+	if current_selected_type == "perk" && PlayerVariables.money >= current_selected_data.price && perk_limit < 5:
+		perk_limit += 1
 		PlayerVariables.money -= current_selected_data.price
 		_update_money_display()
 		PlayerVariables.perk_array.append(current_selected_data)
@@ -307,6 +309,7 @@ func _load_player_items(item_type: String):
 				item.selected.connect(_on_item_selected)
 				item.get_node("Holder").self_modulate = Color.WHITE
 				container.add_child(item)
+			perk_limit = items.size()
 
 		"ball":
 			ball_list = $ShopUI.get_children().filter(is_ball_holder)

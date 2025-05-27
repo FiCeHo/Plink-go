@@ -379,5 +379,6 @@ offset_bottom = 83.0
 process_mode = 3
 stream = ExtResource("5_drlw6")
 autoplay = true
+parameters/looping = true
 
 [node name="ShopUI" parent="." instance=ExtResource("6_xwshg")]

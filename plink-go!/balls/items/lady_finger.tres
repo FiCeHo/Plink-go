@@ -7,6 +7,7 @@
 script = ExtResource("1_6djw3")
 id = "lady_finger"
 name = "Lady Finger"
+description = "Scores 20 points with a base mult of 20"
 type = "ball"
 custom = true
 limit = 0

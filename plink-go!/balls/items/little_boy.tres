@@ -7,6 +7,7 @@
 script = ExtResource("1_fsaov")
 id = "little_boy"
 name = "Little Boy"
+description = "Scores 1 point but is bouncier"
 type = "ball"
 custom = false
 limit = 0

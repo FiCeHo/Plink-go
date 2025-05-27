@@ -7,6 +7,7 @@
 script = ExtResource("1_8ns2a")
 id = "fat_man"
 name = "Fat Man"
+description = "Scores 100 points but is less bouncy"
 type = "ball"
 custom = false
 limit = 0

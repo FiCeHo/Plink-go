@@ -44,7 +44,7 @@ func reset_perks():
 func new_game():
 	ball_array = Global.initial_ball_array
 	perk_array = []
-	money = 5
+	#money = 5
 	current_score = 0
 	current_round = 1
 	reset_perks()

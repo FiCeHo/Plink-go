@@ -7,6 +7,7 @@
 script = ExtResource("1_46umi")
 id = "ball"
 name = "Ball"
+description = "Scores 10 points"
 type = "ball"
 custom = false
 limit = 0

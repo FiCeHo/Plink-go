@@ -7,6 +7,7 @@
 script = ExtResource("1_5eg6g")
 id = "beachball"
 name = "Beachball"
+description = "Twice as big as a usual ball but less heavy"
 type = "ball"
 custom = true
 limit = 0
