@@ -10,6 +10,29 @@ static var default_rarity_weights := {
 	"legendary": 4
 }
 
+static func get_rarity_weights() -> Dictionary:
+	var adjusted_weights := default_rarity_weights.duplicate(true)
+
+	var quality_magnet_bonus := {
+		"common": -100,
+		"uncommon": 30,
+		"rare": 24,
+		"epic": 10,
+		"legendary": 2
+	}
+
+	var perk_count := 0
+	for perk in PlayerVariables.perk_array:
+		if perk.id == "quality_magnet":
+			perk_count += 1
+
+	if perk_count > 0:
+		for rarity in quality_magnet_bonus.keys():
+			adjusted_weights[rarity] += quality_magnet_bonus[rarity] * perk_count
+			adjusted_weights[rarity] = max(adjusted_weights[rarity], 1)
+
+	return adjusted_weights
+
 # 🔄 Load all .tres resources from a given folder
 static func load_items_from_folder(folder_path: String) -> Array:
 	var dir = DirAccess.open(folder_path)
@@ -56,7 +79,7 @@ static func pick_weighted_items(
 	pool: Array,
 	count: int,
 	get_rarity_func: Callable,
-	rarity_weights := default_rarity_weights
+	rarity_weights := get_rarity_weights()
 ) -> Array:
 	var selected: Array = []
 	var rng = RandomNumberGenerator.new()
@@ -121,7 +144,7 @@ static func pick_weighted_items_havoc(
 	pool: Array,
 	count: int,
 	get_rarity_func: Callable,
-	rarity_weights := default_rarity_weights
+	rarity_weights := get_rarity_weights()
 ) -> Array:
 	var selected: Array = []
 	var rng = RandomNumberGenerator.new()
