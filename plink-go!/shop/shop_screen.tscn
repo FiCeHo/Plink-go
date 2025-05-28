@@ -455,6 +455,8 @@ offset_left = 81.0
 offset_top = 60.0
 offset_right = 121.0
 offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("2_td7g5")
+theme_override_font_sizes/font_size = 50
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3

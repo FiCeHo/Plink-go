@@ -63,7 +63,7 @@ func _on_rigid_body_2d_body_entered(body: Node) -> void:
 	if body.get_parent().name.contains("Multiplier"):
 		body.get_parent().collision()
 		var multiplier = body.get_parent().multiplier
-		if PlayerVariables.perk_lifebuoy:
+		if PlayerVariables.perk_lifebuoy && multiplier == 0:
 			multiplier = 1
 			PlayerVariables.perk_lifebuoy = false
 		score = (value * (mult * PlayerVariables.perk_mult)) * (multiplier * PlayerVariables.perk_mult)
