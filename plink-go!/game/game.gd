@@ -116,8 +116,8 @@ func _end_round_early():
 		var more_money = (3 + (5 - (ball_index - 1))) * PlayerVariables.perk_interest
 		$WinScreen/Win/Label.text += str(PlayerVariables.current_round) + " Results"
 		PlayerVariables.current_round += 1
-		$WinScreen/Win/Points.text += str(PlayerVariables.current_score).split(".")[0] + " / " + str(Global.goals[PlayerVariables.current_round - 2])
-		$WinScreen/Win/NextGoal.text += str(Global.goals[PlayerVariables.current_round - 1])
+		$WinScreen/Win/Points.text += str(PlayerVariables.current_score).split(".")[0] + " / " + str(Global.goals[PlayerVariables.current_round - 2]).split(".")[0]
+		$WinScreen/Win/NextGoal.text += str(Global.goals[PlayerVariables.current_round - 1]).split(".")[0]
 		$WinScreen/Win/Money.text += str(PlayerVariables.money) + " + " + str(more_money)
 		PlayerVariables.money += more_money
 		$Animation.visible = true
@@ -130,8 +130,8 @@ func _end_round():
 		var more_money = (3 + (5 - (ball_index - 1))) * PlayerVariables.perk_interest
 		$WinScreen/Win/Label.text += str(PlayerVariables.current_round) + " Results"
 		PlayerVariables.current_round += 1
-		$WinScreen/Win/Points.text += str(PlayerVariables.current_score).split(".")[0] + " / " + str(Global.goals[PlayerVariables.current_round - 2])
-		$WinScreen/Win/NextGoal.text += str(Global.goals[PlayerVariables.current_round - 1])
+		$WinScreen/Win/Points.text += str(PlayerVariables.current_score).split(".")[0] + " / " + str(Global.goals[PlayerVariables.current_round - 2]).split(".")[0]
+		$WinScreen/Win/NextGoal.text += str(Global.goals[PlayerVariables.current_round - 1]).split(".")[0]
 		$WinScreen/Win/Money.text += str(PlayerVariables.money) + " + " + str(more_money)
 		PlayerVariables.money += more_money
 		$Animation.visible = true
@@ -139,7 +139,7 @@ func _end_round():
 	elif PlayerVariables.current_score < current_goal:
 		get_tree().paused = true
 		$LoseScreen/Lose/Label.text += str(PlayerVariables.current_round) + " Results"
-		$LoseScreen/Lose/Points.text += str(PlayerVariables.current_score).split(".")[0] + " / " + str(Global.goals[PlayerVariables.current_round - 1])
+		$LoseScreen/Lose/Points.text += str(PlayerVariables.current_score).split(".")[0] + " / " + str(Global.goals[PlayerVariables.current_round - 1]).split(".")[0]
 		$LoseScreen/Lose/Round.text += str(PlayerVariables.current_round)
 		$Animation.visible = true
 		$Animation/Panel2/AnimationPlayerWin.play("new_animation")
