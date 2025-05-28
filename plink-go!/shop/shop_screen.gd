@@ -50,7 +50,7 @@ func _ready():
 	buy_button.hide()
 	details_panel.hide()
 	sell_button.hide()
-	$Panel2/AnimationPlayer.play("new_animation")
+	$Animation/Panel2/AnimationPlayer.play("new_animation")
 	
 func _on_item_selected(item_data: Resource, item_node: Control):
 	# If the same item is clicked again, toggle it off

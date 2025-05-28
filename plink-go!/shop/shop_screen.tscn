@@ -234,9 +234,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_xwshg")
 
-[node name="Panel2" type="Panel" parent="."]
+[node name="Animation" type="CanvasLayer" parent="."]
+layer = 15
+
+[node name="Panel2" type="Panel" parent="Animation"]
 z_index = 4096
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -246,7 +248,7 @@ scale = Vector2(1.2, 1.2)
 pivot_offset = Vector2(640, 360)
 theme_override_styles/panel = SubResource("StyleBoxTexture_pbi7f")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation/Panel2"]
 libraries = {
 &"": SubResource("AnimationLibrary_kceon")
 }
@@ -465,6 +467,7 @@ bus = &"Music"
 parameters/looping = true
 
 [node name="ShopUI" parent="." instance=ExtResource("6_xwshg")]
+layer = 1
 
 [node name="Options" type="CanvasLayer" parent="."]
 layer = 11
